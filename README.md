@@ -4,11 +4,11 @@ A small Chrome extension for Facebook. No dependencies, analytics, network reque
 
 ## Publish to the Chrome Web Store
 
-Open [publish.html](publish.html) locally for the step-by-step publishing guide, copyable listing and privacy answers, asset downloads, and a saved checklist. The guide starts with adding a new item to an existing developer account.
+Open the [publishing guide](https://kylestay.github.io/facefix/publish.html) for step-by-step instructions, copyable listing and privacy answers, asset downloads, and a saved checklist. You can also open [publish.html](publish.html) locally. The guide starts with adding a new item to an existing developer account.
 
 Upload [dist/facefix-1.1.1-store.zip](dist/facefix-1.1.1-store.zip), which contains `manifest.json` at the root and only the extension runtime files. Rebuild it with `python3 build.py`. Do not upload GitHub's source archive. The icon and promotional tile are included; capture a real screenshot during the live test before submitting.
 
-Read the [privacy policy](PRIVACY.md). A bundled readable version is linked from the popup. Version 1.1.1 adds icons, the policy link, and store packaging without adding permissions.
+Read the [privacy policy](https://kylestay.github.io/facefix/privacy.html), also available as [PRIVACY.md](PRIVACY.md). A bundled readable version is linked from the popup. Version 1.1.1 adds icons, the policy link, and store packaging without adding permissions.
 
 ## Install
 
