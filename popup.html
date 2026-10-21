@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><title>Facefix</title>
+<style>
+body{width:270px;margin:0;padding:22px;font:14px/1.5 system-ui;color:#18302b;background:#f1f6f2}h1{font-size:22px;margin:0 0 12px}label{display:flex;gap:10px;font-weight:650}input{accent-color:#26745b}p{color:#4d625c}small{display:block;color:#4d625c}
+dl{margin:18px 0}dl div{display:flex;justify-content:space-between;gap:12px;margin:6px 0}dd{margin:0;font-variant-numeric:tabular-nums;font-weight:650}button{font:inherit;border:1px solid #80988e;border-radius:6px;background:white;color:inherit;padding:5px 10px;cursor:pointer}button:focus-visible{outline:2px solid #26745b;outline-offset:2px}#status{min-height:1.5em;margin:4px 0}
+</style>
+<h1>Keep my place.</h1>
+<label><input id="enabled" type="checkbox" checked> Facebook protection</label>
+<p>Reduces return-to-tab refreshes, automatic Home redirects, and sudden scroll jumps. Keeps idle Facebook tabs in memory.</p>
+<dl aria-label="Local protection counters" aria-live="polite">
+<div><dt>Return events suppressed</dt><dd id="returnEvents">0</dd></div>
+<div><dt>Reloads blocked</dt><dd id="reloads">0</dd></div>
+<div><dt>Home redirects blocked</dt><dd id="homeRedirects">0</dd></div>
+<div><dt>Scroll recoveries</dt><dd id="scrollRecoveries">0</dd></div>
+</dl>
+<small>Totals across Facebook tabs, saved only on this device. Return events are signals suppressed, not confirmed refreshes prevented. Scroll recoveries count once per return.</small>
+<p><button id="reset" type="button">Reset counters</button></p>
+<small id="status" role="status"></small>
+<small>Clicks, scrolling, Back, and manual Reload still work. Refresh existing Facebook tabs once after installing.</small>
+<p><a href="privacy.html" target="_blank" rel="noopener">Privacy policy</a></p>
+<script src="popup.js"></script></html>
