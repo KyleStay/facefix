@@ -1,5 +1,7 @@
 # Facefix — Keep My Place
 
+**[Install Facefix from the Chrome Web Store](https://chromewebstore.google.com/detail/facefix-%E2%80%94-keep-my-place/kckhpinnhkjfblkalloabaiihpdmklla)**
+
 A small Chrome extension for Facebook. No dependencies, analytics, network requests, or remote code. Settings stay on your device.
 
 ## Publish to the Chrome Web Store
@@ -11,6 +13,10 @@ Upload [dist/facefix-1.4.0-store.zip](dist/facefix-1.4.0-store.zip), which conta
 Read the [privacy policy](https://kylestay.github.io/facefix/privacy.html), also available as [PRIVACY.md](PRIVACY.md). A bundled readable version is linked from the popup. Version 1.4.0 adds popup timers, separate connection checks, and bounded local failure diagnostics without adding permissions.
 
 ## Install
+
+[Add Facefix to Chrome from the Chrome Web Store](https://chromewebstore.google.com/detail/facefix-%E2%80%94-keep-my-place/kckhpinnhkjfblkalloabaiihpdmklla), then refresh your existing Facebook tabs once.
+
+For development or testing an unreleased build, install the ZIP manually:
 
 1. Extract the store ZIP into its own folder.
 2. Open `chrome://extensions` in Chrome and turn on **Developer mode**.
