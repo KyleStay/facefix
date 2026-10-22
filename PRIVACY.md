@@ -8,7 +8,7 @@ Facefix — Keep My Place is a Chrome extension maintained by Kyle Stay. Its pur
 
 Facefix checks Facebook tab URLs and navigation destinations to decide where protection applies and whether an automatic Home redirect should be blocked. It observes page visibility, focus, page restoration, scroll position, and the occurrence of clicks, keys, wheel, pointer, and touch events so that protection can end when you interact with the page. It does not record the text of keys you press or the contents of forms.
 
-Tab identifiers, the current navigation URL, scroll position, and short-lived protection state are used in memory. Facefix does not save a URL history or associate its counters with a particular page or person.
+Tab identifiers, the current navigation URL, scroll position, and short-lived protection state are used in memory. To recover your place after feed changes, Facefix also inspects visible feed article positions and post permalink links. It temporarily retains a visible post link and its onscreen offset in memory, matches that link if Facebook rerenders the post, and clears this anchor when recovery ends, you interact with the page, or protection is disabled. It does not read post text for this recovery. Facefix does not save a URL history or associate its counters with a particular page or person.
 
 ## Information saved locally
 
@@ -18,7 +18,7 @@ Facefix saves the protection on/off setting and four aggregate diagnostic totals
 
 This information is used only to provide the extension's protection, display its controls and counters, and keep your settings between browser sessions. Facefix also asks Chrome to keep protected Facebook tabs from being automatically discarded. This may use more memory.
 
-Facefix does not read Facebook posts, private messages, contacts, passwords, cookies, payment information, or account profile details for storage or analysis. Its permission to run on Facebook allows it to work with page events and navigation; it is not used to build a profile of you.
+Facefix does not read or save post text, private messages, contacts, passwords, cookies, payment information, or account profile details. Visible post links are used only for the temporary position recovery described above. Its permission to run on Facebook allows it to work with page events and navigation; it is not used to build a profile of you.
 
 ## Transmission and sharing
 

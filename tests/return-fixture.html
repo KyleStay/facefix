@@ -1,0 +1,30 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Facefix return recovery check</title><script src="../guard.js"></script><style>body{margin:0;font:16px system-ui;background:#eef4ee}header{position:fixed;top:0;left:0;right:0;background:#183e32;color:white;padding:12px;z-index:2}button{font:inherit;padding:8px;margin-right:12px}main{width:600px;margin:150px auto 200px}article{height:500px;background:white;border:1px solid #ccd8cc;padding:30px;margin-bottom:24px;box-sizing:border-box}#spacer{height:0}</style></head><body><header><button id="start">Test delayed post replacement</button><button id="scroll">Check intentional scroll</button><output id="result">Ready</output></header><main role="main"><article role="article"><a href="/person/posts/first">First post</a></article><div id="spacer"></div><article role="article" id="post"><a href="/person/posts/target?tracking=old">Visible post</a></article><article role="article"><a href="/person/posts/last">Last post</a></article></main><script>
+const result = document.querySelector('#result');
+let recovered = 0;
+document.addEventListener('facefix-count', event => { if (event.detail === 'scrollRecoveries') recovered++; });
+document.querySelector('#start').addEventListener('click', () => {
+ window.scrollTo(0, 600);
+ requestAnimationFrame(() => {
+  const top = document.querySelector('#post').getBoundingClientRect().top;
+  window.dispatchEvent(new Event('blur'));
+  window.dispatchEvent(new Event('focus'));
+  result.textContent = 'Waiting 5 seconds for a feed replacement…';
+  setTimeout(() => {
+   const old = document.querySelector('#post');
+   const replacement = old.cloneNode(true);
+   replacement.querySelector('a').href = '/person/posts/target?tracking=new';
+   document.querySelector('#spacer').style.height = '350px';
+   old.replaceWith(replacement);
+   setTimeout(() => {
+    const difference = replacement.getBoundingClientRect().top - top;
+    result.textContent = Math.abs(difference) < 9 && recovered > 0 ? 'PASS: post offset recovered after delayed replacement' : `FAIL: offset drift ${difference}, recoveries ${recovered}`;
+   }, 500);
+  }, 5000);
+ });
+});
+document.querySelector('#scroll').addEventListener('click', () => {
+ const before = scrollY;
+ window.scrollTo(0, before + 100);
+ setTimeout(() => { result.textContent = Math.abs(scrollY - before - 100) < 8 ? 'PASS: intentional scrolling remains available' : 'FAIL: scrolling was overridden'; }, 300);
+});
+</script></body></html>

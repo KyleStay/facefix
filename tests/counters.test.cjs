@@ -77,6 +77,7 @@ test('counter bridge, multiple tabs, persistence, pause, popup updates, and rese
   await settle(); await settle();
   const window = new EventTarget();
   document.hidden = false;
+  document.querySelectorAll = () => [];
   const page = {window, document, Event, CustomEvent, URL, performance,
     location:new URL(h.sender.url), history:{pushState() {}, replaceState() {}},
     scrollY:0, requestAnimationFrame:() => 1, cancelAnimationFrame() {}};

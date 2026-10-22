@@ -12,18 +12,21 @@ function setup() {
   const calls = [];
   const counts = [];
   const context = {
-    URL, Event, CustomEvent, performance: {now: () => time},
+    URL, URLSearchParams, Event, CustomEvent, performance: {now: () => time},
     location: new URL('https://www.facebook.com/groups/example/'),
-    document: {hidden: false, addEventListener: on('doc'), dispatchEvent(event) { if (event.type === 'facefix-count') counts.push(event.detail); }},
+    document: {hidden: false, querySelectorAll: () => [], addEventListener: on('doc'), dispatchEvent(event) { if (event.type === 'facefix-count') counts.push(event.detail); }},
     history: {pushState(...args) { calls.push(args); }, replaceState(...args) { calls.push(args); }},
-    scrollY: 900, requestAnimationFrame: fn => { context.frame = fn; return 1; }, cancelAnimationFrame() {},
+    innerHeight: 800, innerWidth: 1280, scrollY: 900, requestAnimationFrame: fn => { context.frame = fn; return 1; }, cancelAnimationFrame() {},
     addEventListener: on('win'), navigation: {addEventListener: on('nav')},
     scrollTo(x, y) { context.scrollY = y; }
   };
   context.window = context;
-  vm.runInNewContext(fs.readFileSync(require.resolve('../guard.js'), 'utf8'), context);
+  const sandbox = vm.createContext(context);
+  vm.runInContext(fs.readFileSync(require.resolve('../guard.js'), 'utf8'), sandbox);
+  const windowTarget = vm.runInContext('window', sandbox);
   const fire = (name, extra = {}) => {
     const event = {stopImmediatePropagation() { this.stopped = true; }, preventDefault() {this.prevented = true;}, ...extra};
+    if (extra.target === context) event.target = windowTarget;
     for (const fn of listeners[name] ?? []) fn(event);
     return event;
   };
@@ -34,7 +37,7 @@ test('return guard blocks automatic Home/reload, preserves intentional use and e
   c.history.pushState({}, '', '/');
   assert.equal(calls.length, 1, 'normal navigation allowed');
   c.document.hidden = true;
-  assert.equal(fire('winvisibilitychange').stopped, undefined, 'hide delivered');
+  assert.equal(fire('winvisibilitychange').stopped, true, 'hide suppressed');
   c.history.replaceState({}, '', '/');
   assert.equal(calls.length, 1, 'background Home blocked');
   c.document.hidden = false;
@@ -94,4 +97,55 @@ test('scroll recovery is not counted if the document cannot restore its position
   c.scrollTo = () => {};
   c.scrollY = 0; c.frame();
   assert.deepEqual(counts, ['returnEvents']);
+});
+
+function post(context, absoluteTop, href) {
+  return {
+    isConnected:true,
+    getBoundingClientRect:() => ({top:absoluteTop - context.scrollY, bottom:absoluteTop - context.scrollY + 500, height:500, left:200, right:900}),
+    querySelectorAll:() => [{getAttribute:() => href}]
+  };
+}
+test('leaving signals are suppressed and returning from another window is protected', () => {
+  const {context:c, fire} = setup();
+  const blur = fire('winblur', {target:c.window});
+  assert.equal(blur.stopped, true, 'window blur must not arm Facebook inactivity handlers');
+  c.scrollY = 0;
+  assert.equal(fire('winfocus', {target:c.window}).stopped, true);
+  c.frame();
+  assert.equal(c.scrollY, 900);
+  assert.equal(fire('winblur', {target:{}}).stopped, undefined, 'element blur is preserved');
+  c.document.hidden = true;
+  assert.equal(fire('winvisibilitychange').stopped, true, 'hidden event must also be suppressed');
+});
+test('visible post stays anchored when earlier feed items change height after returning', () => {
+  const {context:c, fire, counts, tick} = setup();
+  let article = post(c, 1000, '/example/posts/123?tracking=old');
+  c.document.querySelectorAll = () => [article];
+  c.document.hidden = true; fire('winvisibilitychange');
+  c.document.hidden = false; fire('winvisibilitychange');
+  article.isConnected = false;
+  article = post(c, 1300, '/example/posts/123?tracking=new');
+  // The original node was replaced by a new rendering of the same post.
+  // Both tracked hrefs normalize to the same post identity.
+  tick(10000);
+  c.frame();
+  assert.equal(c.scrollY, 1200, 'restore the post offset, not just the old pixel coordinate');
+  assert.equal(counts.filter(kind => kind === 'scrollRecoveries').length, 1);
+});
+test('a recycled feed node is matched by post identity instead of reusing the wrong post', () => {
+  const {context:c, fire} = setup();
+  const original = post(c, 1000, '/example/posts/target/');
+  c.document.querySelectorAll = () => [original];
+  c.document.hidden = true; fire('winvisibilitychange');
+  c.document.hidden = false; fire('winvisibilitychange');
+  original.querySelectorAll = () => [{getAttribute:() => '/example/posts/different'}];
+  const replacement = post(c, 1350, '/example/posts/target?tracking=new');
+  c.document.querySelectorAll = () => [original, replacement];
+  c.frame();
+  assert.equal(c.scrollY, 1250);
+  fire('winwheel', {isTrusted:true});
+  c.scrollY = 300;
+  c.frame();
+  assert.equal(c.scrollY, 300, 'intentional scrolling cancels recovery');
 });

@@ -6,9 +6,9 @@ A small Chrome extension for Facebook. No dependencies, analytics, network reque
 
 Open the [publishing guide](https://kylestay.github.io/facefix/publish.html) for step-by-step instructions, copyable listing and privacy answers, asset downloads, and a saved checklist. You can also open [publish.html](publish.html) locally. The guide starts with adding a new item to an existing developer account.
 
-Upload [dist/facefix-1.1.1-store.zip](dist/facefix-1.1.1-store.zip), which contains `manifest.json` at the root and only the extension runtime files. Rebuild it with `python3 build.py`. Do not upload GitHub's source archive. The icon, promotional tile, and [three 1280 × 800 store screenshots](store-assets/facefix-store-screenshots.zip) are included. These show the actual popup markup in a static interface preview with zero counters, without a fabricated Facebook session. Complete the live behavior check before submitting.
+Upload [dist/facefix-1.2.0-store.zip](dist/facefix-1.2.0-store.zip), which contains `manifest.json` at the root and only the extension runtime files. Rebuild it with `python3 build.py`. Do not upload GitHub's source archive. The icon, promotional tile, and [three 1280 × 800 store screenshots](store-assets/facefix-store-screenshots.zip) are included. These show the actual popup markup in a static interface preview with zero counters, without a fabricated Facebook session. Complete the live behavior check before submitting.
 
-Read the [privacy policy](https://kylestay.github.io/facefix/privacy.html), also available as [PRIVACY.md](PRIVACY.md). A bundled readable version is linked from the popup. Version 1.1.1 adds icons, the policy link, and store packaging without adding permissions.
+Read the [privacy policy](https://kylestay.github.io/facefix/privacy.html), also available as [PRIVACY.md](PRIVACY.md). A bundled readable version is linked from the popup. Version 1.2.0 adds departure-event suppression and recovery of a visible post after feed shifts or rerenders, without adding permissions.
 
 ## Install
 
@@ -21,9 +21,9 @@ For an update, replace the old extension files with the new files, click **Reloa
 
 ## What it does
 
-- Captures Facebook's tab-return visibility/focus events before page scripts receive them.
+- Captures page-level visibility and window blur/focus events in both directions, so Facebook receives fewer inactivity and return triggers.
 - Blocks cancelable script-driven reloads and Home/feed navigation while away and for four seconds after returning.
-- Guards the main page against large upward scroll jumps during that return window.
+- Tries to retain the visible post and its onscreen offset for up to 15 seconds after returning. It can match a rerendered post by its permalink, falling back to a pixel position if no matching post is available. Trusted user input ends recovery immediately.
 - Asks Chrome not to automatically discard Facebook tabs, preventing the usual discard-and-reload cycle.
 - Ends the return guard immediately on trusted clicks, keys, touch, or scrolling; normal navigation remains available.
 
@@ -44,7 +44,7 @@ These are diagnostic totals. The page and content script share DOM events, so pa
 
 ## Limits
 
-This is a best-effort prevention tool, not a saved copy of the feed. It cannot preserve deleted posts, expired sessions, restore a tab already discarded before installation, or prevent browser crashes, forced memory eviction, or browser restarts. Facebook can replace posts using internal timers/network responses without emitting these events; those paths are not blocked. Nested scrolling panels are not restored. Suppressing return events may delay Facebook's presence indicators, unread updates, or other return-triggered features. Login/security redirects and non-Home destinations remain available. Manual Reload and Back remain available.
+This is a best-effort prevention tool, not a saved copy of the feed. It cannot preserve deleted posts, expired sessions, restore a tab already discarded before installation, or prevent browser crashes, forced memory eviction, or browser restarts. Facebook can replace posts using internal timers/network responses without emitting these events; those paths are not blocked. Nested scrolling panels are not restored. Suppressing departure and return events may affect Facebook's presence indicators, unread updates, background media behavior, or other lifecycle-triggered features. Post recovery depends on recognizable feed articles and permalinks; it cannot recover a post Facebook has removed from the loaded feed. Login/security redirects and non-Home destinations remain available. Manual Reload and Back remain available.
 
 Facebook's implementation changes; test on your own account. No live logged-in Facebook session was used for validation. The included check exercises the page hooks with simulated browser events, not Facebook's production code.
 
@@ -52,10 +52,12 @@ Facebook's implementation changes; test on your own account. No live logged-in F
 
 Run `node --test tests/*.test.cjs` from this repository folder.
 
-Version 1.1.0 passes six automated checks covering page hooks, the page-to-storage counter path, concurrent updates across tabs, worker restart persistence, popup display/live updates/reset, pausing, navigation exceptions, scroll recovery counting, and Facebook-only memory protection. These use simulated browser APIs; they do not prove the extension works against Facebook's production scripts. Live installation verification was unavailable: no Facebook tab was open, and the browser automation policy blocked `chrome://extensions`.
+Version 1.2.0 passes nine automated checks covering page hooks, the page-to-storage counter path, concurrent updates across tabs, worker restart persistence, popup display/live updates/reset, pausing, navigation exceptions, scroll recovery counting, and Facebook-only memory protection. These use simulated browser APIs; they do not prove the extension works against Facebook's production scripts. A browser fixture also verifies delayed DOM replacement recovery and intentional scrolling. This is not a verification against a logged-in Facebook session.
 
 Manual check: scroll down Home; switch tabs for a minute; return and verify the same posts and scroll position. Repeat on a profile, group, and post. Check Home clicks, Back, typing, scroll, and manual Reload. Pause from the popup and repeat. On `chrome://discards`, Facebook should show as not auto-discardable while protection is enabled.
 
 Counter check: reset totals, switch away from Facebook, then return and open the popup. Return events should increase if return signals were suppressed; reload/redirect counters should stay at zero unless those actions were actually attempted. Reset, pause protection, and repeat: all counters should stay zero. Resume, return to two Facebook tabs, and verify totals accumulate. Do not treat zero blocked reloads as a failure if suppressing the earlier return event prevented the reload from being attempted.
 
 Chrome API references: https://developer.chrome.com/docs/extensions/develop/concepts/content-scripts and https://developer.chrome.com/docs/extensions/reference/api/tabs
+
+Browser reproduction: serve this repository locally and open `tests/return-fixture.html`. The delayed-replacement check replaces the visible post after five seconds and inserts content above it; recovery should keep the same post offset.

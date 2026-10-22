@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Facefix — Keep My Place",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "minimum_chrome_version": "111",
   "description": "Reduce Facebook return-to-tab refreshes, Home redirects, and scroll jumps.",
   "permissions": [
