@@ -17,7 +17,7 @@ Read the [privacy policy](https://kylestay.github.io/facefix/privacy.html), also
 3. Click **Load unpacked** and select the folder containing `manifest.json`.
 4. Reload your existing Facebook tabs once. Pin Facefix for access to its on/off switch.
 
-For an update, replace the old extension files with the new files, click **Reload** on Facefix in `chrome://extensions`, then reload existing Facebook tabs. The popup shows the installed and page versions. Refresh Facebook once after updating so both match.
+For an update, replace the old extension files with the new files in the same folder Chrome is already loading (keep just one Facefix copy enabled), click **Reload** on Facefix in `chrome://extensions`, then reload existing Facebook tabs. The popup shows the installed and page versions. Refresh Facebook once after updating so both match.
 
 ## What it does
 
