@@ -11,10 +11,11 @@ function setup() {
   let time = 0;
   const calls = [];
   const counts = [];
+  const trace = [];
   const context = {
     URL, URLSearchParams, Event, CustomEvent, performance: {now: () => time},
     location: new URL('https://www.facebook.com/groups/example/'),
-    document: {hidden: false, querySelectorAll: () => [], addEventListener: on('doc'), dispatchEvent(event) { if (event.type === 'facefix-count') counts.push(event.detail); }},
+    document: {hidden: false, querySelectorAll: () => [], addEventListener: on('doc'), dispatchEvent(event) { if (event.type === 'facefix-diagnostic') trace.push(JSON.parse(event.detail)); if (event.type === 'facefix-count') counts.push(event.detail); if (event.type === 'facefix-status') context.timerStatus = JSON.parse(event.detail); }},
     history: {pushState(...args) { calls.push(args); }, replaceState(...args) { calls.push(args); }},
     innerHeight: 800, innerWidth: 1280, scrollY: 900, requestAnimationFrame: fn => { context.frame = fn; return 1; }, cancelAnimationFrame() {},
     addEventListener: on('win'), navigation: {addEventListener: on('nav')},
@@ -25,12 +26,12 @@ function setup() {
   vm.runInContext(fs.readFileSync(require.resolve('../guard.js'), 'utf8'), sandbox);
   const windowTarget = vm.runInContext('window', sandbox);
   const fire = (name, extra = {}) => {
-    const event = {stopImmediatePropagation() { this.stopped = true; }, preventDefault() {this.prevented = true;}, ...extra};
+    const event = {type:name.replace(/^(win|doc|nav)/,''),stopImmediatePropagation() { this.stopped = true; }, preventDefault() {this.prevented = true;}, ...extra};
     if (extra.target === context) event.target = windowTarget;
     for (const fn of listeners[name] ?? []) fn(event);
     return event;
   };
-  return {context, calls, counts, fire, tick: n => { time += n; }};
+  return {context, calls, counts, trace, fire, tick: n => { time += n; }};
 }
 test('return guard blocks automatic Home/reload, preserves intentional use and expires', () => {
   const {context:c, calls, fire, tick} = setup();
@@ -148,4 +149,51 @@ test('a recycled feed node is matched by post identity instead of reusing the wr
   c.scrollY = 300;
   c.frame();
   assert.equal(c.scrollY, 300, 'intentional scrolling cancels recovery');
+});
+
+test('live status reports real remaining time and interaction endings', () => {
+  const {context:c, fire, tick} = setup();
+  const snapshot = () => { fire('docfacefix-status-request'); return c.timerStatus; };
+  assert.equal(snapshot().reason, 'waiting');
+  c.document.hidden = true; fire('winvisibilitychange');
+  assert.equal(snapshot().away, true);
+  c.document.hidden = false; fire('winvisibilitychange');
+  assert.equal(snapshot().navigationMs, 4000);
+  assert.equal(snapshot().recoveryMs, 15000);
+  tick(1250);
+  assert.equal(snapshot().navigationMs, 2750);
+  assert.equal(snapshot().recoveryMs, 13750);
+  tick(3000);
+  assert.equal(snapshot().navigationMs, 0);
+  assert.equal(snapshot().recoveryMs, 10750);
+  fire('winwheel', {isTrusted:true});
+  assert.equal(snapshot().reason, 'interaction');
+  assert.equal(snapshot().recoveryMs, 0);
+  fire('docfacefix-settings', {detail:false});
+  assert.equal(snapshot().enabled, false);
+});
+
+
+test('guard diagnostics capture failure evidence, honor opt-out, and exclude page text and URLs',()=>{
+  const {context:c,fire,tick,trace}=setup();
+  const article=post(c,950,'/private/posts/secret-post/');
+  c.document.querySelectorAll=()=>[article];
+  c.document.hidden=true;fire('winvisibilitychange');
+  c.document.hidden=false;fire('winvisibilitychange');
+  article.isConnected=false;c.document.querySelectorAll=()=>[];
+  tick(100);c.frame();
+  assert.ok(trace.some(e=>e.kind==='anchor-missing'));
+  c.scrollY=0;c.scrollTo=()=>{};tick(1100);c.frame();
+  assert.ok(trace.some(e=>e.kind==='recovery-attempt'&&e.details.success===false));
+  fire('winwheel',{isTrusted:true});
+  assert.ok(trace.some(e=>e.kind==='guard-ended'&&e.details.input==='wheel'));
+  assert.equal(JSON.stringify(trace).includes('secret-post'),false);
+  assert.equal(JSON.stringify(trace).includes('https:'),false);
+  fire('docfacefix-diagnostics-settings',{detail:false});
+  const before=trace.length;
+  c.document.hidden=true;fire('winvisibilitychange');
+  c.document.hidden=false;fire('winvisibilitychange');
+  assert.equal(trace.length,before,'recording can be disabled independently');
+  fire('docfacefix-status-request');
+  assert.equal(c.timerStatus.guardVersion,JSON.parse(fs.readFileSync(require.resolve('../manifest.json'))).version);
 });

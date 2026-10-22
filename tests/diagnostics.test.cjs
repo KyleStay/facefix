@@ -1,0 +1,32 @@
+const {test}=require('node:test');
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const vm=require('node:vm');
+const diag=vm.runInNewContext(fs.readFileSync(require.resolve('../diagnostics.js'),'utf8')+'\nFacefixDiagnostics;');
+test('diagnostics accept only bounded numeric metrics, flags, and known categories',()=>{
+  const input=JSON.parse('{"kind":"scroll-jump","url":"https://private","text":"private","details":{"deltaPx":123.4567,"recoveryActive":false,"navigationActive":"yes","key":"private","url":"https://private","constructor":"evil","__proto__":{"secret":true},"shiftScore":1e100}}');
+  const safe=diag.sanitize(input);
+  assert.equal(JSON.stringify(safe),' {"kind":"scroll-jump","details":{"recoveryActive":false,"deltaPx":123.46}}'.trim());
+  assert.equal(diag.sanitize({kind:'constructor'}),null);
+  assert.equal(diag.sanitize({kind:['load']}),null);
+  assert.equal(diag.sanitize({kind:'load',details:null}).kind,'load');
+  const now=Date.now();
+  const items=Array.from({length:400},(_,i)=>({at:now-i,kind:'left',details:{}})).reverse();
+  const data=diag.prune({events:[{at:now-diag.maxAge-1},...items],reports:items},now);
+  assert.equal(data.events.length,300);
+  assert.equal(data.reports.length,5);
+  assert.equal(diag.prune({events:[{at:now-diag.maxAge-1}]},now).events.length,0);
+  assert.equal(diag.prune({reports:[{at:now,events:[{at:now-diag.maxAge-1}]}]},now).reports[0].events.length,0,'expired evidence is also removed inside retained reports');
+});
+test('findings separate observed evidence from possible causes and unknown causes',()=>{
+  const status={enabled:true,wasDiscarded:false,navigationAPI:true,pageLoadType:'navigate',postMatched:true};
+  assert.equal(diag.analyze([],status)[0].confidence,'unknown');
+  assert.match(diag.analyze([],{...status,wasDiscarded:true})[0].title,/discarded/);
+  const layout=diag.analyze([{kind:'layout-shift',details:{shiftScore:.3}}],status);
+  assert.equal(layout[0].confidence,'possible');
+  assert.match(layout[0].action,/not proof/);
+  assert.match(diag.analyze([],null)[0].title,/not connected/);
+  assert.ok(diag.analyze([],{...status,navigationAPI:false}).some(f=>f.title.includes('unavailable')));
+  assert.ok(!diag.analyze([],{...status,navigationAPI:null}).some(f=>f.title.includes('unavailable')),'unknown capability does not become a false diagnosis');
+  assert.ok(diag.analyze([{kind:'anchor-missing',details:{}}],{...status,postMatched:true}).some(f=>f.title.includes('could not be matched')));
+});

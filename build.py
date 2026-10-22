@@ -7,7 +7,8 @@ root = Path(__file__).resolve().parent
 manifest = json.loads((root / 'manifest.json').read_text())
 files = {
     'manifest.json', 'background.js', 'guard.js', 'settings.js',
-    'popup.html', 'popup.js', 'privacy.html',
+    'popup.html', 'popup.js', 'privacy.html', 'timers.js', 'connection.js',
+    'diagnostics.js', 'diagnostics.html', 'diagnostics-view.js',
     *manifest['icons'].values(),
 }
 output = root / 'dist' / f"facefix-{manifest['version']}-store.zip"

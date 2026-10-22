@@ -1,6 +1,6 @@
 # Facefix Privacy Policy
 
-Effective date: October 21, 2026
+Effective date: October 22, 2026
 
 Facefix — Keep My Place is a Chrome extension maintained by Kyle Stay. Its purpose is to reduce unwanted Facebook refreshes, Home redirects, and scroll jumps when you return to a tab.
 
@@ -12,23 +12,31 @@ Tab identifiers, the current navigation URL, scroll position, and short-lived pr
 
 ## Information saved locally
 
-Facefix saves the protection on/off setting and four aggregate diagnostic totals in Chrome's extension-local storage: return events suppressed, reloads blocked, Home redirects blocked, and scroll recoveries. These totals are combined across Facebook tabs. They contain no URLs, timestamps, post contents, account identifiers, or personal messages. Facefix does not use Chrome Sync for these settings or counters.
+Facefix saves the protection on/off setting, the local-recording preference, and four aggregate diagnostic totals in Chrome's extension-local storage: return events suppressed, reloads blocked, Home redirects blocked, and scroll recoveries. These totals are combined across Facebook tabs. They contain no URLs, timestamps, post contents, account identifiers, or personal messages. Facefix does not use Chrome Sync for these settings or counters.
+
+The popup live timer view reads remaining Facefix protection durations, whether the page is away or unfocused, whether a post is matched for recovery, and why a protection window ended. It also checks the installed, page-connection, and guard versions. Facebook's own internal refresh timers are not accessed. These readings stay within your browser; selected status fields can be saved when you request a failure report.
+
+Automatic local diagnostic recording is on by default and can be turned off independently of protection. Its bounded history records fixed event categories, event timestamps, browser-local tab and document identifiers, numeric scroll/layout/timing measurements, interaction categories (such as wheel or keydown, never key text), navigation categories (such as reload, never destinations), post-match/recovery flags, page-load/discard information, and browser capability flags. At most 300 events and 120 events per document per minute are accepted. No page or post URLs, post text, key text, messages, account identifiers, cookies, screenshots, or raw error messages enter these records.
+
+When you select **Something went wrong** or **Capture failure report**, Facefix saves a snapshot with its version and connection checks, protection timers and flags, browser capability and memory-protection status, aggregate counters, findings, and up to 120 recent events from the selected tab in the last 30 minutes. At most five reports are retained. Reports distinguish observations, possible causes, and unknown causes. These are troubleshooting records, not proof that Facebook caused a change or a tamper-proof audit log.
 
 ## How information is used
 
-This information is used only to provide the extension's protection, display its controls and counters, and keep your settings between browser sessions. Facefix also asks Chrome to keep protected Facebook tabs from being automatically discarded. This may use more memory.
+This information is used only to provide the extension's protection, display its controls and counters, investigate failures, and keep your settings between browser sessions. Facefix also asks Chrome to keep protected Facebook tabs from being automatically discarded. This may use more memory.
 
 Facefix does not read or save post text, private messages, contacts, passwords, cookies, payment information, or account profile details. Visible post links are used only for the temporary position recovery described above. Its permission to run on Facebook allows it to work with page events and navigation; it is not used to build a profile of you.
 
 ## Transmission and sharing
 
-Facefix has no developer-operated server, analytics service, advertising service, or remote-code loader. The extension makes no network requests to transmit the information described above. Data is not sold, shared with third parties, or used for advertising, credit decisions, or unrelated purposes. Internal messages between the extension's page scripts and background worker stay within your browser.
+Facefix has no developer-operated server, analytics service, advertising service, or remote-code loader. The extension makes no network requests to transmit the information described above. It does not sell data, automatically share it with third parties, or use it for advertising, credit decisions, or unrelated purposes. **Export latest report** creates a JSON file on your device. You decide whether to share it; review it before doing so. An export contains diagnostic timestamps and browser-local identifiers. Exported copies are outside the extension's retention controls. Internal messages between the extension's page scripts and background worker stay within your browser.
 
 Your normal Facebook traffic remains subject to Facebook's policies. Chrome's extension distribution and update services are operated by Google. If you visit the GitHub repository or voluntarily submit an issue, GitHub processes that visit and any information you submit under its own policies. Public issues can be read by others; do not include private Facebook content, credentials, or sensitive personal information.
 
 ## Retention and your controls
 
-The setting and counters remain in Chrome's local extension storage until you change or clear them or uninstall the extension. Use **Reset counters** in the toolbar popup to clear the four totals. Turn off **Facebook protection** to stop protection and further counter increments. Uninstalling Facefix removes its extension-local storage. Reload open Facebook pages after uninstalling to remove scripts already running in those pages. In-memory protection state ends when the page is closed or reloaded.
+The settings and counters remain in Chrome's local extension storage until you change or clear them or uninstall the extension. Use **Reset counters** in the toolbar popup to clear the four totals. Turn off **Facebook protection** to stop protection and further counter increments. Uninstalling Facefix removes its extension-local storage. Reload open Facebook pages after uninstalling to remove scripts already running in those pages. In-memory protection state ends when the page is closed or reloaded.
+
+Diagnostic events and reports expire after 24 hours and are removed when Facefix next records or reviews diagnostics; expiry is not a background deletion alarm. Turn off **Record local event history** to stop new automatic records. Existing records remain until expiry or **Clear history and reports** removes them. Turning recording off still allows a manually requested report. Clearing diagnostic history preserves the aggregate counters and settings. Turning protection off does not turn diagnostic recording off; they have separate controls. No Chrome Sync is used for diagnostic history or reports.
 
 ## Limited use
 

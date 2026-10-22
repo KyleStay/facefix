@@ -1,0 +1,17 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>Facefix real navigation checks</title><style>body{font:17px/1.6 system-ui;max-width:850px;margin:50px auto;color:#173d31;background:#f3f6ef}button{font:inherit;margin:8px;padding:10px}pre{white-space:pre-wrap;padding:20px;background:white}</style>
+<h1>Real browser navigation checks</h1><p>This local fixture uses the actual Facefix guard and browser Navigation API. It does not connect to Facebook.</p>
+<button id="home">Attempt automatic Home navigation</button><button id="reload">Attempt automatic reload</button><button id="manual">Intentional reload after interaction</button><pre id="result" role="status"></pre>
+<script>
+const loads=Number(sessionStorage.getItem('facefix-fixture-loads')||0)+1;
+sessionStorage.setItem('facefix-fixture-loads',loads);
+const counts={};const events=[];
+document.addEventListener('facefix-count',event=>{counts[event.detail]=(counts[event.detail]||0)+1;});
+document.addEventListener('facefix-diagnostic',event=>events.push(JSON.parse(event.detail)));
+const show=value=>document.querySelector('#result').textContent=JSON.stringify(value,null,2);
+show({loads,navigationAPI:typeof navigation==='object',intentionalReloadCompleted:sessionStorage.getItem('facefix-fixture-expected-reload')==='yes'});
+sessionStorage.removeItem('facefix-fixture-expected-reload');
+function arm(){window.dispatchEvent(new Event('blur'));window.dispatchEvent(new Event('focus'));}
+document.querySelector('#home').onclick=()=>{arm();history.pushState({},'','/');show({automaticHomeBlocked:location.pathname==='/tests/navigation-fixture.html',counts,events});};
+document.querySelector('#reload').onclick=()=>{arm();setTimeout(()=>{location.reload();setTimeout(()=>show({automaticReloadBlocked:counts.reloads===1,loads,counts,events}),100);},50);};
+document.querySelector('#manual').onclick=()=>{sessionStorage.setItem('facefix-fixture-expected-reload','yes');location.reload();};
+</script><script src="../guard.js"></script></html>

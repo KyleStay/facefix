@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><title>Facefix</title>
+<style>
+[hidden]{display:none!important}
+body{width:310px;margin:0;padding:20px;font:14px/1.5 system-ui;color:#18302b;background:#f1f6f2}h1{font-size:22px;margin:0 0 12px}label{display:flex;gap:10px;font-weight:650}input{accent-color:#26745b}p{color:#4d625c}small{display:block;color:#4d625c}#timers{margin:16px 0;padding:14px;border:1px solid #d4dfd4;border-radius:9px;background:#f8fbf5}
+dl{margin:18px 0}dl div{display:flex;justify-content:space-between;gap:12px;margin:6px 0}dd{margin:0;font-variant-numeric:tabular-nums;font-weight:650}button{font:inherit;border:1px solid #80988e;border-radius:6px;background:white;color:inherit;padding:5px 10px;cursor:pointer}button:focus-visible{outline:2px solid #26745b;outline-offset:2px}#status{min-height:1.5em;margin:4px 0}
+</style>
+<aside style="position:fixed;left:400px;top:24px;max-width:450px;padding:16px;border:1px solid #9bad9b;background:#fff;color:#193d32;font:14px/1.6 system-ui">Browser UI test using synthetic APIs. This is not a live Facebook session. <a href="browser-popup.html?mode=bridge-missing">Missing connection</a> · <a href="browser-popup.html?mode=guard-missing">Missing guard</a> · <a href="browser-popup.html?mode=outdated">Old guard</a> · <a href="browser-popup.html">Connected</a></aside><h1>Keep my place.</h1>
+<label><input id="enabled" type="checkbox" checked> Facebook protection</label>
+<p id="version" style="margin:0;font-size:11px"></p>
+<section id="timers" aria-label="Live Facefix protection timers"></section>
+<p><button id="reconnect" type="button" hidden>Refresh Facebook once to reconnect</button></p>
+<small id="reconnect-note" hidden>This reloads Facebook and may change the feed. Do this once after updating Facefix.</small>
+<p><button id="report-failure" type="button">Something went wrong</button></p>
+<small id="diagnostic-status" role="status"></small>
+<dl aria-label="Local protection counters" aria-live="polite">
+<div><dt>Return events suppressed</dt><dd id="returnEvents">0</dd></div>
+<div><dt>Reloads blocked</dt><dd id="reloads">0</dd></div>
+<div><dt>Home redirects blocked</dt><dd id="homeRedirects">0</dd></div>
+<div><dt>Scroll recoveries</dt><dd id="scrollRecoveries">0</dd></div>
+</dl>
+<small>Totals across Facebook tabs, saved only on this device. Return events are signals suppressed, not confirmed refreshes prevented. Scroll recoveries count once per return.</small>
+<p><button id="reset" type="button">Reset counters</button></p>
+<small id="status" role="status"></small>
+<details id="diagnostics"><summary>Diagnostics and failure reports</summary>
+<p><label><input id="record-diagnostics" type="checkbox" checked> Record local event history</label></p>
+<small>Up to 300 events and 5 reports, kept for 24 hours while active. No URLs, post text, or messages. You choose what to export and share.</small>
+<p><a href="browser-diagnostics.html" target="_blank" rel="noopener">Review history, export, or clear</a></p>
+</details>
+<small>Clicks, scrolling, Back, and manual Reload still work. Refresh existing Facebook tabs once after installing.</small>
+<p><a href="../privacy.html" target="_blank" rel="noopener">Privacy policy</a></p>
+<script src="../diagnostics.js"></script><script src="ui-api.js"></script><script src="../connection.js"></script><script src="../timers.js"></script><script src="../popup.js"></script></html>

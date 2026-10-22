@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><title>Facefix</title>
+<style>
+[hidden]{display:none!important}
+body{width:310px;margin:0;padding:20px;font:14px/1.5 system-ui;color:#18302b;background:#f1f6f2}h1{font-size:22px;margin:0 0 12px}label{display:flex;gap:10px;font-weight:650}input{accent-color:#26745b}p{color:#4d625c}small{display:block;color:#4d625c}#timers{margin:16px 0;padding:14px;border:1px solid #d4dfd4;border-radius:9px;background:#f8fbf5}
+dl{margin:18px 0}dl div{display:flex;justify-content:space-between;gap:12px;margin:6px 0}dd{margin:0;font-variant-numeric:tabular-nums;font-weight:650}button{font:inherit;border:1px solid #80988e;border-radius:6px;background:white;color:inherit;padding:5px 10px;cursor:pointer}button:focus-visible{outline:2px solid #26745b;outline-offset:2px}#status{min-height:1.5em;margin:4px 0}
+</style>
+<h1>Keep my place.</h1>
+<label><input id="enabled" type="checkbox" checked> Facebook protection</label>
+<p style="margin:0;font-size:11px">Installed 1.4.0 · Page 1.4.0</p>
+<style>h2{font-size:15px;margin:0 0 6px}.timer-state{font-size:13px;font-weight:650;margin:0 0 12px}.timer-row{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:12px;font-size:13px}.timer-row small{display:block;font-size:11px;color:#526b60;line-height:1.5}.timer-row strong{font-variant-numeric:tabular-nums;white-space:nowrap;font-size:17px}progress{display:block;width:100%;height:7px;accent-color:#26745b;margin:8px 0 0}.timer-note{font-size:12px;line-height:1.5;color:#526b60;margin:12px 0}.timer-explanation{font-size:12px;line-height:1.55;border-top:1px solid #d4dfd4;padding-top:10px}.timer-explanation summary{cursor:pointer;font-weight:650}.timer-explanation p{font-size:12px;margin:12px 0;color:inherit}</style><section id="timers" aria-label="Live Facefix protection timers"><h2>Live protection</h2>
+    <p class="timer-state" data-timer="state" role="status">Waiting for your next tab return</p>
+    <div class="timer-row"><span>Reload / Home guard <small>4 seconds after return</small></span><strong data-timer="navigation">0.0 s</strong></div>
+    <progress data-timer="navigation-progress" max="4000" value="0" aria-label="Reload and Home guard time remaining"></progress>
+    <div class="timer-row"><span>Position recovery <small>Up to 15 seconds after return</small></span><strong data-timer="recovery">0.0 s</strong></div>
+    <progress data-timer="recovery-progress" max="15000" value="0" aria-label="Position recovery time remaining"></progress>
+    <p class="timer-note" data-timer="note">Zero means that window is inactive. It does not mean Facebook will reload.</p>
+    <details class="timer-explanation"><summary>How refresh protection works</summary>
+      <p><b>Returning to Facebook:</b> Facebook may refresh in response to focus or visibility changes. Facefix intercepts those signals and blocks cancelable automatic reloads and Home redirects while you are away and for 4 seconds after you return.</p>
+      <p><b>Feed changes inside the page:</b> The feed can move without a full reload. For up to 15 seconds after returning, Facefix tries to keep the same visible post in place, if it is still loaded.</p>
+      <p><b>Idle tabs:</b> Chrome can unload an idle tab and reload it when opened. Facefix asks Chrome to keep Facebook tabs in memory. It cannot prevent every forced eviction or crash.</p>
+      <p><b>Your actions:</b> Clicking, scrolling, or typing in Facebook ends the short protection windows. Back and manual Reload remain available. When a timer reaches zero, Facefix stops that guard; it never schedules a reload.</p>
+      <p>These are Facefix's timers. Facebook's internal refresh timers are not exposed, and some internal feed updates can still happen.</p>
+    </details></section>
+<p><button id="reconnect" type="button" hidden>Refresh Facebook once to reconnect</button></p>
+<small id="reconnect-note" hidden>This reloads Facebook and may change the feed. Do this once after updating Facefix.</small>
+<p><button id="report-failure" type="button">Something went wrong</button></p>
+<small id="diagnostic-status" role="status"></small>
+<dl aria-label="Local protection counters" aria-live="polite">
+<div><dt>Return events suppressed</dt><dd id="returnEvents">0</dd></div>
+<div><dt>Reloads blocked</dt><dd id="reloads">0</dd></div>
+<div><dt>Home redirects blocked</dt><dd id="homeRedirects">0</dd></div>
+<div><dt>Scroll recoveries</dt><dd id="scrollRecoveries">0</dd></div>
+</dl>
+<small>Totals across Facebook tabs, saved only on this device. Return events are signals suppressed, not confirmed refreshes prevented. Scroll recoveries count once per return.</small>
+<p><button id="reset" type="button">Reset counters</button></p>
+<small id="status" role="status"></small>
+<details id="diagnostics"><summary>Diagnostics and failure reports</summary>
+<p><label><input id="record-diagnostics" type="checkbox" checked> Record local event history</label></p>
+<small>Up to 300 events and 5 reports, kept for 24 hours while active. No URLs, post text, or messages. You choose what to export and share.</small>
+<p><a href="diagnostics.html" target="_blank" rel="noopener">Review history, export, or clear</a></p>
+</details>
+<small>Clicks, scrolling, Back, and manual Reload still work. Refresh existing Facebook tabs once after installing.</small>
+<p><a href="../privacy.html" target="_blank" rel="noopener">Privacy policy</a></p>
+</html>
