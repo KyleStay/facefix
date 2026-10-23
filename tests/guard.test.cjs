@@ -58,7 +58,7 @@ test('return guard blocks automatic Home/reload, preserves intentional use and e
   fire('winclick', {isTrusted:false});
   assert.equal(nav().prevented, true);
   fire('winwheel', {isTrusted:true});
-  assert.equal(nav().prevented, undefined);
+  assert.equal(nav().prevented, true, 'scrolling stops recovery but preserves reload protection');
   c.document.hidden = true; fire('winvisibilitychange');
   c.document.hidden = false; fire('winvisibilitychange');
   tick(4001);
@@ -196,4 +196,35 @@ test('guard diagnostics capture failure evidence, honor opt-out, and exclude pag
   assert.equal(trace.length,before,'recording can be disabled independently');
   fire('docfacefix-status-request');
   assert.equal(c.timerStatus.guardVersion,JSON.parse(fs.readFileSync(require.resolve('../manifest.json'))).version);
+});
+
+test('shipped wheel and touch scrolling stop recovery while renewing a four-second reload guard',()=>{
+  for(const type of ['wheel','touchstart','touchmove']){
+    const {context:c,fire,tick}=setup();
+    c.document.hidden=true;fire('winvisibilitychange');c.document.hidden=false;fire('winvisibilitychange');tick(1250);
+    fire('win'+type,{isTrusted:true});
+    fire('docfacefix-status-request');
+    assert.equal(c.timerStatus.recoveryMs,0,type+' ends position recovery');
+    assert.equal(c.timerStatus.navigationMs,4000,type+' renews reload/Home guard');
+    c.scrollY=300;c.frame();assert.equal(c.scrollY,300,'stale recovery does not undo scrolling');
+    const reload=()=>fire('navnavigate',{cancelable:true,navigationType:'reload',destination:{url:c.location.href}});
+    assert.equal(reload().prevented,true);tick(3999);assert.equal(reload().prevented,true);tick(2);assert.equal(reload().prevented,undefined);
+  }
+});
+test('shipped scroll keys renew protection, while typing, editing and browser shortcuts remain intentional input',()=>{
+  for(const key of ['ArrowUp','ArrowDown','PageUp','PageDown','Home','End',' ']){
+    const {fire}=setup();fire('winkeydown',{isTrusted:true,key});fire('docfacefix-status-request');
+    const nav=fire('navnavigate',{cancelable:true,navigationType:'reload',destination:{url:'https://www.facebook.com/'}});
+    assert.equal(nav.prevented,true,key+' counts as page scrolling');
+  }
+  for(const event of [{key:'a'},{key:'ArrowDown',ctrlKey:true},{key:'ArrowDown',metaKey:true},{key:'ArrowDown',altKey:true},{key:'ArrowDown',target:{closest:()=>({tagName:'INPUT'})}}]){
+    const {context:c,fire}=setup();c.document.hidden=true;fire('winvisibilitychange');c.document.hidden=false;fire('winvisibilitychange');
+    fire('winkeydown',{isTrusted:true,...event});fire('docfacefix-status-request');assert.equal(c.timerStatus.navigationMs,0);assert.equal(c.timerStatus.recoveryMs,0);
+  }
+});
+test('untrusted or paused scroll signals cannot arm the shipped reload guard; clicking ends it',()=>{
+  const {context:c,fire}=setup();fire('winwheel',{isTrusted:false});fire('docfacefix-status-request');assert.equal(c.timerStatus.navigationMs,0);
+  fire('winwheel',{isTrusted:true});fire('docfacefix-status-request');assert.equal(c.timerStatus.navigationMs,4000);
+  fire('winclick',{isTrusted:true});fire('docfacefix-status-request');assert.equal(c.timerStatus.navigationMs,0);
+  fire('docfacefix-settings',{detail:false});fire('wintouchmove',{isTrusted:true});fire('docfacefix-status-request');assert.equal(c.timerStatus.navigationMs,0);assert.equal(c.timerStatus.enabled,false);
 });
