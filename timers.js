@@ -2,7 +2,7 @@
 const FacefixTimers = {
   markup: `<h2>Live protection</h2>
     <p class="timer-state" data-timer="state" role="status">Connecting to this Facebook tab…</p>
-    <div class="timer-row"><span>Reload / Home guard <small>4 seconds after return</small></span><strong data-timer="navigation">—</strong></div>
+    <div class="timer-row"><span>Reload / Home guard <small>4 seconds after return or scrolling</small></span><strong data-timer="navigation">—</strong></div>
     <progress data-timer="navigation-progress" max="4000" value="0" aria-label="Reload and Home guard time remaining"></progress>
     <div class="timer-row"><span>Position recovery <small>Up to 15 seconds after return</small></span><strong data-timer="recovery">—</strong></div>
     <progress data-timer="recovery-progress" max="15000" value="0" aria-label="Position recovery time remaining"></progress>
@@ -11,7 +11,7 @@ const FacefixTimers = {
       <p><b>Returning to Facebook:</b> Facebook may refresh in response to focus or visibility changes. Facefix intercepts those signals and blocks cancelable automatic reloads and Home redirects while you are away and for 4 seconds after you return.</p>
       <p><b>Feed changes inside the page:</b> The feed can move without a full reload. For up to 15 seconds after returning, Facefix tries to keep the same visible post in place, if it is still loaded.</p>
       <p><b>Idle tabs:</b> Chrome can unload an idle tab and reload it when opened. Facefix asks Chrome to keep Facebook tabs in memory. It cannot prevent every forced eviction or crash.</p>
-      <p><b>Your actions:</b> Clicking, scrolling, or typing in Facebook ends the short protection windows. Back and manual Reload remain available. When a timer reaches zero, Facefix stops that guard; it never schedules a reload.</p>
+      <p><b>Your actions:</b> Scrolling ends position recovery and renews reload/Home protection for 4 seconds. Clicking or typing ends both windows. Back and manual Reload remain available. When a timer reaches zero, Facefix stops that guard; it never schedules a reload.</p>
       <p>These are Facefix's timers. Facebook's internal refresh timers are not exposed, and some internal feed updates can still happen.</p>
     </details>`,
   css: `h2{font-size:15px;margin:0 0 6px}.timer-state{font-size:13px;font-weight:650;margin:0 0 12px}.timer-row{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:12px;font-size:13px}.timer-row small{display:block;font-size:11px;color:#526b60;line-height:1.5}.timer-row strong{font-variant-numeric:tabular-nums;white-space:nowrap;font-size:17px}progress{display:block;width:100%;height:7px;accent-color:#26745b;margin:8px 0 0}.timer-note{font-size:12px;line-height:1.5;color:#526b60;margin:12px 0}.timer-explanation{font-size:12px;line-height:1.55;border-top:1px solid #d4dfd4;padding-top:10px}.timer-explanation summary{cursor:pointer;font-weight:650}.timer-explanation p{font-size:12px;margin:12px 0;color:inherit}`,

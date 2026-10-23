@@ -1,5 +1,7 @@
 # Facefix — Keep My Place
 
+Local candidate 1.4.2: standard store upload and verified same-ID local replacement are the primary delivery. Shipped 1.4.1 scrolling behavior and icons were reconciled read-only from the exact installed extension runtime. See [COEXISTENCE.md](COEXISTENCE.md) for exact install identity, page-refresh requirements, and validation status.
+
 **[Install Facefix from the Chrome Web Store](https://chromewebstore.google.com/detail/facefix-%E2%80%94-keep-my-place/kckhpinnhkjfblkalloabaiihpdmklla)**
 
 A small Chrome extension for Facebook. No dependencies, analytics, network requests, or remote code. Settings stay on your device.
@@ -8,7 +10,7 @@ A small Chrome extension for Facebook. No dependencies, analytics, network reque
 
 Open the [publishing guide](https://kylestay.github.io/facefix/publish.html) for step-by-step instructions, copyable listing and privacy answers, asset downloads, and a saved checklist. You can also open [publish.html](publish.html) locally. The guide starts with adding a new item to an existing developer account.
 
-Upload [dist/facefix-1.4.0-store.zip](dist/facefix-1.4.0-store.zip), which contains `manifest.json` at the root and only the extension runtime files. Rebuild it with `python3 build.py`. Do not upload GitHub's source archive. The icon, promotional tile, and [three 1280 × 800 store screenshots](store-assets/facefix-store-screenshots.zip) are included. These show the actual popup markup in a static interface preview with zero counters, without a fabricated Facebook session. Complete the live behavior check before submitting.
+Upload [dist/facefix-1.4.2-store.zip](dist/facefix-1.4.2-store.zip), which contains `manifest.json` at the root and only the extension runtime files. Rebuild it with `python3 build.py`. Do not upload GitHub's source archive. The icon, promotional tile, and [three 1280 × 800 store screenshots](store-assets/facefix-store-screenshots.zip) are included. These show the actual popup markup in a static interface preview with zero counters, without a fabricated Facebook session. Complete the live behavior check before submitting.
 
 Read the [privacy policy](https://kylestay.github.io/facefix/privacy.html), also available as [PRIVACY.md](PRIVACY.md). A bundled readable version is linked from the popup. Version 1.4.0 adds popup timers, separate connection checks, and bounded local failure diagnostics without adding permissions.
 
@@ -28,16 +30,16 @@ For an update, replace the old extension files with the new files in the same fo
 ## What it does
 
 - Captures page-level visibility and window blur/focus events in both directions, so Facebook receives fewer inactivity and return triggers.
-- Blocks cancelable script-driven reloads and Home/feed navigation while away and for four seconds after returning.
+- Blocks cancelable script-driven reloads and Home/feed navigation while away and for four seconds after returning or scrolling.
 - Tries to retain the visible post and its onscreen offset for up to 15 seconds after returning. It can match a rerendered post by its permalink, falling back to a pixel position if no matching post is available. Trusted user input ends recovery immediately.
 - Asks Chrome not to automatically discard Facebook tabs, preventing the usual discard-and-reload cycle.
-- Ends the return guard immediately on trusted clicks, keys, touch, or scrolling; normal navigation remains available.
+- Scrolling ends position recovery and renews reload/Home protection for four seconds. Trusted clicks and non-scrolling typing end both windows; normal intentional navigation remains available.
 
 Use the toolbar switch to pause protection immediately. Pausing also makes Facebook tabs discardable again. Keeping tabs in memory can increase memory use. Remove the extension through Chrome's extensions page; reload Facebook afterward to remove the page hooks.
 
 ## Live timers and explanations
 
-The toolbar popup shows the current Facebook tab's real Facefix countdowns: a 4-second reload/Home guard and up to 15 seconds of position recovery after returning. It distinguishes armed, running, paused, finished, and ended-by-interaction states. Zero means the protection window is inactive; Facefix never schedules a reload when a timer expires.
+The toolbar popup shows the current Facebook tab's real Facefix countdowns: a 4-second reload/Home guard after return or scrolling and up to 15 seconds of position recovery after returning. It distinguishes armed, running, paused, finished, and ended-by-interaction states. Zero means the protection window is inactive; Facefix never schedules a reload when a timer expires.
 
 The popup explanation describes tab-return triggers, in-page feed changes, and browser tab discarding. Facebook's own internal refresh timers are not available. Opening the toolbar popup can unfocus the Facebook window; in that case the display correctly shows the guards armed until you return.
 
@@ -73,6 +75,8 @@ This is a best-effort prevention tool, not a saved copy of the feed. It cannot p
 Facebook's implementation changes; test on your own account. No live logged-in Facebook session was used for validation. The included check exercises the page hooks with simulated browser events, not Facebook's production code.
 
 ## Verify
+
+For the final local 1.4.2 candidate, 21 Node tests and four package tests passed, including three regressions for the shipped 1.4.1 scrolling behavior. Browser replacement and live behavior are unrun; see COEXISTENCE.md. The following 1.4.0 browser statements describe historical source evidence and do not certify 1.4.2.
 
 Run `node --test tests/*.test.cjs` from this repository folder.
 

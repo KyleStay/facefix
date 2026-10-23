@@ -34,7 +34,7 @@
     const navigationMs = enabled && !away ? Math.max(0, until - now()) : 0;
     const recoveryMs = enabled && !away ? Math.max(0, recoveryUntil - now()) : 0;
     document.dispatchEvent(new CustomEvent('facefix-status', {detail: JSON.stringify({
-      schema: 1, guardVersion:'1.4.0', enabled, away, navigationMs, recoveryMs,
+      schema: 1, guardVersion:'1.4.2', enabled, away, navigationMs, recoveryMs,
       wasDiscarded:document.wasDiscarded === true,
       pageLoadType:performance.getEntriesByType?.('navigation')?.[0]?.type || 'unknown',
       navigationAPI:typeof window.navigation === 'object',
@@ -181,13 +181,18 @@
     if (!event.isTrusted) return;
     lastInputAt = now();
     if (guarding() || now() < recoveryUntil) { timerReason = 'interaction'; trace('guard-ended',{reason:'input',input:event.type,navigationMs:Math.max(0,until-now()),recoveryMs:Math.max(0,recoveryUntil-now())}); }
-    until = 0;
+    // Scrolling ends position recovery, but must not expose a pending reload.
+    const scrolling = ['wheel', 'touchstart', 'touchmove'].includes(event.type) ||
+      (event.type === 'keydown' && ['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' '].includes(event.key) &&
+       !event.ctrlKey && !event.metaKey && !event.altKey &&
+       !event.target?.closest?.('input, textarea, select, [contenteditable]:not([contenteditable="false"])'));
+    until = scrolling && enabled ? now() + 4000 : 0;
     recoveryUntil = 0;
     anchor = null;
     away = false;
     cancelAnimationFrame(frame);
   }
-  for (const type of ['pointerdown', 'keydown', 'wheel', 'touchstart', 'click']) {
+  for (const type of ['pointerdown', 'keydown', 'wheel', 'touchstart', 'touchmove', 'click']) {
     window.addEventListener(type, userInput, {capture: true, passive: true});
   }
   window.navigation?.addEventListener('navigate', event => {

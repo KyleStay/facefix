@@ -4,6 +4,8 @@ const vm = require('node:vm');
 const fs = require('node:fs');
 const view = vm.runInNewContext(fs.readFileSync(require.resolve('../connection.js'),'utf8') + '\n' + fs.readFileSync(require.resolve('../timers.js'),'utf8') + '\nFacefixTimers;');
 test('timer view distinguishes running, armed, paused, ended, and unavailable states', () => {
+  assert.match(view.markup,/4 seconds after return or scrolling/);
+  assert.match(view.markup,/Scrolling ends position recovery and renews reload\/Home protection for 4 seconds/);
   const fields = new Map();
   const root = {querySelector: selector => { if (!fields.has(selector)) fields.set(selector, {}); return fields.get(selector); }};
   const field = key => root.querySelector(`[data-timer="${key}"]`);
