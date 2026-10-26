@@ -20,6 +20,13 @@
   });
   open.addEventListener('click', async () => {
     try {
+      // Must be the first API call in the user gesture. Safari can grant www
+      // while still denying m; redirects require access to both endpoints.
+      const granted = await chrome.permissions.request({origins: ['https://facebook.com/*', 'https://*.facebook.com/*']});
+      if (!granted) {
+        status.textContent = 'Allow Facefix on Facebook websites to open desktop Messages. Tap Open Messages to try again.';
+        return;
+      }
       if (!(await reconcile()).enabled) return;
       const tab = await activeTab();
       if (tab?.id !== undefined && config.isSupportedURL(tab.url)) await chrome.tabs.update(tab.id, {url: config.home});

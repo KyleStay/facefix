@@ -34,7 +34,7 @@
     const navigationMs = enabled && !away ? Math.max(0, until - now()) : 0;
     const recoveryMs = enabled && !away ? Math.max(0, recoveryUntil - now()) : 0;
     document.dispatchEvent(new CustomEvent('facefix-status', {detail: JSON.stringify({
-      schema: 1, guardVersion:'1.6.0', enabled, away, navigationMs, recoveryMs,
+      schema: 1, guardVersion:'1.6.1', enabled, away, navigationMs, recoveryMs,
       wasDiscarded:document.wasDiscarded === true,
       pageLoadType:performance.getEntriesByType?.('navigation')?.[0]?.type || 'unknown',
       navigationAPI:typeof window.navigation === 'object',

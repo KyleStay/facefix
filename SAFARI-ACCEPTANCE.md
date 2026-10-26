@@ -1,6 +1,6 @@
 # Safari acceptance
 
-Candidate1.6.0, native build5. App `co.staytech.facefix.safari`, extension
+Candidate1.6.1, native build7. App `co.staytech.facefix.safari`, extension
 `.Extension`, team `TF2BG2VDPD`. This is source integration, not a release upload.
 
 ## Verification layers
@@ -66,7 +66,7 @@ simulator; this test changes its Safari extension permission.
 
 ## October 26 candidate result
 
-Version1.6.0/build5 passed the native Safari smoke test on the dedicated iPhone17
+The previous version1.6.0/build5 passed the native Safari smoke test on the dedicated iPhone17
 Pro simulator with iOS26.2 (UDID685B8E70-31F2-4288-9DBF-22B70DF44E8B).
 Setup succeeded, Open Messages reached Facebook’s desktop login page, and Check
 This Tab reported desktop identity on the real `login.php?next=…/messages/`
@@ -82,3 +82,34 @@ using the installed WebKit compiler. iOS Simulator and unsigned macOS builds
 passed. This does not establish signed-in message delivery, attachments,
 encrypted-history recovery, the exact production app bar, or Mac Safari runtime.
 No beta/store build was uploaded.
+
+## 1.6.1 mobile regression checks
+
+The reported production screenshots show a bottom Open app promotion and the
+mobile Messages app-only landing page. The exact signed-in DOM and account
+behavior are unavailable locally. The new implementation handles a non-fixed
+flex footer, plain span/div CTA, deeper wrappers and a promotion-only navigation
+wrapper while preserving real links/posts/forms and pause restoration. It also
+requests Facebook host access from the popup and forces a desktop document
+request when entering Messages from a phone feed; legacy messages.php and
+messenger routes canonicalize to www.facebook.com/messages.
+
+Local CI passes45 Node and15 Python tests. Eleven disposable Chromium extension
+scenarios pass, including flex footer recycling, desktop message entry from a
+mobile feed, and a real declarative redirect from messages.php. Runtime errors
+and remaining task browser PIDs/profiles are zero. All108 generated rules
+translate through the installed WebKit compiler without errors. These checks
+do not establish signed-in message delivery or removal of the exact production
+bar. Native Safari results are recorded separately below when available.
+
+The1.6.1/build7 Safari smoke passed on the dedicated iPhone17 Pro/iOS26.2
+simulator (UDID02C6EBAE-C95C-4935-9670-88E4A1E2F8B7): setup, Open Messages,
+Facebook access request and desktop page identity on the real login redirect.
+One XCTest passed with zero failures in `artifacts/safari-161-qa.xcresult`;
+screenshots are in `artifacts/safari-161-attachments/`. Qorvex's fixed agent port
+belonged to another project's simulator, so the existing background XCTest
+runner was used without disturbing that agent or the desktop. A subsequent
+standalone-button detection adjustment was covered by the final Chromium run;
+the native smoke does not exercise production app bars. iOS Simulator and
+unsigned Mac builds pass. Source/native identifiers and privacy/native Swift
+sources are retained. No1.6.1 upload or rollout has occurred.

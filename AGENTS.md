@@ -28,3 +28,13 @@ Preserve Pages publishing mode, security settings and branch protection. The
 older rejected Pages-mode change is not permission to retry that operation.
 Keep existing signed archives and upload receipts; merging source does not
 authorize another upload, TestFlight rollout or public store release.
+
+## TestFlight rollout
+
+Kyle’s standing instruction is to include rollout to the existing **Facefix Beta**
+internal group (`5c21b794-3131-46c0-a8cf-b92e786a33dc`, app `6826421811`) whenever
+he requests a TestFlight update. This includes assigning the verified new iOS
+and macOS builds to that group without another routine confirmation. Verify the
+current group identity and membership before rollout; new groups or recipients
+need separate authorization. Preserve upload receipts and honor enforced
+approval controls.

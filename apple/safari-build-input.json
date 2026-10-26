@@ -16,32 +16,32 @@
     "co.staytech.facefix.safari",
     "co.staytech.facefix.safari.Extension"
   ],
-  "version": "1.6.0",
+  "version": "1.6.1",
   "runtime_resources_unchanged": true,
-  "runtime_validation": "iPhone 17 Pro simulator, iOS 26.2: Safari extension setup, Open Messages, website-only access and desktop page identity on the messaging login.php redirect passed on 2026-10-26. Signed-in messaging and production app-promotion markup remain unrun.",
+  "runtime_validation": "1.6.1/build7: iPhone 17 Pro, iOS26.2 simulator Safari setup, Open Messages permission request and desktop identity on real Facebook login passed (artifacts/safari-161-qa.xcresult). Final standalone-bar adjustment verified in disposable Chromium only. Signed-in inbox/production app-bar DOM remain unverified.",
   "resource_sha256": {
-    "app-prompts.js": "b519e01cb3edd1ea822b44776e0c9b7c77996015c29553f62f3c27ea44ddcc48",
+    "app-prompts.js": "eb52d2d6cc0f0557c5d40fdc466d39345bc19fdc938faad52450c3d56d160f6d",
     "background.js": "926df4909ef23d13048b0625fd11051ff46d510ebd432f496c5aa200f0fe24d7",
     "connection.js": "3eaae89da240c2cb9503ba028f73d3de509ec110326119a2d6a4e31331a5469c",
     "diagnostics-view.js": "d07e42379439ba743c9b55750e8067413f4b2535f5b0e2a113e63b8252cd34f4",
     "diagnostics.html": "dc9b7fea51fd1d062ae4c4e8cb2b34b9bf30c2bc0dc30af3aa2b27e2f13ae5f3",
     "diagnostics.js": "a5fd3e0b02c8f672ce8e6937cb818a11cb8eaf3d561afbfa705b4475a698be31",
-    "guard.js": "33daa4ee54aa413351d85bf6a2b7338b79ad98b4431d9a74b3d93f2b4ea704f2",
+    "guard.js": "7a9ae9c10de05cbd735fe1598ab7bba99f639e3a7bc08a3f39bb5364833534d7",
     "icons/icon-128.png": "510d3e78176e90bc953e000a42dc57f55191b364bf851ab45677e61128290e1b",
     "icons/icon-16.png": "8668371a4e17f93d286461b373e8cad49758c9b796525dda96fdd159b0644a82",
     "icons/icon-32.png": "2671858d31c4b57cd7cf57e2870b47a6a598bfa0548c4924b82e10319a0fd75c",
     "icons/icon-48.png": "70cd76f15550dba7f231771592ac54ade48c0dba1a4a7befbf0128e88c002de2",
-    "manifest.json": "401cda11dc8420c0ecbb984ae4c4c785948bbe46a5ae7a703a7e95a2092c5d2d",
+    "manifest.json": "69dc2090f161b5db2147d8ab8280975debdbf4f0ffa430741bbbd97ec3b6b5e3",
     "messenger-background.js": "b529f5c246663c050c48236e026b408febaef1e0e6976c1872817a1fbc6ffb8b",
-    "messenger-config.js": "3a155f3e3dd7993e571652d9cb17641915cd2524d68a541491c22dde7693c368",
-    "messenger-identity.js": "41d74b301a4350f476c1bdb7755456443468c2788b1210adfe91996b025dc155",
-    "messenger-layout.js": "e7b62040ce709945b59c113b5ce15637d0bf455f79719a211020b5383f3cec28",
-    "messenger-popup.js": "740da003b17847e650be97baae5a8b17dc07521cb07dd0f35be146083ee048fb",
+    "messenger-config.js": "d0aef08282ef5c9199249dc489acd944dc0c38c5775ca2db9f3eec371c36615d",
+    "messenger-identity.js": "eac8f541a0f2ebaed7909122903bc4d6ff4e2e71dcb5d8066b6b44c56afb6d1d",
+    "messenger-layout.js": "634c0313b3b38dd17bf7d5ce1eeda9a489a972f5d754938bc0ee80e26e07e3c7",
+    "messenger-popup.js": "8cc61f9d1fad9d5d874401516b324ec7ae42b129ae9ca04daffa2eb8e16b9dcb",
     "messenger.css": "562905bdace19ee79dead2bde1ec11d91c6f8e17f9b297009cee5b1d96cc2fdf",
-    "popup.html": "ea461d045249f6cbf87f5b47e04dae44770c88bd41a7a0ad3d827121ef296646",
+    "popup.html": "b6af8ac288448bc4b2978831eab5a524668e1842b77f5e7665cb0b2d3e2dd23d",
     "popup.js": "28af75417afb524eba2513949573912c8f35f4e9926f8f457b3a8a1f638d2468",
     "privacy.html": "da0ac7d14b4a391b602e618aa5cf05dd9e41ff03e92b4a358f4d143a957f52d4",
-    "rules/messenger.json": "46886dcc9f4602ff7d93de7941d8df7c0e356bca8ceca547b9db28541ee791df",
+    "rules/messenger.json": "830e6c1e40abf9917c5bdf6714e9c323af3ad6e47be99412283ed24c105ef218",
     "settings.js": "4678e44e39c36cc279dbd347a4fd966bdd66c373e76a2c0c31469e26e55164e4",
     "timers.js": "839c955c6367431b7fc917bd410a9c63a087c8a47deae9d1a2602cae988bfaa6"
   },
@@ -63,7 +63,7 @@
     "upload_allowed": false,
     "production_identity_unverified": false,
     "icon": "1024 PNG, unused alpha removed; any nonopaque source pixel is refused",
-    "signing_upload_tester_status": "Both initial uploads accepted and processing; never reupload these builds. Parent must verify processing and add to existing group.",
+    "signing_upload_tester_status": "Historical1.5.0uploads processed. Current1.6.0release and tester status are recorded in testflight_release.",
     "app_store_connect_id": "6826421811",
     "app_store_connect_name": "Facefix for Safari",
     "platforms": [
@@ -76,11 +76,11 @@
       "copyright": "\u00a9 2026 Kyle Stay"
     },
     "approved_profiles_completed": true,
-    "processing_complete": false
+    "processing_complete": true
   },
   "native_builds": {
-    "ios": "5",
-    "macos": "5"
+    "ios": "7",
+    "macos": "7"
   },
   "historical_beta": {
     "version": "1.5.0",
@@ -88,8 +88,27 @@
       "ios": "3",
       "macos": "4"
     },
-    "upload": "Previously uploaded once; current processing/tester availability is unverified. Do not reupload.",
+    "upload": "Previously uploaded once and processed; superseded by1.6.0. Do not reupload.",
     "app_store_connect_id": "6826421811"
   },
-  "current_candidate_uploaded": false
+  "current_candidate_uploaded": false,
+  "testflight_release": {
+    "version": "1.6.0",
+    "builds": {
+      "ios": "5",
+      "macos": "6"
+    },
+    "apple_build_ids": {
+      "ios": "8e0242d6-b9c4-4423-84e3-c3f42139f0c5",
+      "macos": "df3fdc70-a969-482a-8c0e-cbf8953974c8"
+    },
+    "group": "Facefix Beta",
+    "group_id": "5c21b794-3131-46c0-a8cf-b92e786a33dc",
+    "group_type": "Internal",
+    "testers": 1,
+    "status": "Testing",
+    "verified_at": "2026-10-26T22:35:51.789818+00:00",
+    "macos_build_number": "CURRENT_PROJECT_VERSION=6 archive override; project default5",
+    "source_commit": "0b9391877f497c098b92d3670978f68d426198c1"
+  }
 }
