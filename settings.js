@@ -1,6 +1,9 @@
 (() => {
   let enabled = true;
   let diagnosticsEnabled = true;
+  let enabledRevision = 0;
+  let diagnosticsRevision = 0;
+  let readRevision = 0;
   function readStatus() {
     let snapshot = null;
     const receive = event => { try { snapshot = JSON.parse(event.detail); } catch {} };
@@ -29,23 +32,33 @@
       chrome.runtime.sendMessage({type: 'facefix-count', kind: event.detail}).catch(() => {});
     }
   });
-  chrome.storage.local.get({enabled: true, diagnosticsEnabled: true}).then(value => {
-    enabled = value.enabled;
-    diagnosticsEnabled = value.diagnosticsEnabled;
-    publish();
-    publishDiagnostics();
-    if (diagnosticsEnabled) chrome.runtime.sendMessage({type:'facefix-diagnostic-events',events:[{
-      kind:'load',details:{pageLoadType:performance.getEntriesByType('navigation')[0]?.type || 'unknown',
-        wasDiscarded:document.wasDiscarded === true,navigationAPI:typeof window.navigation === 'object',
-        layoutShiftAPI:typeof PerformanceObserver === 'function'}
-    }]}).catch(() => {});
-  });
+  function readSettings() {
+    const currentRead = ++readRevision;
+    const currentEnabled = enabledRevision;
+    const currentDiagnostics = diagnosticsRevision;
+    return chrome.storage.local.get({enabled: true, diagnosticsEnabled: true}).then(value => {
+      if (currentRead !== readRevision) return;
+      if (currentEnabled === enabledRevision) enabled = value.enabled !== false;
+      if (currentDiagnostics === diagnosticsRevision) diagnosticsEnabled = value.diagnosticsEnabled !== false;
+      publish();
+      publishDiagnostics();
+      if (diagnosticsEnabled) chrome.runtime.sendMessage({type:'facefix-diagnostic-events',events:[{
+        kind:'load',details:{pageLoadType:performance.getEntriesByType('navigation')[0]?.type || 'unknown',
+          wasDiscarded:document.wasDiscarded === true,navigationAPI:typeof window.navigation === 'object',
+          layoutShiftAPI:typeof PerformanceObserver === 'function'}
+      }]}).catch(() => {});
+    }).catch(() => {});
+  }
+  readSettings();
+  document.addEventListener('facefix-pageshow', readSettings);
   chrome.storage.onChanged.addListener((changes, area) => {
     if (area === 'local' && changes.enabled) {
+      enabledRevision++;
       enabled = changes.enabled.newValue !== false;
       publish();
     }
     if (area === 'local' && changes.diagnosticsEnabled) {
+      diagnosticsRevision++;
       diagnosticsEnabled = changes.diagnosticsEnabled.newValue !== false;
       publishDiagnostics();
     }

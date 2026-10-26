@@ -1,4 +1,4 @@
-"""Package store, stable development, or verified production replacement builds."""
+"""Package Chromium builds or Safari Web Extension conversion input."""
 import argparse
 import base64
 import hashlib
@@ -30,10 +30,21 @@ def version_parts(value):
 
 
 def build(mode='store', public_key=None):
-    if mode not in ['store','development','replacement']:
+    if mode not in ['store','development','replacement','safari']:
         raise ValueError('Unknown package mode')
     manifest = json.loads((ROOT / 'manifest.json').read_text())
     version_parts(manifest['version'])
+    if mode == 'safari':
+        manifest.pop('minimum_chrome_version', None)
+        # Native deployment targets do not constrain the installed Safari version.
+        # MAIN-world declarative content scripts require Safari 18.
+        manifest['browser_specific_settings'] = {'safari': {'strict_min_version': '18.0'}}
+        manifest['permissions'] += ['declarativeNetRequestWithHostAccess', 'scripting']
+        manifest['host_permissions'] += ['https://messenger.com/*', 'https://www.messenger.com/*', 'https://m.messenger.com/*']
+        manifest['declarative_net_request'] = {'rule_resources': [{'id': 'messenger', 'enabled': True, 'path': 'rules/messenger.json'}]}
+        manifest['content_scripts'][1]['js'] += ['messenger-config.js', 'messenger-layout.js']
+        manifest['content_scripts'][1]['matches'] += ['https://messenger.com/*', 'https://www.messenger.com/*', 'https://m.messenger.com/*']
+        manifest['content_scripts'][1]['css'] = ['messenger.css']
     if mode == 'development':
         manifest['key'] = (ROOT / 'identity/development-public-key.txt').read_text().strip()
         manifest['name'] += ' (Development)'
@@ -46,11 +57,14 @@ def build(mode='store', public_key=None):
         if extension_id(manifest['key']) != PRODUCTION_ID:
             raise ValueError('Public key does not match the documented Facefix production ID')
     files = {
-        'manifest.json', 'background.js', 'guard.js', 'settings.js',
+        'manifest.json', 'background.js', 'guard.js', 'settings.js', 'app-prompts.js',
         'popup.html', 'popup.js', 'privacy.html', 'timers.js', 'connection.js',
         'diagnostics.js', 'diagnostics.html', 'diagnostics-view.js',
+        'messenger-config.js', 'messenger-popup.js',
         *manifest['icons'].values(),
     }
+    if mode == 'safari':
+        files.update({'messenger-background.js', 'messenger-identity.js', 'messenger-layout.js', 'messenger.css', 'rules/messenger.json'})
     output = ROOT / 'dist' / f"facefix-{manifest['version']}-{mode}.zip"
     output.parent.mkdir(exist_ok=True)
     with ZipFile(output, 'w', ZIP_DEFLATED) as archive:
@@ -69,7 +83,7 @@ def build(mode='store', public_key=None):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--mode', choices=['store', 'development', 'replacement'], default='store')
+    parser.add_argument('--mode', choices=['store', 'development', 'replacement', 'safari'], default='store')
     parser.add_argument('--production-public-key', type=Path)
     args = parser.parse_args()
     try:

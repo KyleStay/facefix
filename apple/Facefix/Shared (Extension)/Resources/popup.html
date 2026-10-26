@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Facefix</title>
+<style>
+[hidden]{display:none!important}
+body{width:350px;max-width:100vw;box-sizing:border-box;margin:0;padding:20px;font:14px/1.5 system-ui;color:#18302b;background:#f1f6f2}h1{font-size:22px;margin:0 0 12px}label{display:flex;gap:10px;font-weight:650}input{accent-color:#26745b}p{color:#4d625c}small{display:block;color:#4d625c}#timers{margin:16px 0;padding:14px;border:1px solid #d4dfd4;border-radius:9px;background:#f8fbf5}
+dl{margin:18px 0}dl div{display:flex;justify-content:space-between;gap:12px;margin:6px 0}dd{margin:0;font-variant-numeric:tabular-nums;font-weight:650}button{font:inherit;border:1px solid #80988e;border-radius:6px;background:white;color:inherit;padding:5px 10px;cursor:pointer}button:focus-visible{outline:2px solid #26745b;outline-offset:2px}#status{min-height:1.5em;margin:4px 0}
+</style>
+<h1>Facefix</h1>
+<label><input id="enabled" type="checkbox" checked> Facebook protection</label>
+<section id="messenger" hidden aria-label="Messenger in Safari">
+<p><button id="open-messages" type="button" disabled>Open Messages</button> <button id="reload-messages" type="button">Reload This Tab</button></p>
+<small id="messenger-status" role="status"></small>
+<details><summary>Messenger help</summary><p>Allow Facefix on facebook.com in Safari. Reload message tabs after changing protection; the phone layout and app promotions update immediately. Sign in directly on Facebook. Encrypted history may require your Messenger PIN.</p><p>Desktop identity applies to messaging pages. Use Request Desktop Website in Safari if Meta still shows an app prompt.</p><button id="check-messages" type="button">Check This Tab</button></details>
+</section>
+<p id="version" style="margin:0;font-size:11px"></p>
+<section id="timers" aria-label="Live Facefix protection timers"></section>
+<p><button id="reconnect" type="button" hidden>Refresh Facebook once to reconnect</button></p>
+<small id="reconnect-note" hidden>This reloads Facebook and may change the feed. Do this once after updating Facefix.</small>
+<p><button id="report-failure" type="button">Something went wrong</button></p>
+<small id="diagnostic-status" role="status"></small>
+<dl aria-label="Local protection counters" aria-live="polite">
+<div><dt>Return events suppressed</dt><dd id="returnEvents">0</dd></div>
+<div><dt>Reloads blocked</dt><dd id="reloads">0</dd></div>
+<div><dt>Home redirects blocked</dt><dd id="homeRedirects">0</dd></div>
+<div><dt>Scroll recoveries</dt><dd id="scrollRecoveries">0</dd></div>
+</dl>
+<small>Totals across Facebook tabs, saved only on this device. Return events are signals suppressed, not confirmed refreshes prevented. Scroll recoveries count once per return.</small>
+<p><button id="reset" type="button">Reset counters</button></p>
+<small id="status" role="status"></small>
+<details id="diagnostics"><summary>Diagnostics and failure reports</summary>
+<p><label><input id="record-diagnostics" type="checkbox" checked> Record local event history</label></p>
+<small>Up to 300 events and 5 reports, kept for 24 hours while active. No URLs, post text, or messages. You choose what to export and share.</small>
+<p><a href="diagnostics.html" target="_blank" rel="noopener">Review history, export, or clear</a></p>
+</details>
+<small>Hides recognized app promotions and their dedicated bars outside posts and forms.</small>
+<small>Clicks, scrolling, Back, and manual Reload still work. Refresh existing Facebook tabs once after installing.</small>
+<p><a href="privacy.html" target="_blank" rel="noopener">Privacy policy</a></p>
+<script src="connection.js"></script><script src="timers.js"></script><script src="popup.js"></script><script src="messenger-config.js"></script><script src="messenger-popup.js"></script></html>
