@@ -1,93 +1,136 @@
-# Facefix — Keep My Place
+# Facefix
 
-Local candidate 1.4.2: standard store upload and verified same-ID local replacement are the primary delivery. Shipped 1.4.1 scrolling behavior and icons were reconciled read-only from the exact installed extension runtime. See [COEXISTENCE.md](COEXISTENCE.md) for exact install identity, page-refresh requirements, and validation status.
+## Current direction
 
-**[Install Facefix from the Chrome Web Store](https://chromewebstore.google.com/detail/facefix-%E2%80%94-keep-my-place/kckhpinnhkjfblkalloabaiihpdmklla)**
+Facefix keeps Facebook usable in the browser: keep your place in the feed,
+remove dedicated website app-promotion bars, and use Messenger in Safari on
+an iPhone. This repository is the ongoing home for the Messenger prototype and
+Facefix's existing Chrome and Safari work.
 
-A small Chrome extension for Facebook. No dependencies, analytics, network requests, or remote code. Settings stay on your device.
+The local source candidate is **1.6.0**. This landing does not publish a new
+Chrome/App Store release or upload another TestFlight build. Existing product
+identities are retained.
 
-## Publish to the Chrome Web Store
+## Install in Safari on iPhone
 
-Open the [publishing guide](https://kylestay.github.io/facefix/publish.html) for step-by-step instructions, copyable listing and privacy answers, asset downloads, and a saved checklist. You can also open [publish.html](publish.html) locally. The guide starts with adding a new item to an existing developer account.
+1. Open `apple/Facefix/Facefix.xcodeproj` in Xcode and choose **Facefix (iOS)**.
+2. Build/run it on your development iPhone using the existing Facefix signing
+   setup. Complete any Developer Mode/trust prompts on the phone yourself.
+3. Enable **Facefix** in Settings → Apps → Safari → Extensions and allow
+   **facebook.com**. For an old Messenger link, allow **messenger.com** too.
+4. Open `https://www.facebook.com/messages/` in Safari. In Safari's page menu,
+   open Facefix; if prompted choose **Always Allow… → Always Allow on This
+   Website**. Choose **Open Messages** and sign in directly on Facebook.
+5. Reload after granting access. If necessary, use Safari's **Request Desktop
+   Website**. Encrypted history may require your Messenger PIN.
 
-Upload [dist/facefix-1.4.2-store.zip](dist/facefix-1.4.2-store.zip), which contains `manifest.json` at the root and only the extension runtime files. Rebuild it with `python3 build.py`. Do not upload GitHub's source archive. The icon, promotional tile, and [three 1280 × 800 store screenshots](store-assets/facefix-store-screenshots.zip) are included. These show the actual popup markup in a static interface preview with zero counters, without a fabricated Facebook session. Complete the live behavior check before submitting.
+Use **Messenger help → Check This Tab** to check the page's browser identity.
+The extension's ZIP is a build input; an iPhone needs its signed containing app,
+installed through Xcode or a separately authorized TestFlight/App Store release.
+See [SAFARI.md](SAFARI.md) for the existing Apple project and build contract.
 
-Read the [privacy policy](https://kylestay.github.io/facefix/privacy.html), also available as [PRIVACY.md](PRIVACY.md). A bundled readable version is linked from the popup. Version 1.4.0 adds popup timers, separate connection checks, and bounded local failure diagnostics without adding permissions.
+## Chrome
 
-## Install
+[Install the published Facefix from the Chrome Web Store](https://chromewebstore.google.com/detail/facefix-%E2%80%94-keep-my-place/kckhpinnhkjfblkalloabaiihpdmklla).
+For local development, run `python3 build.py --mode development`, extract its
+ZIP, and load that folder as an unpacked extension. Refresh Facebook tabs after
+an update. Keep one production copy enabled.
 
-[Add Facefix to Chrome from the Chrome Web Store](https://chromewebstore.google.com/detail/facefix-%E2%80%94-keep-my-place/kckhpinnhkjfblkalloabaiihpdmklla), then refresh your existing Facebook tabs once.
+Chrome retains its existing storage permission, Facebook-only host scope, and
+published identity. Messenger's desktop request rules, scripting permission,
+extra Messenger hosts and phone layout are included only in the Safari package.
+[COEXISTENCE.md](COEXISTENCE.md) records the earlier production identity evidence
+and recovery of shipped scroll behavior; its versioned results are historical.
 
-For development or testing an unreleased build, install the ZIP manually:
+## Behavior
 
-1. Extract the store ZIP into its own folder.
-2. Open `chrome://extensions` in Chrome and turn on **Developer mode**.
-3. Click **Load unpacked** and select the folder containing `manifest.json`.
-4. Reload your existing Facebook tabs once. Pin Facefix for access to its on/off switch.
+- Suppress Facebook's automatic return-to-tab refresh/Home triggers, protect
+  the page for four seconds after return/scrolling, and attempt to recover the
+  visible post for up to fifteen seconds. Trusted clicks, typing, scrolling,
+  Back and manual Reload retain their intended behavior.
+- In Chrome, prevent ordinary automatic tab discarding while enabled. Safari
+  lacks that capability; Facefix does not claim to prevent Safari memory eviction.
+- Remove explicit Facebook/Messenger app-promotion links outside posts, forms,
+  navigation, dialogs and editable content. A dedicated, promotion-only pinned
+  bar is collapsed with its padding/background. JavaScript-only **Open app**
+  controls require that bounded pinned-bar context. Nearby real controls or
+  content keep the surrounding container visible.
+- In Safari, request desktop messaging and related Facebook login/checkpoint
+  pages, route old Messenger thread links to Facebook Messages, and adapt
+  recognized narrow conversation panes. The normal feed keeps its native
+  browser identity. Touch, media, passkeys, storage and encryption remain native.
+- Unknown layouts retain normal navigation. Facefix does not replace Facebook's
+  client, bypass login/security checks, or dismiss authentication dialogs.
 
-For an update, replace the old extension files with the new files in the same folder Chrome is already loading (keep just one Facefix copy enabled), click **Reload** on Facefix in `chrome://extensions`, then reload existing Facebook tabs. The popup shows the installed and page versions. Refresh Facebook once after updating so both match.
+Turning Facefix off restores owned promotion/phone styles and page identity
+getters immediately. Reload open messaging tabs to apply changed request-header
+or redirect behavior to the server-rendered page. Website edits made after an
+owned style change are preserved during restoration.
 
-## What it does
+## Diagnostics and privacy
 
-- Captures page-level visibility and window blur/focus events in both directions, so Facebook receives fewer inactivity and return triggers.
-- Blocks cancelable script-driven reloads and Home/feed navigation while away and for four seconds after returning or scrolling.
-- Tries to retain the visible post and its onscreen offset for up to 15 seconds after returning. It can match a rerendered post by its permalink, falling back to a pixel position if no matching post is available. Trusted user input ends recovery immediately.
-- Asks Chrome not to automatically discard Facebook tabs, preventing the usual discard-and-reload cycle.
-- Scrolling ends position recovery and renews reload/Home protection for four seconds. Trusted clicks and non-scrolling typing end both windows; normal intentional navigation remains available.
+The popup retains Facefix's real protection timers, local intervention counters,
+connection/version checks and bounded failure reports. A zero timer means no
+protection window is running; it never schedules a reload. Suppressed return
+signals are not proof that a refresh would otherwise have happened.
 
-Use the toolbar switch to pause protection immediately. Pausing also makes Facebook tabs discardable again. Keeping tabs in memory can increase memory use. Remove the extension through Chrome's extensions page; reload Facebook afterward to remove the page hooks.
+Reports and counters stay on your device. Diagnostics can be disabled and
+cleared independently. Promotion matching inspects candidate labels/destinations
+and bounded container structure locally; Messenger layout checks structure and
+composer presence, without reading or changing message drafts. No passwords,
+message text, cookies, screenshots or URLs are recorded by these features. No
+analytics, remote code or automatic message sending.
 
-## Live timers and explanations
+[Privacy policy](PRIVACY.md) · [Historical runtime evidence](RUNTIME-VALIDATION.md)
 
-The toolbar popup shows the current Facebook tab's real Facefix countdowns: a 4-second reload/Home guard after return or scrolling and up to 15 seconds of position recovery after returning. It distinguishes armed, running, paused, finished, and ended-by-interaction states. Zero means the protection window is inactive; Facefix never schedules a reload when a timer expires.
+## Local development and verification
 
-The popup explanation describes tab-return triggers, in-page feed changes, and browser tab discarding. Facebook's own internal refresh timers are not available. Opening the toolbar popup can unfocus the Facebook window; in that case the display correctly shows the guards armed until you return.
+```sh
+python3 scripts/check-local.py
+```
 
-Countdown snapshots are read locally while the popup is open. Selected status fields are saved when you request a failure report; nothing is automatically transmitted outside the browser.
+When changing Messenger configuration/identity source, regenerate its request
+rules and self-contained MAIN script, then update the existing native copies:
 
-## Local counters
+```sh
+node scripts/build-messenger-rules.mjs
+python3 scripts/sync-safari.py
+```
 
-Open Facefix's toolbar popup to see totals across your Facebook tabs:
+`sync-safari.py --build N` additionally sets an explicitly selected native build
+number. It preserves the existing app/extension identifiers, native Swift code,
+team, capabilities and privacy declarations. It does not sign, install or upload.
 
-- **Return events suppressed:** visibility/focus/page-restore signals intercepted. Multiple signals can occur on a single return. This does not prove Facebook would have refreshed.
-- **Reloads blocked:** cancelable automatic reload requests canceled by the navigation guard.
-- **Home redirects blocked:** automatic Home navigation attempts blocked by either the history or navigation guard.
-- **Scroll recoveries:** successful recoveries of a large upward scroll jump, counted at most once per return window.
+The following optional check uses the installed Chrome Extension Test Runner
+skill, Chrome for Testing and Node 22+. It loads the actual Safari web-extension
+payload into an isolated Chromium profile and fulfills Facebook-origin document
+requests with a project fixture, without using a Facebook account or contacting
+Facebook for fixture content:
 
-Counters update while the popup is open and survive page reloads and Chrome restarts. **Reset counters** clears all four totals; it does not change protection. These aggregate totals contain no URLs, post contents, or timestamps. Separate local diagnostics are described below. Paused protection does not add counts. Keeping a tab in memory is a setting, not a confirmed prevented discard, so it is not counted.
+```sh
+node tests/e2e/run-isolated.js
+```
 
-These are diagnostic totals. The page and content script share DOM events, so page code could spoof counter signals. They are not a tamper-proof audit log.
+It checks full-bar geometry, protected content and drafts, live pause/resume,
+SPA/password transitions, BFCache lifecycle, wide layouts and actual declarative
+thread redirects. Chromium results are distinct from Safari/WebKit execution.
+Screenshots/reports are saved under ignored `artifacts/`; owned browser profiles
+and processes must both be gone after the run.
 
-## Connection checks and local failure reports
+Build the native iPhone simulator app locally:
 
-Automatic checks also record whether the connection answered after a Facebook page finishes loading. The popup distinguishes a non-Facebook tab, unavailable site access, a loading/discarded tab, an absent page connection, an absent guard, and outdated page scripts. It shows installed and page versions. If Facebook is active but the connection is missing, check Facefix's site access in Chrome, then refresh Facebook once after updating. A clearly labeled reconnect button refreshes only after your click; it can change the feed. No automatic refresh or duplicate guard reinjection is used.
+```sh
+xcodebuild -project apple/Facefix/Facefix.xcodeproj \
+  -scheme 'Facefix (iOS)' -configuration Debug \
+  -destination 'generic/platform=iOS Simulator' \
+  -derivedDataPath build/Facefix-iOS build
+```
 
-**Diagnostics and failure reports → Something went wrong** saves current connection/protection state, local event evidence, and findings with next steps. Open **Review history, export, or clear** to inspect the timeline, select a Facebook tab, capture a report, or download the latest report as JSON. No report is automatically sent anywhere. Review it before sharing it through a support request. Reports help investigate and implement a later fix; they do not rewrite extension code automatically.
+[Safari acceptance and remaining manual checks](SAFARI-ACCEPTANCE.md) records
+what each verification layer establishes. Signed-in send/receive, encrypted
+history restoration, attachments, calls and the exact production Facebook
+promotion markup require account-based manual acceptance.
 
-Local recording defaults on. It keeps up to 300 events (120 per document per minute), five reports, and at most 24 hours of history, pruned on the next diagnostic activity. Each report includes up to 120 events from its tab in the last 30 minutes. Events use fixed categories, timestamps, local tab/document identifiers, and numeric/boolean timing, scroll, post-match, discard, and capability measurements. No URLs, post text, key text, cookies, messages, screenshots, or raw error messages are stored. Recording can be disabled independently; manual reports still work. Clear history removes events and reports without resetting counters.
-
-The analyzer checks document reload/discard evidence, guard/bridge versions, protection state, lost post anchors, failed recovery, layout shifts, and large movement outside recovery. It labels uncertainty rather than inventing a cause. Facefix rechecks a drifted Chrome auto-discard setting, attempts to restore it, and claims repair only if Chrome confirms the result. Exported files are outside the extension's retention controls. DOM-based traces can be spoofed by page code and are not an audit log.
-
-## Limits
-
-This is a best-effort prevention tool, not a saved copy of the feed. It cannot preserve deleted posts, expired sessions, restore a tab already discarded before installation, or prevent browser crashes, forced memory eviction, or browser restarts. Facebook can replace posts using internal timers/network responses without emitting these events; those paths are not blocked. Nested scrolling panels are not restored. Suppressing departure and return events may affect Facebook's presence indicators, unread updates, background media behavior, or other lifecycle-triggered features. Post recovery depends on recognizable feed articles and permalinks; it cannot recover a post Facebook has removed from the loaded feed. Login/security redirects and non-Home destinations remain available. Manual Reload and Back remain available.
-
-Facebook's implementation changes; test on your own account. No live logged-in Facebook session was used for validation. The included check exercises the page hooks with simulated browser events, not Facebook's production code.
-
-## Verify
-
-For the final local 1.4.2 candidate, 21 Node tests and four package tests passed, including three regressions for the shipped 1.4.1 scrolling behavior. Browser replacement and live behavior are unrun; see COEXISTENCE.md. The following 1.4.0 browser statements describe historical source evidence and do not certify 1.4.2.
-
-Run `node --test tests/*.test.cjs` from this repository folder.
-
-Version 1.4.0 passes eighteen automated checks covering page hooks, the page-to-storage counter path, concurrent updates across tabs, worker restart persistence, popup display/live updates/reset, pausing, navigation exceptions, scroll recovery counting, Facebook-only memory protection, granular connection failures, diagnostic privacy filtering, retention/rate caps, opt-out, report capture, and verified memory-setting repair. These use simulated browser APIs; they do not prove the extension works against Facebook's production scripts. Real browser fixtures also verify cancellation of script-driven reload and Home navigation, deliberate reload after interaction, delayed DOM replacement recovery, and intentional scrolling. This is not a verification against a logged-in Facebook session.
-
-Manual check: scroll down Home; switch tabs for a minute; return and verify the same posts and scroll position. Repeat on a profile, group, and post. Check Home clicks, Back, typing, scroll, and manual Reload. Pause from the popup and repeat. On `chrome://discards`, Facebook should show as not auto-discardable while protection is enabled.
-
-Counter check: reset totals, switch away from Facebook, then return and open the popup. Return events should increase if return signals were suppressed; reload/redirect counters should stay at zero unless those actions were actually attempted. Reset, pause protection, and repeat: all counters should stay zero. Resume, return to two Facebook tabs, and verify totals accumulate. Do not treat zero blocked reloads as a failure if suppressing the earlier return event prevented the reload from being attempted.
-
-Chrome API references: https://developer.chrome.com/docs/extensions/develop/concepts/content-scripts and https://developer.chrome.com/docs/extensions/reference/api/tabs
-
-Browser reproduction: serve this repository locally and open `tests/return-fixture.html`. The delayed-replacement check replaces the visible post after five seconds and inserts content above it; recovery should keep the same post offset.
-
-For controlled UI checks, run `python3 tests/build-previews.py`, serve the repository, and open `tests/browser-popup.html` or `tests/browser-diagnostics.html`. These use explicitly labeled synthetic browser APIs. They do not connect to Facebook or real extension storage.
+All CI runs locally. [LOCAL-CI.md](LOCAL-CI.md) explains the disabled Actions
+control and the separate legacy Pages publishing behavior. No hosted workflow,
+runner, token, security-policy or protection change is needed for local checks.

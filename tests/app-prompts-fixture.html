@@ -1,0 +1,44 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Facefix app promotion fixture</title>
+<style>body{font:16px/1.5 system-ui;padding:24px;max-width:700px;margin:auto}a{display:block;margin:8px 0}output{display:block;padding:16px;background:#eef5ef;white-space:pre-line}</style>
+<h1>Facefix app promotion fixture</h1><p>Synthetic extension storage. No Facebook connection and no links are activated.</p>
+<a id="promotion" href="fb://feed" style="display:inline-flex">Open app</a>
+<a id="login" href="https://www.facebook.com/login/">Open app</a>
+<a id="home" href="https://www.facebook.com/">Home</a>
+<article><a id="post" href="fb://feed">Open app</a></article>
+<form><a id="form" href="fb://feed">Open app</a><label>Login fixture <input id="input" value="preserved"></label></form>
+<div role="dialog"><a id="dialog" href="fb://feed">Open app</a></div>
+<dialog open><a id="native-dialog" href="fb://feed">Open app</a></dialog>
+<div role="form search"><a id="aria-form" href="fb://feed">Open app</a></div>
+<div role="alertdialog"><a id="alert-dialog" href="fb://feed">Open app</a></div>
+<div role="dialog region"><a id="role-list-dialog" href="fb://feed">Open app</a></div>
+<div id="recycled"><a id="recycled-link" href="fb://feed">Open app</a></div>
+<output id="result">Running…</output>
+<script>
+const changes = [];
+window.chrome = {storage:{local:{get:async () => ({enabled:true})},onChanged:{addListener(fn) {changes.push(fn);}}}};
+</script><script src="../app-prompts.js"></script><script>
+(async () => {
+  const result = document.querySelector('#result');
+  const checks = [];
+  const wait = () => new Promise(resolve => setTimeout(resolve,180));
+  const hidden = id => getComputedStyle(document.getElementById(id)).display === 'none';
+  const check = (name, value) => {checks.push((value?'PASS: ':'FAIL: ')+name); if (!value) throw new Error(name);};
+  try {
+    await wait();
+    check('explicit app link hidden',hidden('promotion'));
+    check('login, Home, post, native and ARIA form/dialog preserved',['login','home','post','form','dialog','native-dialog','aria-form','alert-dialog','role-list-dialog'].every(id => !hidden(id)));
+    const late = document.createElement('a'); late.id = 'late'; late.href = 'fb://feed'; late.textContent = 'Open in app'; document.body.append(late);
+    await wait(); check('late prompt hidden',hidden('late'));
+    document.querySelector('#recycled').setAttribute('role','article');
+    await wait(); check('recycled post restored',!hidden('recycled-link'));
+    late.href = 'https://www.facebook.com/login/';
+    await wait(); check('reused login link restored',!hidden('late'));
+    changes.forEach(fn => fn({enabled:{newValue:false}},'local'));
+    check('pause restores original display',document.querySelector('#promotion').style.display === 'inline-flex');
+    changes.forEach(fn => fn({enabled:{newValue:true}},'local'));
+    check('resume hides promotion',hidden('promotion'));
+    check('form value unchanged',document.querySelector('#input').value === 'preserved');
+    result.textContent = checks.join('\n')+'\nALL 8 CHECKS PASSED';
+  } catch (error) {result.textContent = checks.join('\n')+'\nFAILED: '+error.message;}
+})();
+</script></html>

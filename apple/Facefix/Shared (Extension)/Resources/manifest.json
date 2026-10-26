@@ -1,0 +1,81 @@
+{
+  "manifest_version": 3,
+  "name": "Facefix \u2014 Keep My Place",
+  "version": "1.6.0",
+  "description": "Reduce Facebook return-to-tab refreshes, Home redirects, and scroll jumps.",
+  "permissions": [
+    "storage",
+    "declarativeNetRequestWithHostAccess",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://*.facebook.com/*",
+    "https://facebook.com/*",
+    "https://messenger.com/*",
+    "https://www.messenger.com/*",
+    "https://m.messenger.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Facefix",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.facebook.com/*",
+        "https://facebook.com/*"
+      ],
+      "js": [
+        "guard.js"
+      ],
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "matches": [
+        "https://*.facebook.com/*",
+        "https://facebook.com/*",
+        "https://messenger.com/*",
+        "https://www.messenger.com/*",
+        "https://m.messenger.com/*"
+      ],
+      "js": [
+        "app-prompts.js",
+        "settings.js",
+        "messenger-config.js",
+        "messenger-layout.js"
+      ],
+      "run_at": "document_start",
+      "css": [
+        "messenger.css"
+      ]
+    }
+  ],
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "browser_specific_settings": {
+    "safari": {
+      "strict_min_version": "18.0"
+    }
+  },
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "messenger",
+        "enabled": true,
+        "path": "rules/messenger.json"
+      }
+    ]
+  }
+}

@@ -1,7 +1,9 @@
 importScripts('diagnostics.js','connection.js');
+if (chrome.runtime.getManifest().declarative_net_request) importScripts('messenger-config.js', 'messenger-background.js');
 const matches = url => FacefixConnection.matches(url);
 async function protect(tab) {
-  if (!tab.id || !matches(tab.url)) return;
+  // Safari does not expose autoDiscardable or accept it in tabs.update.
+  if (!tab.id || !matches(tab.url) || typeof tab.autoDiscardable !== 'boolean') return;
   const {enabled = true} = await chrome.storage.local.get('enabled');
   const updated = await chrome.tabs.update(tab.id, {autoDiscardable: enabled ? false : true}).catch(() => {
     void writeDiagnosticEvents([{kind:'memory-protection-failed'}], {tab});

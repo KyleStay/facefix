@@ -1,0 +1,24 @@
+name: FacefixQA
+options:
+  deploymentTarget:
+    iOS: "18.0"
+settings:
+  base:
+    DEVELOPMENT_TEAM: TF2BG2VDPD
+    GENERATE_INFOPLIST_FILE: YES
+    SWIFT_VERSION: "5.0"
+targets:
+  FacefixUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources: [FacefixUITests.swift]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: co.staytech.facefix.qa
+schemes:
+  FacefixQA:
+    build:
+      targets:
+        FacefixUITests: [test]
+    test:
+      targets: [FacefixUITests]

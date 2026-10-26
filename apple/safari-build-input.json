@@ -1,0 +1,95 @@
+{
+  "safari_minimum": "18.0",
+  "required_native_floors": {
+    "macos": "13.0",
+    "ios_ipados": "18.0"
+  },
+  "native_deployment_targets": {
+    "MACOSX_DEPLOYMENT_TARGET": [
+      "13.0"
+    ],
+    "IPHONEOS_DEPLOYMENT_TARGET": [
+      "18.0"
+    ]
+  },
+  "bundle_identifiers": [
+    "co.staytech.facefix.safari",
+    "co.staytech.facefix.safari.Extension"
+  ],
+  "version": "1.6.0",
+  "runtime_resources_unchanged": true,
+  "runtime_validation": "unrun for this candidate",
+  "resource_sha256": {
+    "app-prompts.js": "5f7d017fa8d154fc90cf8316ad8a6c15fa25005cbf19322ba97a299008192630",
+    "background.js": "926df4909ef23d13048b0625fd11051ff46d510ebd432f496c5aa200f0fe24d7",
+    "connection.js": "3eaae89da240c2cb9503ba028f73d3de509ec110326119a2d6a4e31331a5469c",
+    "diagnostics-view.js": "d07e42379439ba743c9b55750e8067413f4b2535f5b0e2a113e63b8252cd34f4",
+    "diagnostics.html": "dc9b7fea51fd1d062ae4c4e8cb2b34b9bf30c2bc0dc30af3aa2b27e2f13ae5f3",
+    "diagnostics.js": "a5fd3e0b02c8f672ce8e6937cb818a11cb8eaf3d561afbfa705b4475a698be31",
+    "guard.js": "33daa4ee54aa413351d85bf6a2b7338b79ad98b4431d9a74b3d93f2b4ea704f2",
+    "icons/icon-128.png": "510d3e78176e90bc953e000a42dc57f55191b364bf851ab45677e61128290e1b",
+    "icons/icon-16.png": "8668371a4e17f93d286461b373e8cad49758c9b796525dda96fdd159b0644a82",
+    "icons/icon-32.png": "2671858d31c4b57cd7cf57e2870b47a6a598bfa0548c4924b82e10319a0fd75c",
+    "icons/icon-48.png": "70cd76f15550dba7f231771592ac54ade48c0dba1a4a7befbf0128e88c002de2",
+    "manifest.json": "401cda11dc8420c0ecbb984ae4c4c785948bbe46a5ae7a703a7e95a2092c5d2d",
+    "messenger-background.js": "b529f5c246663c050c48236e026b408febaef1e0e6976c1872817a1fbc6ffb8b",
+    "messenger-config.js": "d3125867b34f3263e0fc0798fb1faa138073f25911d8bf59c6f593a684829d5b",
+    "messenger-identity.js": "c810c4d5341bfe719220bc12e03c783b731d718f2660433b69a75f5a07cd207f",
+    "messenger-layout.js": "e7b62040ce709945b59c113b5ce15637d0bf455f79719a211020b5383f3cec28",
+    "messenger-popup.js": "740da003b17847e650be97baae5a8b17dc07521cb07dd0f35be146083ee048fb",
+    "messenger.css": "562905bdace19ee79dead2bde1ec11d91c6f8e17f9b297009cee5b1d96cc2fdf",
+    "popup.html": "ea461d045249f6cbf87f5b47e04dae44770c88bd41a7a0ad3d827121ef296646",
+    "popup.js": "28af75417afb524eba2513949573912c8f35f4e9926f8f457b3a8a1f638d2468",
+    "privacy.html": "da0ac7d14b4a391b602e618aa5cf05dd9e41ff03e92b4a358f4d143a957f52d4",
+    "rules/messenger.json": "69a96b7c46fea5e934d5f189cd24a7c049b043499af5969158ebf43a4bc2e6bf",
+    "settings.js": "4678e44e39c36cc279dbd347a4fd966bdd66c373e76a2c0c31469e26e55164e4",
+    "timers.js": "839c955c6367431b7fc917bd410a9c63a087c8a47deae9d1a2602cae988bfaa6"
+  },
+  "testflight_metadata": {
+    "privacy_manifest": {
+      "NSPrivacyTracking": false,
+      "NSPrivacyTrackingDomains": [],
+      "NSPrivacyCollectedDataTypes": [],
+      "NSPrivacyAccessedAPITypes": []
+    },
+    "non_exempt_encryption": false,
+    "reviewed_native_sources": {
+      "Shared (App)/ViewController.swift": "fed4a5fcd3c8fae9519ca067db834ea3b6e0eadb48d9855d0e01bb573b597e91",
+      "iOS (App)/AppDelegate.swift": "7a8d748849f8fee559e004590fa5e7879f47d6db3f5774df864e44dd786c5e43",
+      "iOS (App)/SceneDelegate.swift": "a046830a525917e3a85601a26c362e1a97fb9f60445bd00efb1dd4e51c69d682",
+      "macOS (App)/AppDelegate.swift": "9054a60fdc229c2df89946fd555e5837b55b25b090920bf4941b1cd120100475",
+      "Shared (Extension)/SafariWebExtensionHandler.swift": "eded935063cc08d87b11389f9e6d6b0a49f09c4c8a972f7d5109adced6421233"
+    },
+    "upload_allowed": false,
+    "production_identity_unverified": false,
+    "icon": "1024 PNG, unused alpha removed; any nonopaque source pixel is refused",
+    "signing_upload_tester_status": "Both initial uploads accepted and processing; never reupload these builds. Parent must verify processing and add to existing group.",
+    "app_store_connect_id": "6826421811",
+    "app_store_connect_name": "Facefix for Safari",
+    "platforms": [
+      "ios",
+      "macos"
+    ],
+    "identity_confirmation": "Created and verified in authenticated Apple UI after app search and all-Identifier inspection found no Facefix product; exact app and extension IDs registered",
+    "mac_submission_metadata": {
+      "category": "public.app-category.utilities",
+      "copyright": "\u00a9 2026 Kyle Stay"
+    },
+    "approved_profiles_completed": true,
+    "processing_complete": false
+  },
+  "native_builds": {
+    "ios": "5",
+    "macos": "5"
+  },
+  "historical_beta": {
+    "version": "1.5.0",
+    "native_builds": {
+      "ios": "3",
+      "macos": "4"
+    },
+    "upload": "Previously uploaded once; current processing/tester availability is unverified. Do not reupload.",
+    "app_store_connect_id": "6826421811"
+  },
+  "current_candidate_uploaded": false
+}

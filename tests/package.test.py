@@ -12,17 +12,30 @@ spec.loader.exec_module(build)
 class Packaging(unittest.TestCase):
     def test_modes_and_permissions(self):
         original = json.loads((build.ROOT / 'manifest.json').read_text())
-        for mode in ['store','development','replacement']:
+        for mode in ['store','development','replacement','safari']:
             key=build.ROOT/'identity/production-public-key.txt' if mode=='replacement' else None
             output = build.build(mode,key)
             first = output.read_bytes()
             self.assertEqual(first, build.build(mode,key).read_bytes())
             with ZipFile(output) as z:
                 m=json.loads(z.read('manifest.json'))
-                self.assertEqual(m['permissions'],original['permissions'])
-                self.assertEqual(m['host_permissions'],original['host_permissions'])
+                self.assertEqual(m['permissions'],original['permissions'] + (['declarativeNetRequestWithHostAccess','scripting'] if mode=='safari' else []))
+                self.assertEqual(m['host_permissions'],original['host_permissions'] + (['https://messenger.com/*','https://www.messenger.com/*','https://m.messenger.com/*'] if mode=='safari' else []))
                 self.assertNotIn('management',m['permissions'])
-                self.assertEqual('key' in m,mode!='store')
+                self.assertEqual('key' in m,mode in ['development','replacement'])
+                self.assertEqual('minimum_chrome_version' in m,mode!='safari')
+                if mode == 'safari':
+                    self.assertEqual(m['browser_specific_settings'],{'safari':{'strict_min_version':'18.0'}})
+                    self.assertEqual(m['content_scripts'][0]['world'],'MAIN')
+                    self.assertEqual(m['content_scripts'][0]['run_at'],'document_start')
+                    self.assertEqual(m['declarative_net_request']['rule_resources'][0]['path'],'rules/messenger.json')
+                    self.assertIn('messenger-layout.js',m['content_scripts'][1]['js'])
+                    self.assertTrue(z.read('rules/messenger.json'))
+                else:
+                    self.assertNotIn('browser_specific_settings',m)
+                    self.assertNotIn('declarative_net_request',m)
+                    self.assertNotIn('messenger-identity.js',z.namelist())
+                self.assertIn('app-prompts.js',m['content_scripts'][1]['js'])
                 self.assertNotIn('externally_connectable',m)
                 self.assertFalse(any('ownership' in n for n in z.namelist()))
                 if mode=='replacement':self.assertEqual(build.extension_id(m['key']),build.PRODUCTION_ID)

@@ -2,3 +2,12 @@
 __pycache__/
 *.pyc
 /dist/*.zip
+
+# Native local products and Xcode user state
+/apple/swift-module-cache/
+/apple/build/
+**/xcuserdata/
+*.xcuserstate
+/artifacts/
+/build/
+/node_modules/

@@ -39,8 +39,8 @@ const FacefixConnection = {
   describe(kind) {
     return ({
       'wrong-tab':['Open Facefix on Facebook','This popup describes the active tab. Switch to Facebook, then reopen Facefix.'],
-      'no-access':['No accessible Facebook tab selected','If Facebook is active, open Chrome’s extension details for Facefix and allow site access on facebook.com. Then refresh Facebook once.'],
-      'discarded':['Chrome has unloaded this Facebook tab','Select the Facebook tab to reload its contents, then reopen Facefix.'],
+      'no-access':['No accessible Facebook tab selected','If Facebook is active, allow Facefix access to facebook.com in your browser’s extension settings. Then refresh Facebook once.'],
+      'discarded':['The browser has unloaded this Facebook tab','Select the Facebook tab to reload its contents, then reopen Facefix.'],
       'loading':['Facebook is still loading','Wait for Facebook to finish loading, then check again.'],
       'bridge-missing':['Facebook page connection did not respond','This page may predate the extension update, or site access may be blocked. Allow Facefix on Facebook, then refresh Facebook once. If it persists, capture a failure report.'],
       'guard-missing':['Page connected; protection guard missing','The page connection works, but the protection guard did not answer. Refresh Facebook once. If it persists, save a failure report.'],

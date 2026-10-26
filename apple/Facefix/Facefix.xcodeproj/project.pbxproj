@@ -1,0 +1,1108 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		275D762C308C17C6008B1FF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275D762B308C17C6008B1FF0 /* AppDelegate.swift */; };
+		275D762E308C17C6008B1FF0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275D762D308C17C6008B1FF0 /* SceneDelegate.swift */; };
+		275D7631308C17C6008B1FF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 275D762F308C17C6008B1FF0 /* LaunchScreen.storyboard */; };
+		275D7634308C17C6008B1FF0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 275D7632308C17C6008B1FF0 /* Main.storyboard */; };
+		275D763D308C17C6008B1FF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275D763C308C17C6008B1FF0 /* AppDelegate.swift */; };
+		275D7640308C17C6008B1FF0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 275D763E308C17C6008B1FF0 /* Main.storyboard */; };
+		275D7647308C17C6008B1FF0 /* Facefix Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 275D7646308C17C6008B1FF0 /* Facefix Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		275D7651308C17C6008B1FF0 /* Facefix Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 275D7650308C17C6008B1FF0 /* Facefix Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		275D7656308C17C6008B1FF0 /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = 275D761B308C17C4008B1FF0 /* Main.html */; };
+		275D7657308C17C6008B1FF0 /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = 275D761B308C17C4008B1FF0 /* Main.html */; };
+		275D7658308C17C6008B1FF0 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 275D761D308C17C4008B1FF0 /* Icon.png */; };
+		275D7659308C17C6008B1FF0 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 275D761D308C17C4008B1FF0 /* Icon.png */; };
+		275D765A308C17C6008B1FF0 /* Style.css in Resources */ = {isa = PBXBuildFile; fileRef = 275D761E308C17C4008B1FF0 /* Style.css */; };
+		275D765B308C17C6008B1FF0 /* Style.css in Resources */ = {isa = PBXBuildFile; fileRef = 275D761E308C17C4008B1FF0 /* Style.css */; };
+		275D765C308C17C6008B1FF0 /* Script.js in Resources */ = {isa = PBXBuildFile; fileRef = 275D761F308C17C4008B1FF0 /* Script.js */; };
+		275D765D308C17C6008B1FF0 /* Script.js in Resources */ = {isa = PBXBuildFile; fileRef = 275D761F308C17C4008B1FF0 /* Script.js */; };
+		275D765E308C17C6008B1FF0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275D7620308C17C4008B1FF0 /* ViewController.swift */; };
+		275D765F308C17C6008B1FF0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275D7620308C17C4008B1FF0 /* ViewController.swift */; };
+		275D7660308C17C6008B1FF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 275D7621308C17C5008B1FF0 /* Assets.xcassets */; };
+		275D7661308C17C6008B1FF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 275D7621308C17C5008B1FF0 /* Assets.xcassets */; };
+		275D7662308C17C6008B1FF0 /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275D7623308C17C5008B1FF0 /* SafariWebExtensionHandler.swift */; };
+		275D7663308C17C6008B1FF0 /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275D7623308C17C5008B1FF0 /* SafariWebExtensionHandler.swift */; };
+		275D7683308C17C6008B1FF0 /* diagnostics.js in Resources */ = {isa = PBXBuildFile; fileRef = 275D7675308C17C6008B1FF0 /* diagnostics.js */; };
+		275D7684308C17C6008B1FF0 /* diagnostics-view.js in Resources */ = {isa = PBXBuildFile; fileRef = 275D7676308C17C6008B1FF0 /* diagnostics-view.js */; };
+		275D7685308C17C6008B1FF0 /* popup.js in Resources */ = {isa = PBXBuildFile; fileRef = 275D7677308C17C6008B1FF0 /* popup.js */; };
+		275D7686308C17C6008B1FF0 /* background.js in Resources */ = {isa = PBXBuildFile; fileRef = 275D7678308C17C6008B1FF0 /* background.js */; };
+		275D7687308C17C6008B1FF0 /* popup.html in Resources */ = {isa = PBXBuildFile; fileRef = 275D7679308C17C6008B1FF0 /* popup.html */; };
+		275D7688308C17C6008B1FF0 /* app-prompts.js in Resources */ = {isa = PBXBuildFile; fileRef = 275D767A308C17C6008B1FF0 /* app-prompts.js */; };
+		275D7689308C17C6008B1FF0 /* timers.js in Resources */ = {isa = PBXBuildFile; fileRef = 275D767B308C17C6008B1FF0 /* timers.js */; };
+		275D768A308C17C6008B1FF0 /* diagnostics.html in Resources */ = {isa = PBXBuildFile; fileRef = 275D767C308C17C6008B1FF0 /* diagnostics.html */; };
+		275D768B308C17C6008B1FF0 /* icons in Resources */ = {isa = PBXBuildFile; fileRef = 275D767D308C17C6008B1FF0 /* icons */; };
+		275D768C308C17C6008B1FF0 /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 275D767E308C17C6008B1FF0 /* manifest.json */; };
+		275D768D308C17C6008B1FF0 /* connection.js in Resources */ = {isa = PBXBuildFile; fileRef = 275D767F308C17C6008B1FF0 /* connection.js */; };
+		275D768E308C17C6008B1FF0 /* guard.js in Resources */ = {isa = PBXBuildFile; fileRef = 275D7680308C17C6008B1FF0 /* guard.js */; };
+		275D768F308C17C6008B1FF0 /* settings.js in Resources */ = {isa = PBXBuildFile; fileRef = 275D7681308C17C6008B1FF0 /* settings.js */; };
+		275D7690308C17C6008B1FF0 /* privacy.html in Resources */ = {isa = PBXBuildFile; fileRef = 275D7682308C17C6008B1FF0 /* privacy.html */; };
+		275D7691308C17C6008B1FF0 /* diagnostics.js in Resources */ = {isa = PBXBuildFile; fileRef = 275D7675308C17C6008B1FF0 /* diagnostics.js */; };
+		275D7692308C17C6008B1FF0 /* diagnostics-view.js in Resources */ = {isa = PBXBuildFile; fileRef = 275D7676308C17C6008B1FF0 /* diagnostics-view.js */; };
+		275D7693308C17C6008B1FF0 /* popup.js in Resources */ = {isa = PBXBuildFile; fileRef = 275D7677308C17C6008B1FF0 /* popup.js */; };
+		275D7694308C17C6008B1FF0 /* background.js in Resources */ = {isa = PBXBuildFile; fileRef = 275D7678308C17C6008B1FF0 /* background.js */; };
+		275D7695308C17C6008B1FF0 /* popup.html in Resources */ = {isa = PBXBuildFile; fileRef = 275D7679308C17C6008B1FF0 /* popup.html */; };
+		275D7696308C17C6008B1FF0 /* app-prompts.js in Resources */ = {isa = PBXBuildFile; fileRef = 275D767A308C17C6008B1FF0 /* app-prompts.js */; };
+		275D7697308C17C6008B1FF0 /* timers.js in Resources */ = {isa = PBXBuildFile; fileRef = 275D767B308C17C6008B1FF0 /* timers.js */; };
+		275D7698308C17C6008B1FF0 /* diagnostics.html in Resources */ = {isa = PBXBuildFile; fileRef = 275D767C308C17C6008B1FF0 /* diagnostics.html */; };
+		275D7699308C17C6008B1FF0 /* icons in Resources */ = {isa = PBXBuildFile; fileRef = 275D767D308C17C6008B1FF0 /* icons */; };
+		275D769A308C17C6008B1FF0 /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 275D767E308C17C6008B1FF0 /* manifest.json */; };
+		275D769B308C17C6008B1FF0 /* connection.js in Resources */ = {isa = PBXBuildFile; fileRef = 275D767F308C17C6008B1FF0 /* connection.js */; };
+		275D769C308C17C6008B1FF0 /* guard.js in Resources */ = {isa = PBXBuildFile; fileRef = 275D7680308C17C6008B1FF0 /* guard.js */; };
+		275D769D308C17C6008B1FF0 /* settings.js in Resources */ = {isa = PBXBuildFile; fileRef = 275D7681308C17C6008B1FF0 /* settings.js */; };
+		275D769E308C17C6008B1FF0 /* privacy.html in Resources */ = {isa = PBXBuildFile; fileRef = 275D7682308C17C6008B1FF0 /* privacy.html */; };
+		6494A45D3818BCD36F8045C4 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = CB467EC106B83CC1BC31697D /* PrivacyInfo.xcprivacy */; };
+		5FF8AC50C9FE58E211BB7F14 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = CB467EC106B83CC1BC31697D /* PrivacyInfo.xcprivacy */; };
+		7B07875D267A0A3966A87470 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = CB467EC106B83CC1BC31697D /* PrivacyInfo.xcprivacy */; };
+		069804E7F097F12D20EF1909 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = CB467EC106B83CC1BC31697D /* PrivacyInfo.xcprivacy */; };
+		9B25C165B43E6DA9DCB96F18 /* messenger-background.js in Resources */ = {isa = PBXBuildFile; fileRef = 000835AB59D8C4F44F946F65 /* messenger-background.js */; };
+		2FFAE86D7A8037AF4A87B5B2 /* messenger-background.js in Resources */ = {isa = PBXBuildFile; fileRef = 000835AB59D8C4F44F946F65 /* messenger-background.js */; };
+		899260C288650F0B4ADDC5AF /* messenger-config.js in Resources */ = {isa = PBXBuildFile; fileRef = E8AA9A9D88D193416768084D /* messenger-config.js */; };
+		8858D68C1E5A69376A29977C /* messenger-config.js in Resources */ = {isa = PBXBuildFile; fileRef = E8AA9A9D88D193416768084D /* messenger-config.js */; };
+		DDF00B9F4D9E0FEB0A5F01CA /* messenger-identity.js in Resources */ = {isa = PBXBuildFile; fileRef = 4DB665E818386D7F34FAA89F /* messenger-identity.js */; };
+		1DECDCB821E1C16FC274A637 /* messenger-identity.js in Resources */ = {isa = PBXBuildFile; fileRef = 4DB665E818386D7F34FAA89F /* messenger-identity.js */; };
+		0C82C200661FF71CB84FCAA9 /* messenger-layout.js in Resources */ = {isa = PBXBuildFile; fileRef = CF42293FA1FE9D6CED8D7710 /* messenger-layout.js */; };
+		16D962341942D1AD42E666F3 /* messenger-layout.js in Resources */ = {isa = PBXBuildFile; fileRef = CF42293FA1FE9D6CED8D7710 /* messenger-layout.js */; };
+		DFA24D57645E15B8E6528046 /* messenger-popup.js in Resources */ = {isa = PBXBuildFile; fileRef = 0628296109DE2E420D7C72D7 /* messenger-popup.js */; };
+		DA40E86BCE5413CA86909E40 /* messenger-popup.js in Resources */ = {isa = PBXBuildFile; fileRef = 0628296109DE2E420D7C72D7 /* messenger-popup.js */; };
+		235185E122590ED3C0FFDA6F /* messenger.css in Resources */ = {isa = PBXBuildFile; fileRef = F71FC4EA6EF55FA79256B5E2 /* messenger.css */; };
+		66F9B31CC275D9EF3C8EA384 /* messenger.css in Resources */ = {isa = PBXBuildFile; fileRef = F71FC4EA6EF55FA79256B5E2 /* messenger.css */; };
+		803566388AE69A8FADE82803 /* rules in Resources */ = {isa = PBXBuildFile; fileRef = 3E6A4D497239A84E3A3C1606 /* rules */; };
+		F4CA9D42A7BD39273E085E3D /* rules in Resources */ = {isa = PBXBuildFile; fileRef = 3E6A4D497239A84E3A3C1606 /* rules */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		275D7648308C17C6008B1FF0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 275D7615308C17C3008B1FF0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 275D7645308C17C6008B1FF0;
+			remoteInfo = "Facefix Extension (iOS)";
+		};
+		275D7652308C17C6008B1FF0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 275D7615308C17C3008B1FF0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 275D764F308C17C6008B1FF0;
+			remoteInfo = "Facefix Extension (macOS)";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		275D7669308C17C6008B1FF0 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				275D7647308C17C6008B1FF0 /* Facefix Extension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		275D7670308C17C6008B1FF0 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				275D7651308C17C6008B1FF0 /* Facefix Extension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		275D761C308C17C4008B1FF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/Main.html; sourceTree = "<group>"; };
+		275D761D308C17C4008B1FF0 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		275D761E308C17C4008B1FF0 /* Style.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = Style.css; sourceTree = "<group>"; };
+		275D761F308C17C4008B1FF0 /* Script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = Script.js; sourceTree = "<group>"; };
+		275D7620308C17C4008B1FF0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		275D7621308C17C5008B1FF0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		275D7623308C17C5008B1FF0 /* SafariWebExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebExtensionHandler.swift; sourceTree = "<group>"; };
+		275D7628308C17C6008B1FF0 /* Facefix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Facefix.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		275D762B308C17C6008B1FF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		275D762D308C17C6008B1FF0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		275D7630308C17C6008B1FF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		275D7633308C17C6008B1FF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		275D7635308C17C6008B1FF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		275D763A308C17C6008B1FF0 /* Facefix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Facefix.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		275D763C308C17C6008B1FF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		275D763F308C17C6008B1FF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		275D7641308C17C6008B1FF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		275D7646308C17C6008B1FF0 /* Facefix Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Facefix Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		275D764B308C17C6008B1FF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		275D7650308C17C6008B1FF0 /* Facefix Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Facefix Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		275D7655308C17C6008B1FF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		275D7675308C17C6008B1FF0 /* diagnostics.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = diagnostics.js; path = Resources/diagnostics.js; sourceTree = "<group>"; };
+		275D7676308C17C6008B1FF0 /* diagnostics-view.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = "diagnostics-view.js"; path = "Resources/diagnostics-view.js"; sourceTree = "<group>"; };
+		275D7677308C17C6008B1FF0 /* popup.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = popup.js; path = Resources/popup.js; sourceTree = "<group>"; };
+		275D7678308C17C6008B1FF0 /* background.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = background.js; path = Resources/background.js; sourceTree = "<group>"; };
+		275D7679308C17C6008B1FF0 /* popup.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = popup.html; path = Resources/popup.html; sourceTree = "<group>"; };
+		275D767A308C17C6008B1FF0 /* app-prompts.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = "app-prompts.js"; path = "Resources/app-prompts.js"; sourceTree = "<group>"; };
+		275D767B308C17C6008B1FF0 /* timers.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = timers.js; path = Resources/timers.js; sourceTree = "<group>"; };
+		275D767C308C17C6008B1FF0 /* diagnostics.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = diagnostics.html; path = Resources/diagnostics.html; sourceTree = "<group>"; };
+		275D767D308C17C6008B1FF0 /* icons */ = {isa = PBXFileReference; lastKnownFileType = folder; name = icons; path = Resources/icons; sourceTree = "<group>"; };
+		275D767E308C17C6008B1FF0 /* manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = manifest.json; path = Resources/manifest.json; sourceTree = "<group>"; };
+		275D767F308C17C6008B1FF0 /* connection.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = connection.js; path = Resources/connection.js; sourceTree = "<group>"; };
+		275D7680308C17C6008B1FF0 /* guard.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = guard.js; path = Resources/guard.js; sourceTree = "<group>"; };
+		275D7681308C17C6008B1FF0 /* settings.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = settings.js; path = Resources/settings.js; sourceTree = "<group>"; };
+		275D7682308C17C6008B1FF0 /* privacy.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = privacy.html; path = Resources/privacy.html; sourceTree = "<group>"; };
+		CB467EC106B83CC1BC31697D /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = SOURCE_ROOT; };
+		000835AB59D8C4F44F946F65 /* messenger-background.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = "messenger-background.js"; path = "Resources/messenger-background.js"; sourceTree = "<group>"; };
+		E8AA9A9D88D193416768084D /* messenger-config.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = "messenger-config.js"; path = "Resources/messenger-config.js"; sourceTree = "<group>"; };
+		4DB665E818386D7F34FAA89F /* messenger-identity.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = "messenger-identity.js"; path = "Resources/messenger-identity.js"; sourceTree = "<group>"; };
+		CF42293FA1FE9D6CED8D7710 /* messenger-layout.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = "messenger-layout.js"; path = "Resources/messenger-layout.js"; sourceTree = "<group>"; };
+		0628296109DE2E420D7C72D7 /* messenger-popup.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = "messenger-popup.js"; path = "Resources/messenger-popup.js"; sourceTree = "<group>"; };
+		F71FC4EA6EF55FA79256B5E2 /* messenger.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; name = "messenger.css"; path = "Resources/messenger.css"; sourceTree = "<group>"; };
+		3E6A4D497239A84E3A3C1606 /* rules */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "rules"; path = "Resources/rules"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		275D7625308C17C6008B1FF0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		275D7637308C17C6008B1FF0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		275D7643308C17C6008B1FF0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		275D764D308C17C6008B1FF0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		275D7614308C17C3008B1FF0 = {
+			isa = PBXGroup;
+			children = (
+				275D7619308C17C4008B1FF0 /* Shared (App) */,
+				275D7622308C17C5008B1FF0 /* Shared (Extension) */,
+				275D762A308C17C6008B1FF0 /* iOS (App) */,
+				275D763B308C17C6008B1FF0 /* macOS (App) */,
+				275D764A308C17C6008B1FF0 /* iOS (Extension) */,
+				275D7654308C17C6008B1FF0 /* macOS (Extension) */,
+				275D7629308C17C6008B1FF0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		275D7619308C17C4008B1FF0 /* Shared (App) */ = {
+			isa = PBXGroup;
+			children = (
+				275D7620308C17C4008B1FF0 /* ViewController.swift */,
+				275D7621308C17C5008B1FF0 /* Assets.xcassets */,
+				275D761A308C17C4008B1FF0 /* Resources */,
+			);
+			path = "Shared (App)";
+			sourceTree = "<group>";
+		};
+		275D761A308C17C4008B1FF0 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				275D761B308C17C4008B1FF0 /* Main.html */,
+				275D761D308C17C4008B1FF0 /* Icon.png */,
+				275D761E308C17C4008B1FF0 /* Style.css */,
+				275D761F308C17C4008B1FF0 /* Script.js */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		275D7622308C17C5008B1FF0 /* Shared (Extension) */ = {
+			isa = PBXGroup;
+			children = (
+				275D7674308C17C6008B1FF0 /* Resources */,
+				275D7623308C17C5008B1FF0 /* SafariWebExtensionHandler.swift */,
+			);
+			path = "Shared (Extension)";
+			sourceTree = "<group>";
+		};
+		275D7629308C17C6008B1FF0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				275D7628308C17C6008B1FF0 /* Facefix.app */,
+				275D763A308C17C6008B1FF0 /* Facefix.app */,
+				275D7646308C17C6008B1FF0 /* Facefix Extension.appex */,
+				275D7650308C17C6008B1FF0 /* Facefix Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		275D762A308C17C6008B1FF0 /* iOS (App) */ = {
+			isa = PBXGroup;
+			children = (
+				275D762B308C17C6008B1FF0 /* AppDelegate.swift */,
+				275D762D308C17C6008B1FF0 /* SceneDelegate.swift */,
+				275D762F308C17C6008B1FF0 /* LaunchScreen.storyboard */,
+				275D7632308C17C6008B1FF0 /* Main.storyboard */,
+				275D7635308C17C6008B1FF0 /* Info.plist */,
+			);
+			path = "iOS (App)";
+			sourceTree = "<group>";
+		};
+		275D763B308C17C6008B1FF0 /* macOS (App) */ = {
+			isa = PBXGroup;
+			children = (
+				275D763C308C17C6008B1FF0 /* AppDelegate.swift */,
+				275D763E308C17C6008B1FF0 /* Main.storyboard */,
+				275D7641308C17C6008B1FF0 /* Info.plist */,
+			);
+			path = "macOS (App)";
+			sourceTree = "<group>";
+		};
+		275D764A308C17C6008B1FF0 /* iOS (Extension) */ = {
+			isa = PBXGroup;
+			children = (
+				275D764B308C17C6008B1FF0 /* Info.plist */,
+			);
+			path = "iOS (Extension)";
+			sourceTree = "<group>";
+		};
+		275D7654308C17C6008B1FF0 /* macOS (Extension) */ = {
+			isa = PBXGroup;
+			children = (
+				275D7655308C17C6008B1FF0 /* Info.plist */,
+			);
+			path = "macOS (Extension)";
+			sourceTree = "<group>";
+		};
+		275D7674308C17C6008B1FF0 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				275D7675308C17C6008B1FF0 /* diagnostics.js */,
+				275D7676308C17C6008B1FF0 /* diagnostics-view.js */,
+				275D7677308C17C6008B1FF0 /* popup.js */,
+				275D7678308C17C6008B1FF0 /* background.js */,
+				275D7679308C17C6008B1FF0 /* popup.html */,
+				275D767A308C17C6008B1FF0 /* app-prompts.js */,
+				275D767B308C17C6008B1FF0 /* timers.js */,
+				275D767C308C17C6008B1FF0 /* diagnostics.html */,
+				275D767D308C17C6008B1FF0 /* icons */,
+				275D767E308C17C6008B1FF0 /* manifest.json */,
+				275D767F308C17C6008B1FF0 /* connection.js */,
+				275D7680308C17C6008B1FF0 /* guard.js */,
+				275D7681308C17C6008B1FF0 /* settings.js */,
+				275D7682308C17C6008B1FF0 /* privacy.html */,
+				000835AB59D8C4F44F946F65 /* messenger-background.js */,
+				E8AA9A9D88D193416768084D /* messenger-config.js */,
+				4DB665E818386D7F34FAA89F /* messenger-identity.js */,
+				CF42293FA1FE9D6CED8D7710 /* messenger-layout.js */,
+				0628296109DE2E420D7C72D7 /* messenger-popup.js */,
+				F71FC4EA6EF55FA79256B5E2 /* messenger.css */,
+				3E6A4D497239A84E3A3C1606 /* rules */,
+			);
+			name = Resources;
+			path = "Shared (Extension)";
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		275D7627308C17C6008B1FF0 /* Facefix (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 275D766A308C17C6008B1FF0 /* Build configuration list for PBXNativeTarget "Facefix (iOS)" */;
+			buildPhases = (
+				275D7624308C17C6008B1FF0 /* Sources */,
+				275D7625308C17C6008B1FF0 /* Frameworks */,
+				275D7626308C17C6008B1FF0 /* Resources */,
+				275D7669308C17C6008B1FF0 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				275D7649308C17C6008B1FF0 /* PBXTargetDependency */,
+			);
+			name = "Facefix (iOS)";
+			packageProductDependencies = (
+			);
+			productName = "Facefix (iOS)";
+			productReference = 275D7628308C17C6008B1FF0 /* Facefix.app */;
+			productType = "com.apple.product-type.application";
+		};
+		275D7639308C17C6008B1FF0 /* Facefix (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 275D7671308C17C6008B1FF0 /* Build configuration list for PBXNativeTarget "Facefix (macOS)" */;
+			buildPhases = (
+				275D7636308C17C6008B1FF0 /* Sources */,
+				275D7637308C17C6008B1FF0 /* Frameworks */,
+				275D7638308C17C6008B1FF0 /* Resources */,
+				275D7670308C17C6008B1FF0 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				275D7653308C17C6008B1FF0 /* PBXTargetDependency */,
+			);
+			name = "Facefix (macOS)";
+			packageProductDependencies = (
+			);
+			productName = "Facefix (macOS)";
+			productReference = 275D763A308C17C6008B1FF0 /* Facefix.app */;
+			productType = "com.apple.product-type.application";
+		};
+		275D7645308C17C6008B1FF0 /* Facefix Extension (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 275D7666308C17C6008B1FF0 /* Build configuration list for PBXNativeTarget "Facefix Extension (iOS)" */;
+			buildPhases = (
+				275D7642308C17C6008B1FF0 /* Sources */,
+				275D7643308C17C6008B1FF0 /* Frameworks */,
+				275D7644308C17C6008B1FF0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Facefix Extension (iOS)";
+			packageProductDependencies = (
+			);
+			productName = "Facefix Extension (iOS)";
+			productReference = 275D7646308C17C6008B1FF0 /* Facefix Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		275D764F308C17C6008B1FF0 /* Facefix Extension (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 275D766D308C17C6008B1FF0 /* Build configuration list for PBXNativeTarget "Facefix Extension (macOS)" */;
+			buildPhases = (
+				275D764C308C17C6008B1FF0 /* Sources */,
+				275D764D308C17C6008B1FF0 /* Frameworks */,
+				275D764E308C17C6008B1FF0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Facefix Extension (macOS)";
+			packageProductDependencies = (
+			);
+			productName = "Facefix Extension (macOS)";
+			productReference = 275D7650308C17C6008B1FF0 /* Facefix Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		275D7615308C17C3008B1FF0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2630;
+				LastUpgradeCheck = 2630;
+				TargetAttributes = {
+					275D7627308C17C6008B1FF0 = {
+						CreatedOnToolsVersion = 26.3;
+					};
+					275D7639308C17C6008B1FF0 = {
+						CreatedOnToolsVersion = 26.3;
+					};
+					275D7645308C17C6008B1FF0 = {
+						CreatedOnToolsVersion = 26.3;
+					};
+					275D764F308C17C6008B1FF0 = {
+						CreatedOnToolsVersion = 26.3;
+					};
+				};
+			};
+			buildConfigurationList = 275D7618308C17C3008B1FF0 /* Build configuration list for PBXProject "Facefix" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 275D7614308C17C3008B1FF0;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 275D7629308C17C6008B1FF0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				275D7627308C17C6008B1FF0 /* Facefix (iOS) */,
+				275D7639308C17C6008B1FF0 /* Facefix (macOS) */,
+				275D7645308C17C6008B1FF0 /* Facefix Extension (iOS) */,
+				275D764F308C17C6008B1FF0 /* Facefix Extension (macOS) */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		275D7626308C17C6008B1FF0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6494A45D3818BCD36F8045C4 /* PrivacyInfo.xcprivacy in Resources */,
+				275D7658308C17C6008B1FF0 /* Icon.png in Resources */,
+				275D7631308C17C6008B1FF0 /* LaunchScreen.storyboard in Resources */,
+				275D7656308C17C6008B1FF0 /* Main.html in Resources */,
+				275D765C308C17C6008B1FF0 /* Script.js in Resources */,
+				275D7660308C17C6008B1FF0 /* Assets.xcassets in Resources */,
+				275D7634308C17C6008B1FF0 /* Main.storyboard in Resources */,
+				275D765A308C17C6008B1FF0 /* Style.css in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		275D7638308C17C6008B1FF0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5FF8AC50C9FE58E211BB7F14 /* PrivacyInfo.xcprivacy in Resources */,
+				275D7659308C17C6008B1FF0 /* Icon.png in Resources */,
+				275D765B308C17C6008B1FF0 /* Style.css in Resources */,
+				275D7640308C17C6008B1FF0 /* Main.storyboard in Resources */,
+				275D765D308C17C6008B1FF0 /* Script.js in Resources */,
+				275D7661308C17C6008B1FF0 /* Assets.xcassets in Resources */,
+				275D7657308C17C6008B1FF0 /* Main.html in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		275D7644308C17C6008B1FF0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B07875D267A0A3966A87470 /* PrivacyInfo.xcprivacy in Resources */,
+				275D7694308C17C6008B1FF0 /* background.js in Resources */,
+				275D7695308C17C6008B1FF0 /* popup.html in Resources */,
+				275D769A308C17C6008B1FF0 /* manifest.json in Resources */,
+				275D7697308C17C6008B1FF0 /* timers.js in Resources */,
+				275D7699308C17C6008B1FF0 /* icons in Resources */,
+				275D769B308C17C6008B1FF0 /* connection.js in Resources */,
+				275D7698308C17C6008B1FF0 /* diagnostics.html in Resources */,
+				275D7696308C17C6008B1FF0 /* app-prompts.js in Resources */,
+				275D7692308C17C6008B1FF0 /* diagnostics-view.js in Resources */,
+				275D7693308C17C6008B1FF0 /* popup.js in Resources */,
+				275D769C308C17C6008B1FF0 /* guard.js in Resources */,
+				275D769E308C17C6008B1FF0 /* privacy.html in Resources */,
+				275D7691308C17C6008B1FF0 /* diagnostics.js in Resources */,
+				275D769D308C17C6008B1FF0 /* settings.js in Resources */,
+				2FFAE86D7A8037AF4A87B5B2 /* messenger-background.js in Resources */,
+				8858D68C1E5A69376A29977C /* messenger-config.js in Resources */,
+				1DECDCB821E1C16FC274A637 /* messenger-identity.js in Resources */,
+				16D962341942D1AD42E666F3 /* messenger-layout.js in Resources */,
+				DA40E86BCE5413CA86909E40 /* messenger-popup.js in Resources */,
+				66F9B31CC275D9EF3C8EA384 /* messenger.css in Resources */,
+				F4CA9D42A7BD39273E085E3D /* rules in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		275D764E308C17C6008B1FF0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				069804E7F097F12D20EF1909 /* PrivacyInfo.xcprivacy in Resources */,
+				275D7686308C17C6008B1FF0 /* background.js in Resources */,
+				275D7687308C17C6008B1FF0 /* popup.html in Resources */,
+				275D768C308C17C6008B1FF0 /* manifest.json in Resources */,
+				275D7689308C17C6008B1FF0 /* timers.js in Resources */,
+				275D768B308C17C6008B1FF0 /* icons in Resources */,
+				275D768D308C17C6008B1FF0 /* connection.js in Resources */,
+				275D768A308C17C6008B1FF0 /* diagnostics.html in Resources */,
+				275D7688308C17C6008B1FF0 /* app-prompts.js in Resources */,
+				275D7684308C17C6008B1FF0 /* diagnostics-view.js in Resources */,
+				275D7685308C17C6008B1FF0 /* popup.js in Resources */,
+				275D768E308C17C6008B1FF0 /* guard.js in Resources */,
+				275D7690308C17C6008B1FF0 /* privacy.html in Resources */,
+				275D7683308C17C6008B1FF0 /* diagnostics.js in Resources */,
+				275D768F308C17C6008B1FF0 /* settings.js in Resources */,
+				9B25C165B43E6DA9DCB96F18 /* messenger-background.js in Resources */,
+				899260C288650F0B4ADDC5AF /* messenger-config.js in Resources */,
+				DDF00B9F4D9E0FEB0A5F01CA /* messenger-identity.js in Resources */,
+				0C82C200661FF71CB84FCAA9 /* messenger-layout.js in Resources */,
+				DFA24D57645E15B8E6528046 /* messenger-popup.js in Resources */,
+				235185E122590ED3C0FFDA6F /* messenger.css in Resources */,
+				803566388AE69A8FADE82803 /* rules in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		275D7624308C17C6008B1FF0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				275D765E308C17C6008B1FF0 /* ViewController.swift in Sources */,
+				275D762C308C17C6008B1FF0 /* AppDelegate.swift in Sources */,
+				275D762E308C17C6008B1FF0 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		275D7636308C17C6008B1FF0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				275D765F308C17C6008B1FF0 /* ViewController.swift in Sources */,
+				275D763D308C17C6008B1FF0 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		275D7642308C17C6008B1FF0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				275D7662308C17C6008B1FF0 /* SafariWebExtensionHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		275D764C308C17C6008B1FF0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				275D7663308C17C6008B1FF0 /* SafariWebExtensionHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		275D7649308C17C6008B1FF0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 275D7645308C17C6008B1FF0 /* Facefix Extension (iOS) */;
+			targetProxy = 275D7648308C17C6008B1FF0 /* PBXContainerItemProxy */;
+		};
+		275D7653308C17C6008B1FF0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 275D764F308C17C6008B1FF0 /* Facefix Extension (macOS) */;
+			targetProxy = 275D7652308C17C6008B1FF0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		275D761B308C17C4008B1FF0 /* Main.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				275D761C308C17C4008B1FF0 /* Base */,
+			);
+			name = Main.html;
+			sourceTree = "<group>";
+		};
+		275D762F308C17C6008B1FF0 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				275D7630308C17C6008B1FF0 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		275D7632308C17C6008B1FF0 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				275D7633308C17C6008B1FF0 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		275D763E308C17C6008B1FF0 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				275D763F308C17C6008B1FF0 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		275D7664308C17C6008B1FF0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		275D7665308C17C6008B1FF0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		275D7667308C17C6008B1FF0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TF2BG2VDPD;
+				CURRENT_PROJECT_VERSION = 5;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Facefix Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.6.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = co.staytech.facefix.safari.Extension;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				PRODUCT_NAME = "Facefix Extension";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		275D7668308C17C6008B1FF0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TF2BG2VDPD;
+				CURRENT_PROJECT_VERSION = 5;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Facefix Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.6.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = co.staytech.facefix.safari.Extension;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				PRODUCT_NAME = "Facefix Extension";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		275D766B308C17C6008B1FF0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TF2BG2VDPD;
+				CURRENT_PROJECT_VERSION = 5;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Facefix;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.6.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = co.staytech.facefix.safari;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				PRODUCT_NAME = Facefix;
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		275D766C308C17C6008B1FF0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TF2BG2VDPD;
+				CURRENT_PROJECT_VERSION = 5;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Facefix;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.6.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = co.staytech.facefix.safari;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				PRODUCT_NAME = Facefix;
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		275D766E308C17C6008B1FF0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TF2BG2VDPD;
+				CURRENT_PROJECT_VERSION = 5;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Facefix Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.6.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = co.staytech.facefix.safari.Extension;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				PRODUCT_NAME = "Facefix Extension";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		275D766F308C17C6008B1FF0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TF2BG2VDPD;
+				CURRENT_PROJECT_VERSION = 5;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Facefix Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.6.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = co.staytech.facefix.safari.Extension;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				PRODUCT_NAME = "Facefix Extension";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		275D7672308C17C6008B1FF0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TF2BG2VDPD;
+				CURRENT_PROJECT_VERSION = 5;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Facefix;
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.6.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = co.staytech.facefix.safari;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				PRODUCT_NAME = Facefix;
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		275D7673308C17C6008B1FF0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TF2BG2VDPD;
+				CURRENT_PROJECT_VERSION = 5;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Facefix;
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.6.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = co.staytech.facefix.safari;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				PRODUCT_NAME = Facefix;
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		275D7618308C17C3008B1FF0 /* Build configuration list for PBXProject "Facefix" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				275D7664308C17C6008B1FF0 /* Debug */,
+				275D7665308C17C6008B1FF0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		275D7666308C17C6008B1FF0 /* Build configuration list for PBXNativeTarget "Facefix Extension (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				275D7667308C17C6008B1FF0 /* Debug */,
+				275D7668308C17C6008B1FF0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		275D766A308C17C6008B1FF0 /* Build configuration list for PBXNativeTarget "Facefix (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				275D766B308C17C6008B1FF0 /* Debug */,
+				275D766C308C17C6008B1FF0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		275D766D308C17C6008B1FF0 /* Build configuration list for PBXNativeTarget "Facefix Extension (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				275D766E308C17C6008B1FF0 /* Debug */,
+				275D766F308C17C6008B1FF0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		275D7671308C17C6008B1FF0 /* Build configuration list for PBXNativeTarget "Facefix (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				275D7672308C17C6008B1FF0 /* Debug */,
+				275D7673308C17C6008B1FF0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 275D7615308C17C3008B1FF0 /* Project object */;
+}

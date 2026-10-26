@@ -11,11 +11,11 @@ function signal() {
   const listeners = [];
   return {listeners, addListener: fn => listeners.push(fn)};
 }
-function harness() {
+function harness({memorySupported = true} = {}) {
   const data = {};
   const changed = signal();
   const updates = [];
-  const tabs = [{id:1, url:'https://www.facebook.com/groups/test/'}, {id:2, url:'https://example.org/'}];
+  const tabs = [{id:1, url:'https://www.facebook.com/groups/test/', ...(memorySupported ? {autoDiscardable:true} : {})}, {id:2, url:'https://example.org/'}];
   const base = {
     storage: {
       local: {
@@ -151,6 +151,20 @@ test('tab memory protection is scoped to Facebook and follows the setting', asyn
   await h.base.storage.local.set({enabled:false});
   for (let i = 0; i < 5; i++) await settle();
   assert.deepEqual(h.updates.at(-1), {id:1, autoDiscardable:true});
+});
+
+test('Safari without autoDiscardable keeps messaging and settings without unsupported tab writes', async () => {
+  const h = harness({memorySupported:false});
+  h.base.tabs.update = async () => { throw new Error('unsupported API must not be called'); };
+  for (const fn of h.base.tabs.onUpdated.listeners) fn(1, {status:'loading'}, h.sender.tab);
+  for (const fn of h.base.runtime.onInstalled.listeners) await fn();
+  await h.base.storage.local.set({enabled:false});
+  await h.base.storage.local.set({enabled:true});
+  for (let i = 0; i < 8; i++) await settle();
+  assert.deepEqual(h.updates, []);
+  await h.send({type:'facefix-count',kind:'returnEvents'}, h.sender);
+  assert.equal(h.data.counters.returnEvents, 1);
+  assert.equal(h.data.diagnostics, undefined, 'unsupported capability is not reported as a failure');
 });
 
 module.exports={harness,settle};
