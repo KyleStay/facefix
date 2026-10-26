@@ -60,6 +60,25 @@ runner with `xcodegen generate --spec tests/iOS/project.yml`, then run
 `xcodebuild -project tests/iOS/FacefixQA.xcodeproj -scheme FacefixQA -destination
 'platform=iOS Simulator,id=<owned-UDID>' -derivedDataPath build/Facefix-QA test`.
 It enables Facefix through Safari's normal controls, grants access only to the
-current website, checks successful setup, reloads, and checks page-visible
+current website, checks successful setup, opens Messages, and checks page-visible
 identity. It does not log in or send messages. Use a dedicated unsigned-in
 simulator; this test changes its Safari extension permission.
+
+## October 26 candidate result
+
+Version1.6.0/build5 passed the native Safari smoke test on the dedicated iPhone17
+Pro simulator with iOS26.2 (UDID685B8E70-31F2-4288-9DBF-22B70DF44E8B).
+Setup succeeded, Open Messages reached Facebook’s desktop login page, and Check
+This Tab reported desktop identity on the real `login.php?next=…/messages/`
+redirect. One XCTest passed with zero failures. The task-local receipt is
+`artifacts/landing-20261026/safari-qa-loginphp.xcresult` and its adjacent log.
+Qorvex’s agent port was occupied by another project; background XCTest was used
+without interrupting that session or the user’s desktop.
+
+Local CI passed43 Node and15 Python tests. Eight disposable Chromium extension
+scenarios passed, with no runtime exceptions and zero remaining browser PIDs or
+profile directories. All58 generated request rules translated without errors
+using the installed WebKit compiler. iOS Simulator and unsigned macOS builds
+passed. This does not establish signed-in message delivery, attachments,
+encrypted-history recovery, the exact production app bar, or Mac Safari runtime.
+No beta/store build was uploaded.

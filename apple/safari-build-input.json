@@ -18,7 +18,7 @@
   ],
   "version": "1.6.0",
   "runtime_resources_unchanged": true,
-  "runtime_validation": "unrun for this candidate",
+  "runtime_validation": "iPhone 17 Pro simulator, iOS 26.2: Safari extension setup, Open Messages, website-only access and desktop page identity on the messaging login.php redirect passed on 2026-10-26. Signed-in messaging and production app-promotion markup remain unrun.",
   "resource_sha256": {
     "app-prompts.js": "b519e01cb3edd1ea822b44776e0c9b7c77996015c29553f62f3c27ea44ddcc48",
     "background.js": "926df4909ef23d13048b0625fd11051ff46d510ebd432f496c5aa200f0fe24d7",
