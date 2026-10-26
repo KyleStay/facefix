@@ -12,19 +12,22 @@ final class FacefixUITests: XCTestCase {
         if safari.buttons["Close"].exists { safari.buttons["Close"].tap() }
         let menu = safari.buttons["PageFormatMenuButton"]
         XCTAssertTrue(menu.waitForExistence(timeout: 15), safari.debugDescription)
-        menu.tap()
-        if safari.buttons["NotNowButton"].exists { safari.buttons["NotNowButton"].tap() }
-        let manage = safari.staticTexts["Manage Extensions"]
-        XCTAssertTrue(manage.waitForExistence(timeout: 5), safari.debugDescription)
-        manage.tap()
-        let toggle = safari.switches["Facefix"]
+        let extensionName = "Facefix — Keep My Place"
+        let toggle = safari.switches[extensionName]
+        if !toggle.exists {
+            menu.tap()
+            if safari.buttons["NotNowButton"].exists { safari.buttons["NotNowButton"].tap() }
+            let manage = safari.staticTexts["Manage Extensions"]
+            XCTAssertTrue(manage.waitForExistence(timeout: 5), safari.debugDescription)
+            manage.tap()
+        }
         XCTAssertTrue(toggle.waitForExistence(timeout: 5), safari.debugDescription)
         if toggle.value as? String == "0" { toggle.tap() }
         safari.buttons["Done"].tap()
         safari.terminate()
         safari.launch()
         menu.tap()
-        let entry = safari.staticTexts["Facefix"].firstMatch
+        let entry = safari.staticTexts[extensionName].firstMatch
         XCTAssertTrue(entry.waitForExistence(timeout: 10), safari.debugDescription)
         entry.tap()
         let allow = safari.buttons.matching(NSPredicate(format: "label CONTAINS[c] %@", "Always Allow")).firstMatch

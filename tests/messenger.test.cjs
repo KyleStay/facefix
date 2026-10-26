@@ -52,6 +52,12 @@ test('the registered MAIN script is self-contained and exposes no shared configu
 });
 
 const rules = JSON.parse(read('rules/messenger.json'));
+test('Safari request patterns avoid unsupported alternatives and noncapturing groups', () => {
+  for (const rule of rules) {
+    assert.ok(!rule.condition.regexFilter.includes('|'));
+    assert.ok(!rule.condition.regexFilter.includes('(?:'));
+  }
+});
 function redirect(url) {
   for (const rule of rules.filter(rule=>rule.action.type==='redirect')) {
     const pattern = new RegExp(rule.condition.regexFilter);
@@ -61,6 +67,8 @@ function redirect(url) {
 }
 test('request rules preserve thread links and never redirect login/security or lookalike origins', () => {
   assert.equal(redirect('https://messenger.com/'),'https://www.facebook.com/messages/');
+  assert.equal(redirect('https://m.messenger.com/?ref=test'),'https://www.facebook.com/messages/?ref=test');
+  assert.equal(redirect('https://mbasic.facebook.com/messages?ref=test'),'https://www.facebook.com/messages?ref=test');
   assert.equal(redirect('https://www.messenger.com/e2ee/t/123?ref=test'),'https://www.facebook.com/messages/e2ee/t/123?ref=test');
   assert.equal(redirect('https://m.facebook.com/messages/t/123'),'https://www.facebook.com/messages/t/123');
   for (const url of ['https://www.facebook.com/login/?next=/messages/','https://m.facebook.com/checkpoint/',

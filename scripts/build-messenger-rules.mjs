@@ -6,24 +6,38 @@ const configSource = await readFile(new URL('messenger-config.js', root), 'utf8'
 vm.runInContext(configSource, context);
 const config = context.FacefixMessenger;
 const escape = value => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-const facebook = config.sites.filter(site => site.includes('facebook.com')).map(site => escape(new URL(site).hostname)).join('|');
-const messenger = config.sites.filter(site => site.includes('messenger.com')).map(site => escape(new URL(site).hostname)).join('|');
+const facebook = config.sites.filter(site => site.includes('facebook.com')).map(site => new URL(site).hostname);
+const messenger = config.sites.filter(site => site.includes('messenger.com')).map(site => new URL(site).hostname);
 const headers = [{header: 'User-Agent', operation: 'set', value: config.userAgent}];
-const rules = [
-  {id: 1, priority: 1, action: {type: 'modifyHeaders', requestHeaders: headers}, condition: {
-    regexFilter: `^https://(${facebook})/(messages|login|checkpoint)([/?#].*|$)`,
-    resourceTypes: ['main_frame', 'sub_frame', 'xmlhttprequest']
-  }},
-  {id: 2, priority: 1, action: {type: 'modifyHeaders', requestHeaders: headers}, condition: {
-    regexFilter: `^https://(${messenger})/`, resourceTypes: ['main_frame', 'sub_frame', 'xmlhttprequest']
-  }},
-  {id: 3, priority: 2, action: {type: 'redirect', redirect: {regexSubstitution: 'https://www.facebook.com/messages/\\2\\3'}}, condition: {
-    regexFilter: '^https://(www\\.|m\\.)?messenger\\.com/((?:e2ee/)?t/[^?#]*)?([?#].*)?$', resourceTypes: ['main_frame']
-  }},
-  {id: 4, priority: 2, action: {type: 'redirect', redirect: {regexSubstitution: 'https://www.facebook.com/messages\\2'}}, condition: {
-    regexFilter: '^https://(m|mbasic|web)\\.facebook\\.com/messages([/?#].*|$)', resourceTypes: ['main_frame']
-  }}
-];
+const rules = [];
+const add = (action, regexFilter, resourceTypes, priority = 1) => rules.push({
+  id: rules.length + 1, priority, action, condition: {regexFilter, resourceTypes}
+});
+// Safari's content-rule compiler rejects regex alternatives and noncapturing
+// groups. Separate hosts, routes and end boundaries instead of broadening scope.
+for (const host of facebook) {
+  for (const route of ['messages', 'login', 'checkpoint']) {
+    for (const end of ['$', '[/?#]']) {
+      add({type: 'modifyHeaders', requestHeaders: headers}, `^https://${escape(host)}/${route}${end}`,
+        ['main_frame', 'sub_frame', 'xmlhttprequest']);
+    }
+  }
+}
+for (const host of messenger) {
+  const prefix = `^https://${escape(host)}/`;
+  add({type: 'modifyHeaders', requestHeaders: headers}, prefix, ['main_frame', 'sub_frame', 'xmlhttprequest']);
+  add({type: 'redirect', redirect: {regexSubstitution: 'https://www.facebook.com/messages/\\1'}},
+    prefix + '([?#].*)?$', ['main_frame'], 2);
+  for (const route of ['t/', 'e2ee/t/']) {
+    add({type: 'redirect', redirect: {regexSubstitution: 'https://www.facebook.com/messages/\\1\\2'}},
+      prefix + `(${route}[^?#]*)([?#].*)?$`, ['main_frame'], 2);
+  }
+}
+for (const host of ['m.facebook.com', 'mbasic.facebook.com', 'web.facebook.com']) {
+  const prefix = `^https://${escape(host)}/messages`;
+  add({type: 'redirect', redirect: {regexSubstitution: 'https://www.facebook.com/messages'}}, prefix + '$', ['main_frame'], 2);
+  add({type: 'redirect', redirect: {regexSubstitution: 'https://www.facebook.com/messages\\1'}}, prefix + '([/?#].*)$', ['main_frame'], 2);
+}
 // One self-contained MAIN file avoids cross-world shared-file execution quirks
 // and keeps its configuration private to the browser-identity getters.
 const template = await readFile(new URL('scripts/messenger-identity-template.js', root), 'utf8');

@@ -20,7 +20,7 @@
   "runtime_resources_unchanged": true,
   "runtime_validation": "unrun for this candidate",
   "resource_sha256": {
-    "app-prompts.js": "5f7d017fa8d154fc90cf8316ad8a6c15fa25005cbf19322ba97a299008192630",
+    "app-prompts.js": "b519e01cb3edd1ea822b44776e0c9b7c77996015c29553f62f3c27ea44ddcc48",
     "background.js": "926df4909ef23d13048b0625fd11051ff46d510ebd432f496c5aa200f0fe24d7",
     "connection.js": "3eaae89da240c2cb9503ba028f73d3de509ec110326119a2d6a4e31331a5469c",
     "diagnostics-view.js": "d07e42379439ba743c9b55750e8067413f4b2535f5b0e2a113e63b8252cd34f4",
@@ -41,7 +41,7 @@
     "popup.html": "ea461d045249f6cbf87f5b47e04dae44770c88bd41a7a0ad3d827121ef296646",
     "popup.js": "28af75417afb524eba2513949573912c8f35f4e9926f8f457b3a8a1f638d2468",
     "privacy.html": "da0ac7d14b4a391b602e618aa5cf05dd9e41ff03e92b4a358f4d143a957f52d4",
-    "rules/messenger.json": "69a96b7c46fea5e934d5f189cd24a7c049b043499af5969158ebf43a4bc2e6bf",
+    "rules/messenger.json": "708ef1c61a46c435c9a3aad238829969181515a37caa2ad16330c41ad63d9dae",
     "settings.js": "4678e44e39c36cc279dbd347a4fd966bdd66c373e76a2c0c31469e26e55164e4",
     "timers.js": "839c955c6367431b7fc917bd410a9c63a087c8a47deae9d1a2602cae988bfaa6"
   },

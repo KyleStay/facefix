@@ -100,7 +100,7 @@
   const observer = new MutationObserver(schedule);
   const observe = () => {
     if (enabled && active) observer.observe(document, {subtree: true, childList: true, characterData: true,
-      attributes: true, attributeFilter: ['href', 'aria-label', 'role', 'data-pagelet', 'class', 'style']});
+      attributes: true, attributeFilter: ['href', 'aria-label', 'role', 'data-pagelet', 'contenteditable', 'class', 'style']});
   };
   function configure(value) {
     enabled = value !== false;

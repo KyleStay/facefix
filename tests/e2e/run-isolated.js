@@ -156,7 +156,11 @@ async function run() {
     assert.notEqual(await browser.evaluate(page,'getComputedStyle(document.querySelector("#extra-home")).display'),'none');
     await browser.evaluate(page,'document.querySelector("#extra-home").remove()');
     await wait(page,'getComputedStyle(document.querySelector("#promotion-shell")).display === "none"');
-    results.push('Recycled promotion wrappers restore as soon as real navigation appears');
+    await browser.evaluate(page,'document.querySelector("#promotion").setAttribute("contenteditable","true")');
+    await wait(page,'getComputedStyle(document.querySelector("#promotion-shell")).display !== "none"');
+    await browser.evaluate(page,'document.querySelector("#promotion").removeAttribute("contenteditable")');
+    await wait(page,'getComputedStyle(document.querySelector("#promotion-shell")).display === "none"');
+    results.push('Recycled promotion wrappers restore for real navigation and attribute-only editable transitions');
 
     await browser.evaluate(page, `window.dispatchEvent(new PageTransitionEvent('pagehide',{persisted:true}));window.dispatchEvent(new PageTransitionEvent('pageshow',{persisted:true}));`);
     await wait(page,'document.querySelector("[data-facefix-thread]")');

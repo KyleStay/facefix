@@ -51,3 +51,15 @@ On Safari18+ (iPhone/iPadOS18+, or macOS13+ with Safari18+):
 No account message is sent automatically by the extension or these local tests.
 Existing beta upload/processing records remain historical; a future TestFlight
 request must verify them before considering any additional upload.
+
+## Repeatable simulator smoke test
+
+Install the app on a dedicated simulator and open
+`https://www.facebook.com/messages/` with `xcrun simctl openurl`. Generate the
+runner with `xcodegen generate --spec tests/iOS/project.yml`, then run
+`xcodebuild -project tests/iOS/FacefixQA.xcodeproj -scheme FacefixQA -destination
+'platform=iOS Simulator,id=<owned-UDID>' -derivedDataPath build/Facefix-QA test`.
+It enables Facefix through Safari's normal controls, grants access only to the
+current website, checks successful setup, reloads, and checks page-visible
+identity. It does not log in or send messages. Use a dedicated unsigned-in
+simulator; this test changes its Safari extension permission.
