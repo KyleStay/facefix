@@ -78,6 +78,10 @@ test('request rules preserve thread links and never redirect login/security or l
   assert.equal(redirect('https://mbasic.facebook.com/messages?ref=test'),'https://www.facebook.com/messages?ref=test');
   assert.equal(redirect('https://www.messenger.com/e2ee/t/123?ref=test'),'https://www.facebook.com/messages/e2ee/t/123?ref=test');
   assert.equal(redirect('https://m.facebook.com/messages/t/123'),'https://www.facebook.com/messages/t/123');
+  for (const host of ['m.facebook.com','www.facebook.com','facebook.com']) {
+    assert.equal(redirect(`https://${host}/messages.php?folder=inbox`),'https://www.facebook.com/messages/?folder=inbox');
+    assert.equal(redirect(`https://${host}/messenger/t/123?ref=nav`),'https://www.facebook.com/messages/t/123?ref=nav');
+  }
   for (const url of ['https://www.facebook.com/login/?next=/messages/','https://m.facebook.com/checkpoint/',
     'https://www.messenger.com/login/','https://m.facebook.com/messages-bogus','https://messenger.com.attacker.test/t/123']) assert.equal(redirect(url),url);
   const headers = rules.filter(rule=>rule.action.type==='modifyHeaders');
@@ -85,6 +89,41 @@ test('request rules preserve thread links and never redirect login/security or l
     'https://www.facebook.com.attacker.test/messages/']) assert.ok(!headers.some(rule=>new RegExp(rule.condition.regexFilter).test(url)),url);
   assert.ok(headers.some(rule=>new RegExp(rule.condition.regexFilter).test('https://www.facebook.com/messages/t/123')));
   assert.ok(headers.every(rule=>rule.action.requestHeaders[0].value===configured().FacefixMessenger.userAgent));
+});
+
+test('mobile message links canonicalize exact trusted origins and retain thread/query/fragment', () => {
+  const config=configured().FacefixMessenger;
+  for (const [input,expected] of [
+    ['https://m.facebook.com/messages/t/123?ref=nav#last','https://www.facebook.com/messages/t/123?ref=nav#last'],
+    ['https://www.facebook.com/messages.php?folder=inbox','https://www.facebook.com/messages?folder=inbox'],
+    ['https://messenger.com/e2ee/t/123?ref=nav','https://www.facebook.com/messages/e2ee/t/123?ref=nav']
+  ]) assert.equal(config.canonicalMessagesURL(input),expected);
+  for (const url of ['https://m.facebook.com/','https://m.facebook.com/login.php?next=/messages/',
+    'https://www.facebook.com/messages-bogus','https://messenger.com/login/',
+    'https://attacker.test/messages/','https://messenger.com.attacker.test/t/123']) assert.equal(config.canonicalMessagesURL(url),null);
+});
+
+test('Open Messages requests both Facebook host forms during the click gesture before navigation', async () => {
+  let granted=false;
+  const calls=[], handlers={};
+  const nodes=new Map();
+  for(const id of ['#messenger','#messenger-status','#open-messages','#reload-messages','#check-messages']) {
+    nodes.set(id,{addEventListener(type,fn){handlers[id]=fn;}});
+  }
+  const context=configured({window:{close(){}},document:{querySelector:id=>nodes.get(id)},chrome:{
+    runtime:{getManifest:()=>({declarative_net_request:{}}),async sendMessage(){calls.push('setup');return {ok:true,enabled:true};}},
+    permissions:{async request(value){calls.push(plain(value));return granted;}},
+    storage:{onChanged:{addListener(){}}},tabs:{async query(){calls.push('query');return [{id:1,url:'https://m.facebook.com/'}];},async update(id,value){calls.push(value.url);}}
+  }});
+  vm.runInContext(read('messenger-popup.js'),context);
+  await settle();calls.length=0;
+  await handlers['#open-messages']();
+  assert.deepEqual(calls,[{origins:['https://facebook.com/*','https://*.facebook.com/*']}]);
+  assert.match(nodes.get('#messenger-status').textContent,/Allow Facefix/);
+  assert.equal(nodes.get('#open-messages').disabled,false,'denial can be retried');
+  granted=true;calls.length=0;
+  await handlers['#open-messages']();
+  assert.deepEqual(calls,[{origins:['https://facebook.com/*','https://*.facebook.com/*']},'setup','query','https://www.facebook.com/messages/']);
 });
 
 async function worker({stored = true, registered = [], rulesEnabled = true} = {}) {

@@ -7,9 +7,9 @@ remove dedicated website app-promotion bars, and use Messenger in Safari on
 an iPhone. This repository is the ongoing home for the Messenger prototype and
 Facefix's existing Chrome and Safari work.
 
-The local source candidate is **1.6.0**. This landing does not publish a new
-Chrome/App Store release or upload another TestFlight build. Existing product
-identities are retained.
+The local source candidate is **1.6.1**, native build7. Version1.6.0 is available
+in the existing TestFlight group; this candidate has not been uploaded. Existing
+product identities are retained.
 
 ## Install in Safari on iPhone
 
@@ -20,7 +20,8 @@ identities are retained.
    **facebook.com**. For an old Messenger link, allow **messenger.com** too.
 4. Open `https://www.facebook.com/messages/` in Safari. In Safari's page menu,
    open Facefix; if prompted choose **Always Allow… → Always Allow on This
-   Website**. Choose **Open Messages** and sign in directly on Facebook.
+   Website**. Choose **Open Messages**, allow Facebook websites when prompted
+   (including both mobile and desktop subdomains), and sign in directly on Facebook.
 5. Reload after granting access. If necessary, use Safari's **Request Desktop
    Website**. Encrypted history may require your Messenger PIN.
 

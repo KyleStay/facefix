@@ -168,6 +168,33 @@ async function run() {
     await wait(page,'getComputedStyle(document.querySelector("#second-promotion")).display === "none"');
     results.push('Forwarded BFCache lifecycle reconnects observers despite the main page guard');
 
+    // A viewport-sized app shell owns the scrolling feed and an ordinary flex
+    // footer. Neither the footer nor its delegated CTA is fixed or a button.
+    await browser.evaluate(page, `const shell=document.createElement('section');shell.id='mobile-shell';shell.style.cssText='position:fixed;inset:0;display:flex;flex-direction:column';shell.innerHTML='<main style="flex:1">Feed remains visible</main><nav id="flex-promotion" style="height:72px;flex-shrink:0;padding:8px;box-sizing:border-box"><div><div><div><div><div><div><span>Open app</span></div></div></div></div></div></div></nav>';document.body.append(shell)`);
+    await wait(page,'getComputedStyle(document.querySelector("#flex-promotion")).display === "none"');
+    assert.notEqual(await browser.evaluate(page,'getComputedStyle(document.querySelector("#mobile-shell")).display'),'none');
+    await browser.evaluate(popup,'chrome.storage.local.set({enabled:false})');
+    await wait(page,'getComputedStyle(document.querySelector("#flex-promotion")).display !== "none"');
+    await browser.evaluate(popup,'chrome.storage.local.set({enabled:true})');
+    await wait(page,'getComputedStyle(document.querySelector("#flex-promotion")).display === "none"');
+    await browser.evaluate(page,`document.querySelector('#flex-promotion').insertAdjacentHTML('beforeend','<a href="/">Home</a>')`);
+    await wait(page,'getComputedStyle(document.querySelector("#flex-promotion")).display !== "none"');
+    await browser.evaluate(page,'document.querySelector("#mobile-shell").remove()');
+    await browser.evaluate(page,`const button=document.createElement('button');button.id='standalone-app';button.textContent='Open app';button.style.cssText='position:fixed;bottom:0;width:100%;height:50px';document.body.append(button)`);
+    await wait(page,'getComputedStyle(document.querySelector("#standalone-app")).display === "none"');
+    await browser.evaluate(page,'document.querySelector("#standalone-app").remove()');
+    results.push('Mobile flex footer and deeply nested plain-text CTA disappear; real navigation and pause restore the footer');
+
+    await browser.evaluate(page,'history.pushState({}, "", "/groups/fixture")');
+    await wait(page,'!document.documentElement.classList.contains("facefix-messenger")');
+    await browser.evaluate(page,`const link=document.createElement('a');link.id='mobile-messages';link.href='https://m.facebook.com/messages.php?ref=mobile-nav';link.textContent='Messages';document.body.append(link);link.click()`);
+    await wait(page,'location.href === "https://www.facebook.com/messages?ref=mobile-nav" && navigator.platform === "MacIntel"');
+    results.push('Entering Messages from the mobile feed makes a desktop document navigation instead of reusing mobile SPA state');
+
+    await browser.send('Page.navigate', {url:'https://m.facebook.com/messages.php?folder=inbox'}, page);
+    await wait(page,'location.href === "https://www.facebook.com/messages/?folder=inbox" && navigator.platform === "MacIntel"');
+    results.push('Legacy mobile inbox navigation is redirected to desktop Messages before loading');
+
     await browser.send('Emulation.setDeviceMetricsOverride', {width:980,height:844,deviceScaleFactor:1,mobile:false,screenWidth:980,screenHeight:844}, page);
     await wait(page,'!document.documentElement.classList.contains("facefix-messenger")');
     assert.notEqual(await browser.evaluate(page,'getComputedStyle(document.querySelector("#sidebar")).display'),'none');

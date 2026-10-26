@@ -1,4 +1,5 @@
-// Isolated world: reversible phone layout only. Never reads or changes drafts.
+// Isolated world: desktop message navigation and reversible phone layout.
+// Never reads or changes drafts.
 (() => {
   const config = FacefixMessenger;
   let enabled = false;
@@ -17,6 +18,21 @@
   chats.href = config.home;
   chats.setAttribute('aria-label', 'Back to chats');
   chats.hidden = true;
+
+  document.addEventListener('click', event => {
+    if (!enabled || !active || event.defaultPrevented || event.button !== 0 ||
+        event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || screen.width > 700) return;
+    const link = event.target.closest?.('a[href]');
+    if (!link || link.hasAttribute('download') || (link.target && link.target !== '_self') ||
+        link.closest('form, dialog, [contenteditable], [role~="textbox"]')) return;
+    const target = config.canonicalMessagesURL(link.href);
+    if (!target || (target === link.href && config.isMessages(location.href))) return;
+    // Entering Messages must make a document request with the desktop header;
+    // Facebook's mobile SPA otherwise keeps its app-only landing screen.
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    location.assign(target);
+  }, true);
 
   function clearMarks() {
     for (const {node, name, previous} of marks.splice(0)) {

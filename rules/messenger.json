@@ -57,7 +57,7 @@
       ]
     },
     "condition": {
-      "regexFilter": "^https://facebook\\.com/login$",
+      "regexFilter": "^https://facebook\\.com/messages\\.php$",
       "resourceTypes": [
         "main_frame",
         "sub_frame",
@@ -79,7 +79,7 @@
       ]
     },
     "condition": {
-      "regexFilter": "^https://facebook\\.com/login[/?#]",
+      "regexFilter": "^https://facebook\\.com/messages\\.php[/?#]",
       "resourceTypes": [
         "main_frame",
         "sub_frame",
@@ -101,7 +101,7 @@
       ]
     },
     "condition": {
-      "regexFilter": "^https://facebook\\.com/login\\.php$",
+      "regexFilter": "^https://facebook\\.com/messenger$",
       "resourceTypes": [
         "main_frame",
         "sub_frame",
@@ -123,7 +123,7 @@
       ]
     },
     "condition": {
-      "regexFilter": "^https://facebook\\.com/login\\.php[/?#]",
+      "regexFilter": "^https://facebook\\.com/messenger[/?#]",
       "resourceTypes": [
         "main_frame",
         "sub_frame",
@@ -145,7 +145,7 @@
       ]
     },
     "condition": {
-      "regexFilter": "^https://facebook\\.com/checkpoint$",
+      "regexFilter": "^https://facebook\\.com/login$",
       "resourceTypes": [
         "main_frame",
         "sub_frame",
@@ -167,7 +167,7 @@
       ]
     },
     "condition": {
-      "regexFilter": "^https://facebook\\.com/checkpoint[/?#]",
+      "regexFilter": "^https://facebook\\.com/login[/?#]",
       "resourceTypes": [
         "main_frame",
         "sub_frame",
@@ -189,7 +189,7 @@
       ]
     },
     "condition": {
-      "regexFilter": "^https://www\\.facebook\\.com/messages$",
+      "regexFilter": "^https://facebook\\.com/login\\.php$",
       "resourceTypes": [
         "main_frame",
         "sub_frame",
@@ -211,7 +211,7 @@
       ]
     },
     "condition": {
-      "regexFilter": "^https://www\\.facebook\\.com/messages[/?#]",
+      "regexFilter": "^https://facebook\\.com/login\\.php[/?#]",
       "resourceTypes": [
         "main_frame",
         "sub_frame",
@@ -233,7 +233,7 @@
       ]
     },
     "condition": {
-      "regexFilter": "^https://www\\.facebook\\.com/login$",
+      "regexFilter": "^https://facebook\\.com/checkpoint$",
       "resourceTypes": [
         "main_frame",
         "sub_frame",
@@ -255,7 +255,7 @@
       ]
     },
     "condition": {
-      "regexFilter": "^https://www\\.facebook\\.com/login[/?#]",
+      "regexFilter": "^https://facebook\\.com/checkpoint[/?#]",
       "resourceTypes": [
         "main_frame",
         "sub_frame",
@@ -277,7 +277,7 @@
       ]
     },
     "condition": {
-      "regexFilter": "^https://www\\.facebook\\.com/login\\.php$",
+      "regexFilter": "^https://www\\.facebook\\.com/messages$",
       "resourceTypes": [
         "main_frame",
         "sub_frame",
@@ -299,7 +299,7 @@
       ]
     },
     "condition": {
-      "regexFilter": "^https://www\\.facebook\\.com/login\\.php[/?#]",
+      "regexFilter": "^https://www\\.facebook\\.com/messages[/?#]",
       "resourceTypes": [
         "main_frame",
         "sub_frame",
@@ -321,7 +321,7 @@
       ]
     },
     "condition": {
-      "regexFilter": "^https://www\\.facebook\\.com/checkpoint$",
+      "regexFilter": "^https://www\\.facebook\\.com/messages\\.php$",
       "resourceTypes": [
         "main_frame",
         "sub_frame",
@@ -343,7 +343,7 @@
       ]
     },
     "condition": {
-      "regexFilter": "^https://www\\.facebook\\.com/checkpoint[/?#]",
+      "regexFilter": "^https://www\\.facebook\\.com/messages\\.php[/?#]",
       "resourceTypes": [
         "main_frame",
         "sub_frame",
@@ -365,7 +365,7 @@
       ]
     },
     "condition": {
-      "regexFilter": "^https://m\\.facebook\\.com/messages$",
+      "regexFilter": "^https://www\\.facebook\\.com/messenger$",
       "resourceTypes": [
         "main_frame",
         "sub_frame",
@@ -387,7 +387,7 @@
       ]
     },
     "condition": {
-      "regexFilter": "^https://m\\.facebook\\.com/messages[/?#]",
+      "regexFilter": "^https://www\\.facebook\\.com/messenger[/?#]",
       "resourceTypes": [
         "main_frame",
         "sub_frame",
@@ -409,7 +409,7 @@
       ]
     },
     "condition": {
-      "regexFilter": "^https://m\\.facebook\\.com/login$",
+      "regexFilter": "^https://www\\.facebook\\.com/login$",
       "resourceTypes": [
         "main_frame",
         "sub_frame",
@@ -431,7 +431,7 @@
       ]
     },
     "condition": {
-      "regexFilter": "^https://m\\.facebook\\.com/login[/?#]",
+      "regexFilter": "^https://www\\.facebook\\.com/login[/?#]",
       "resourceTypes": [
         "main_frame",
         "sub_frame",
@@ -453,7 +453,7 @@
       ]
     },
     "condition": {
-      "regexFilter": "^https://m\\.facebook\\.com/login\\.php$",
+      "regexFilter": "^https://www\\.facebook\\.com/login\\.php$",
       "resourceTypes": [
         "main_frame",
         "sub_frame",
@@ -475,7 +475,7 @@
       ]
     },
     "condition": {
-      "regexFilter": "^https://m\\.facebook\\.com/login\\.php[/?#]",
+      "regexFilter": "^https://www\\.facebook\\.com/login\\.php[/?#]",
       "resourceTypes": [
         "main_frame",
         "sub_frame",
@@ -497,7 +497,7 @@
       ]
     },
     "condition": {
-      "regexFilter": "^https://m\\.facebook\\.com/checkpoint$",
+      "regexFilter": "^https://www\\.facebook\\.com/checkpoint$",
       "resourceTypes": [
         "main_frame",
         "sub_frame",
@@ -519,7 +519,7 @@
       ]
     },
     "condition": {
-      "regexFilter": "^https://m\\.facebook\\.com/checkpoint[/?#]",
+      "regexFilter": "^https://www\\.facebook\\.com/checkpoint[/?#]",
       "resourceTypes": [
         "main_frame",
         "sub_frame",
@@ -541,7 +541,7 @@
       ]
     },
     "condition": {
-      "regexFilter": "^https://mbasic\\.facebook\\.com/messages$",
+      "regexFilter": "^https://m\\.facebook\\.com/messages$",
       "resourceTypes": [
         "main_frame",
         "sub_frame",
@@ -563,7 +563,7 @@
       ]
     },
     "condition": {
-      "regexFilter": "^https://mbasic\\.facebook\\.com/messages[/?#]",
+      "regexFilter": "^https://m\\.facebook\\.com/messages[/?#]",
       "resourceTypes": [
         "main_frame",
         "sub_frame",
@@ -585,7 +585,7 @@
       ]
     },
     "condition": {
-      "regexFilter": "^https://mbasic\\.facebook\\.com/login$",
+      "regexFilter": "^https://m\\.facebook\\.com/messages\\.php$",
       "resourceTypes": [
         "main_frame",
         "sub_frame",
@@ -607,7 +607,7 @@
       ]
     },
     "condition": {
-      "regexFilter": "^https://mbasic\\.facebook\\.com/login[/?#]",
+      "regexFilter": "^https://m\\.facebook\\.com/messages\\.php[/?#]",
       "resourceTypes": [
         "main_frame",
         "sub_frame",
@@ -629,7 +629,7 @@
       ]
     },
     "condition": {
-      "regexFilter": "^https://mbasic\\.facebook\\.com/login\\.php$",
+      "regexFilter": "^https://m\\.facebook\\.com/messenger$",
       "resourceTypes": [
         "main_frame",
         "sub_frame",
@@ -651,7 +651,7 @@
       ]
     },
     "condition": {
-      "regexFilter": "^https://mbasic\\.facebook\\.com/login\\.php[/?#]",
+      "regexFilter": "^https://m\\.facebook\\.com/messenger[/?#]",
       "resourceTypes": [
         "main_frame",
         "sub_frame",
@@ -673,7 +673,7 @@
       ]
     },
     "condition": {
-      "regexFilter": "^https://mbasic\\.facebook\\.com/checkpoint$",
+      "regexFilter": "^https://m\\.facebook\\.com/login$",
       "resourceTypes": [
         "main_frame",
         "sub_frame",
@@ -695,7 +695,7 @@
       ]
     },
     "condition": {
-      "regexFilter": "^https://mbasic\\.facebook\\.com/checkpoint[/?#]",
+      "regexFilter": "^https://m\\.facebook\\.com/login[/?#]",
       "resourceTypes": [
         "main_frame",
         "sub_frame",
@@ -717,7 +717,7 @@
       ]
     },
     "condition": {
-      "regexFilter": "^https://web\\.facebook\\.com/messages$",
+      "regexFilter": "^https://m\\.facebook\\.com/login\\.php$",
       "resourceTypes": [
         "main_frame",
         "sub_frame",
@@ -739,7 +739,7 @@
       ]
     },
     "condition": {
-      "regexFilter": "^https://web\\.facebook\\.com/messages[/?#]",
+      "regexFilter": "^https://m\\.facebook\\.com/login\\.php[/?#]",
       "resourceTypes": [
         "main_frame",
         "sub_frame",
@@ -761,7 +761,7 @@
       ]
     },
     "condition": {
-      "regexFilter": "^https://web\\.facebook\\.com/login$",
+      "regexFilter": "^https://m\\.facebook\\.com/checkpoint$",
       "resourceTypes": [
         "main_frame",
         "sub_frame",
@@ -783,7 +783,7 @@
       ]
     },
     "condition": {
-      "regexFilter": "^https://web\\.facebook\\.com/login[/?#]",
+      "regexFilter": "^https://m\\.facebook\\.com/checkpoint[/?#]",
       "resourceTypes": [
         "main_frame",
         "sub_frame",
@@ -805,7 +805,7 @@
       ]
     },
     "condition": {
-      "regexFilter": "^https://web\\.facebook\\.com/login\\.php$",
+      "regexFilter": "^https://mbasic\\.facebook\\.com/messages$",
       "resourceTypes": [
         "main_frame",
         "sub_frame",
@@ -827,7 +827,7 @@
       ]
     },
     "condition": {
-      "regexFilter": "^https://web\\.facebook\\.com/login\\.php[/?#]",
+      "regexFilter": "^https://mbasic\\.facebook\\.com/messages[/?#]",
       "resourceTypes": [
         "main_frame",
         "sub_frame",
@@ -849,7 +849,7 @@
       ]
     },
     "condition": {
-      "regexFilter": "^https://web\\.facebook\\.com/checkpoint$",
+      "regexFilter": "^https://mbasic\\.facebook\\.com/messages\\.php$",
       "resourceTypes": [
         "main_frame",
         "sub_frame",
@@ -871,7 +871,7 @@
       ]
     },
     "condition": {
-      "regexFilter": "^https://web\\.facebook\\.com/checkpoint[/?#]",
+      "regexFilter": "^https://mbasic\\.facebook\\.com/messages\\.php[/?#]",
       "resourceTypes": [
         "main_frame",
         "sub_frame",
@@ -893,7 +893,7 @@
       ]
     },
     "condition": {
-      "regexFilter": "^https://messenger\\.com/",
+      "regexFilter": "^https://mbasic\\.facebook\\.com/messenger$",
       "resourceTypes": [
         "main_frame",
         "sub_frame",
@@ -903,6 +903,926 @@
   },
   {
     "id": 42,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "requestHeaders": [
+        {
+          "header": "User-Agent",
+          "operation": "set",
+          "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15"
+        }
+      ]
+    },
+    "condition": {
+      "regexFilter": "^https://mbasic\\.facebook\\.com/messenger[/?#]",
+      "resourceTypes": [
+        "main_frame",
+        "sub_frame",
+        "xmlhttprequest"
+      ]
+    }
+  },
+  {
+    "id": 43,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "requestHeaders": [
+        {
+          "header": "User-Agent",
+          "operation": "set",
+          "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15"
+        }
+      ]
+    },
+    "condition": {
+      "regexFilter": "^https://mbasic\\.facebook\\.com/login$",
+      "resourceTypes": [
+        "main_frame",
+        "sub_frame",
+        "xmlhttprequest"
+      ]
+    }
+  },
+  {
+    "id": 44,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "requestHeaders": [
+        {
+          "header": "User-Agent",
+          "operation": "set",
+          "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15"
+        }
+      ]
+    },
+    "condition": {
+      "regexFilter": "^https://mbasic\\.facebook\\.com/login[/?#]",
+      "resourceTypes": [
+        "main_frame",
+        "sub_frame",
+        "xmlhttprequest"
+      ]
+    }
+  },
+  {
+    "id": 45,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "requestHeaders": [
+        {
+          "header": "User-Agent",
+          "operation": "set",
+          "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15"
+        }
+      ]
+    },
+    "condition": {
+      "regexFilter": "^https://mbasic\\.facebook\\.com/login\\.php$",
+      "resourceTypes": [
+        "main_frame",
+        "sub_frame",
+        "xmlhttprequest"
+      ]
+    }
+  },
+  {
+    "id": 46,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "requestHeaders": [
+        {
+          "header": "User-Agent",
+          "operation": "set",
+          "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15"
+        }
+      ]
+    },
+    "condition": {
+      "regexFilter": "^https://mbasic\\.facebook\\.com/login\\.php[/?#]",
+      "resourceTypes": [
+        "main_frame",
+        "sub_frame",
+        "xmlhttprequest"
+      ]
+    }
+  },
+  {
+    "id": 47,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "requestHeaders": [
+        {
+          "header": "User-Agent",
+          "operation": "set",
+          "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15"
+        }
+      ]
+    },
+    "condition": {
+      "regexFilter": "^https://mbasic\\.facebook\\.com/checkpoint$",
+      "resourceTypes": [
+        "main_frame",
+        "sub_frame",
+        "xmlhttprequest"
+      ]
+    }
+  },
+  {
+    "id": 48,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "requestHeaders": [
+        {
+          "header": "User-Agent",
+          "operation": "set",
+          "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15"
+        }
+      ]
+    },
+    "condition": {
+      "regexFilter": "^https://mbasic\\.facebook\\.com/checkpoint[/?#]",
+      "resourceTypes": [
+        "main_frame",
+        "sub_frame",
+        "xmlhttprequest"
+      ]
+    }
+  },
+  {
+    "id": 49,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "requestHeaders": [
+        {
+          "header": "User-Agent",
+          "operation": "set",
+          "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15"
+        }
+      ]
+    },
+    "condition": {
+      "regexFilter": "^https://web\\.facebook\\.com/messages$",
+      "resourceTypes": [
+        "main_frame",
+        "sub_frame",
+        "xmlhttprequest"
+      ]
+    }
+  },
+  {
+    "id": 50,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "requestHeaders": [
+        {
+          "header": "User-Agent",
+          "operation": "set",
+          "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15"
+        }
+      ]
+    },
+    "condition": {
+      "regexFilter": "^https://web\\.facebook\\.com/messages[/?#]",
+      "resourceTypes": [
+        "main_frame",
+        "sub_frame",
+        "xmlhttprequest"
+      ]
+    }
+  },
+  {
+    "id": 51,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "requestHeaders": [
+        {
+          "header": "User-Agent",
+          "operation": "set",
+          "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15"
+        }
+      ]
+    },
+    "condition": {
+      "regexFilter": "^https://web\\.facebook\\.com/messages\\.php$",
+      "resourceTypes": [
+        "main_frame",
+        "sub_frame",
+        "xmlhttprequest"
+      ]
+    }
+  },
+  {
+    "id": 52,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "requestHeaders": [
+        {
+          "header": "User-Agent",
+          "operation": "set",
+          "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15"
+        }
+      ]
+    },
+    "condition": {
+      "regexFilter": "^https://web\\.facebook\\.com/messages\\.php[/?#]",
+      "resourceTypes": [
+        "main_frame",
+        "sub_frame",
+        "xmlhttprequest"
+      ]
+    }
+  },
+  {
+    "id": 53,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "requestHeaders": [
+        {
+          "header": "User-Agent",
+          "operation": "set",
+          "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15"
+        }
+      ]
+    },
+    "condition": {
+      "regexFilter": "^https://web\\.facebook\\.com/messenger$",
+      "resourceTypes": [
+        "main_frame",
+        "sub_frame",
+        "xmlhttprequest"
+      ]
+    }
+  },
+  {
+    "id": 54,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "requestHeaders": [
+        {
+          "header": "User-Agent",
+          "operation": "set",
+          "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15"
+        }
+      ]
+    },
+    "condition": {
+      "regexFilter": "^https://web\\.facebook\\.com/messenger[/?#]",
+      "resourceTypes": [
+        "main_frame",
+        "sub_frame",
+        "xmlhttprequest"
+      ]
+    }
+  },
+  {
+    "id": 55,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "requestHeaders": [
+        {
+          "header": "User-Agent",
+          "operation": "set",
+          "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15"
+        }
+      ]
+    },
+    "condition": {
+      "regexFilter": "^https://web\\.facebook\\.com/login$",
+      "resourceTypes": [
+        "main_frame",
+        "sub_frame",
+        "xmlhttprequest"
+      ]
+    }
+  },
+  {
+    "id": 56,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "requestHeaders": [
+        {
+          "header": "User-Agent",
+          "operation": "set",
+          "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15"
+        }
+      ]
+    },
+    "condition": {
+      "regexFilter": "^https://web\\.facebook\\.com/login[/?#]",
+      "resourceTypes": [
+        "main_frame",
+        "sub_frame",
+        "xmlhttprequest"
+      ]
+    }
+  },
+  {
+    "id": 57,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "requestHeaders": [
+        {
+          "header": "User-Agent",
+          "operation": "set",
+          "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15"
+        }
+      ]
+    },
+    "condition": {
+      "regexFilter": "^https://web\\.facebook\\.com/login\\.php$",
+      "resourceTypes": [
+        "main_frame",
+        "sub_frame",
+        "xmlhttprequest"
+      ]
+    }
+  },
+  {
+    "id": 58,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "requestHeaders": [
+        {
+          "header": "User-Agent",
+          "operation": "set",
+          "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15"
+        }
+      ]
+    },
+    "condition": {
+      "regexFilter": "^https://web\\.facebook\\.com/login\\.php[/?#]",
+      "resourceTypes": [
+        "main_frame",
+        "sub_frame",
+        "xmlhttprequest"
+      ]
+    }
+  },
+  {
+    "id": 59,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "requestHeaders": [
+        {
+          "header": "User-Agent",
+          "operation": "set",
+          "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15"
+        }
+      ]
+    },
+    "condition": {
+      "regexFilter": "^https://web\\.facebook\\.com/checkpoint$",
+      "resourceTypes": [
+        "main_frame",
+        "sub_frame",
+        "xmlhttprequest"
+      ]
+    }
+  },
+  {
+    "id": 60,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "requestHeaders": [
+        {
+          "header": "User-Agent",
+          "operation": "set",
+          "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15"
+        }
+      ]
+    },
+    "condition": {
+      "regexFilter": "^https://web\\.facebook\\.com/checkpoint[/?#]",
+      "resourceTypes": [
+        "main_frame",
+        "sub_frame",
+        "xmlhttprequest"
+      ]
+    }
+  },
+  {
+    "id": 61,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "https://www.facebook.com/messages/"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://facebook\\.com/messages\\.php$",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 62,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "https://www.facebook.com/messages/\\1"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://facebook\\.com/messages\\.php([?#].*)$",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 63,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "https://www.facebook.com/messages\\1"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://facebook\\.com/messages\\.php(/.*)$",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 64,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "https://www.facebook.com/messages/"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://facebook\\.com/messenger$",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 65,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "https://www.facebook.com/messages/\\1"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://facebook\\.com/messenger([?#].*)$",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 66,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "https://www.facebook.com/messages\\1"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://facebook\\.com/messenger(/.*)$",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 67,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "https://www.facebook.com/messages/"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://www\\.facebook\\.com/messages\\.php$",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 68,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "https://www.facebook.com/messages/\\1"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://www\\.facebook\\.com/messages\\.php([?#].*)$",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 69,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "https://www.facebook.com/messages\\1"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://www\\.facebook\\.com/messages\\.php(/.*)$",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 70,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "https://www.facebook.com/messages/"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://www\\.facebook\\.com/messenger$",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 71,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "https://www.facebook.com/messages/\\1"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://www\\.facebook\\.com/messenger([?#].*)$",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 72,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "https://www.facebook.com/messages\\1"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://www\\.facebook\\.com/messenger(/.*)$",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 73,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "https://www.facebook.com/messages/"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://m\\.facebook\\.com/messages\\.php$",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 74,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "https://www.facebook.com/messages/\\1"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://m\\.facebook\\.com/messages\\.php([?#].*)$",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 75,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "https://www.facebook.com/messages\\1"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://m\\.facebook\\.com/messages\\.php(/.*)$",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 76,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "https://www.facebook.com/messages/"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://m\\.facebook\\.com/messenger$",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 77,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "https://www.facebook.com/messages/\\1"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://m\\.facebook\\.com/messenger([?#].*)$",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 78,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "https://www.facebook.com/messages\\1"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://m\\.facebook\\.com/messenger(/.*)$",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 79,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "https://www.facebook.com/messages/"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://mbasic\\.facebook\\.com/messages\\.php$",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 80,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "https://www.facebook.com/messages/\\1"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://mbasic\\.facebook\\.com/messages\\.php([?#].*)$",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 81,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "https://www.facebook.com/messages\\1"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://mbasic\\.facebook\\.com/messages\\.php(/.*)$",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 82,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "https://www.facebook.com/messages/"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://mbasic\\.facebook\\.com/messenger$",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 83,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "https://www.facebook.com/messages/\\1"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://mbasic\\.facebook\\.com/messenger([?#].*)$",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 84,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "https://www.facebook.com/messages\\1"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://mbasic\\.facebook\\.com/messenger(/.*)$",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 85,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "https://www.facebook.com/messages/"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://web\\.facebook\\.com/messages\\.php$",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 86,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "https://www.facebook.com/messages/\\1"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://web\\.facebook\\.com/messages\\.php([?#].*)$",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 87,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "https://www.facebook.com/messages\\1"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://web\\.facebook\\.com/messages\\.php(/.*)$",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 88,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "https://www.facebook.com/messages/"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://web\\.facebook\\.com/messenger$",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 89,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "https://www.facebook.com/messages/\\1"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://web\\.facebook\\.com/messenger([?#].*)$",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 90,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "https://www.facebook.com/messages\\1"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://web\\.facebook\\.com/messenger(/.*)$",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 91,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "requestHeaders": [
+        {
+          "header": "User-Agent",
+          "operation": "set",
+          "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15"
+        }
+      ]
+    },
+    "condition": {
+      "regexFilter": "^https://messenger\\.com/",
+      "resourceTypes": [
+        "main_frame",
+        "sub_frame",
+        "xmlhttprequest"
+      ]
+    }
+  },
+  {
+    "id": 92,
     "priority": 2,
     "action": {
       "type": "redirect",
@@ -918,7 +1838,7 @@
     }
   },
   {
-    "id": 43,
+    "id": 93,
     "priority": 2,
     "action": {
       "type": "redirect",
@@ -934,7 +1854,7 @@
     }
   },
   {
-    "id": 44,
+    "id": 94,
     "priority": 2,
     "action": {
       "type": "redirect",
@@ -950,7 +1870,7 @@
     }
   },
   {
-    "id": 45,
+    "id": 95,
     "priority": 1,
     "action": {
       "type": "modifyHeaders",
@@ -972,7 +1892,7 @@
     }
   },
   {
-    "id": 46,
+    "id": 96,
     "priority": 2,
     "action": {
       "type": "redirect",
@@ -988,7 +1908,7 @@
     }
   },
   {
-    "id": 47,
+    "id": 97,
     "priority": 2,
     "action": {
       "type": "redirect",
@@ -1004,7 +1924,7 @@
     }
   },
   {
-    "id": 48,
+    "id": 98,
     "priority": 2,
     "action": {
       "type": "redirect",
@@ -1020,7 +1940,7 @@
     }
   },
   {
-    "id": 49,
+    "id": 99,
     "priority": 1,
     "action": {
       "type": "modifyHeaders",
@@ -1042,7 +1962,7 @@
     }
   },
   {
-    "id": 50,
+    "id": 100,
     "priority": 2,
     "action": {
       "type": "redirect",
@@ -1058,7 +1978,7 @@
     }
   },
   {
-    "id": 51,
+    "id": 101,
     "priority": 2,
     "action": {
       "type": "redirect",
@@ -1074,7 +1994,7 @@
     }
   },
   {
-    "id": 52,
+    "id": 102,
     "priority": 2,
     "action": {
       "type": "redirect",
@@ -1090,7 +2010,7 @@
     }
   },
   {
-    "id": 53,
+    "id": 103,
     "priority": 2,
     "action": {
       "type": "redirect",
@@ -1106,7 +2026,7 @@
     }
   },
   {
-    "id": 54,
+    "id": 104,
     "priority": 2,
     "action": {
       "type": "redirect",
@@ -1122,7 +2042,7 @@
     }
   },
   {
-    "id": 55,
+    "id": 105,
     "priority": 2,
     "action": {
       "type": "redirect",
@@ -1138,7 +2058,7 @@
     }
   },
   {
-    "id": 56,
+    "id": 106,
     "priority": 2,
     "action": {
       "type": "redirect",
@@ -1154,7 +2074,7 @@
     }
   },
   {
-    "id": 57,
+    "id": 107,
     "priority": 2,
     "action": {
       "type": "redirect",
@@ -1170,7 +2090,7 @@
     }
   },
   {
-    "id": 58,
+    "id": 108,
     "priority": 2,
     "action": {
       "type": "redirect",

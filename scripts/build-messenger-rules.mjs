@@ -16,11 +16,20 @@ const add = (action, regexFilter, resourceTypes, priority = 1) => rules.push({
 // Safari's content-rule compiler rejects regex alternatives and noncapturing
 // groups. Separate hosts, routes and end boundaries instead of broadening scope.
 for (const host of facebook) {
-  for (const route of ['messages', 'login', 'login.php', 'checkpoint']) {
+  for (const route of ['messages', 'messages.php', 'messenger', 'login', 'login.php', 'checkpoint']) {
     for (const end of ['$', '[/?#]']) {
       add({type: 'modifyHeaders', requestHeaders: headers}, `^https://${escape(host)}/${escape(route)}${end}`,
         ['main_frame', 'sub_frame', 'xmlhttprequest']);
     }
+  }
+}
+// Legacy mobile inbox links occur on the feed, including same-host SPA links.
+for (const host of facebook) {
+  for (const route of ['messages.php', 'messenger']) {
+    const prefix = `^https://${escape(host)}/${escape(route)}`;
+    add({type: 'redirect', redirect: {regexSubstitution: 'https://www.facebook.com/messages/'}}, prefix + '$', ['main_frame'], 2);
+    add({type: 'redirect', redirect: {regexSubstitution: 'https://www.facebook.com/messages/\\1'}}, prefix + '([?#].*)$', ['main_frame'], 2);
+    add({type: 'redirect', redirect: {regexSubstitution: 'https://www.facebook.com/messages\\1'}}, prefix + '(/.*)$', ['main_frame'], 2);
   }
 }
 for (const host of messenger) {

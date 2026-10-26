@@ -18,8 +18,18 @@ const FacefixMessenger = Object.freeze({
   isMessages(value) {
     try {
       const url = new URL(value);
-      return /(^|\.)messenger\.com$/.test(url.hostname) || /^\/messages(?:\/|$)/.test(url.pathname);
+      return this.isSupportedURL(value) && (/messenger\.com$/.test(url.hostname) || /^\/(?:messages(?:\.php)?|messenger)(?:\/|$)/.test(url.pathname));
     } catch { return false; }
+  },
+  canonicalMessagesURL(value) {
+    if (!this.isMessages(value)) return null;
+    const url = new URL(value);
+    if (/messenger\.com$/.test(url.hostname)) {
+      if (url.pathname !== '/' && !/^\/(?:e2ee\/)?t\//.test(url.pathname)) return null;
+      url.pathname = '/messages' + url.pathname;
+    } else url.pathname = url.pathname.replace(/^\/(?:messages\.php|messenger)(?=\/|$)/, '/messages');
+    url.hostname = 'www.facebook.com';
+    return url.href;
   },
   isIdentityPage(value) {
     if (this.isMessages(value)) return true;

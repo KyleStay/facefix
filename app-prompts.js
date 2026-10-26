@@ -5,7 +5,8 @@
   let pending = null;
   let active = true;
   let revision = 0;
-  const protectedContext = 'article, [role~="article"], [data-pagelet^="FeedUnit_"], form, [role~="form"], dialog, [role~="dialog"], [role~="alertdialog"], nav, [role~="navigation"], [contenteditable], [role~="textbox"]';
+  const protectedContext = 'article, [role~="article"], [data-pagelet^="FeedUnit_"], form, [role~="form"], dialog, [role~="dialog"], [role~="alertdialog"], [contenteditable], [role~="textbox"]';
+  const navigation = 'nav, [role~="navigation"]';
   const controls = 'a, button, [role~="button"], input, select, textarea, [contenteditable], iframe, video, audio';
   const label = value => (value || '').replace(/\s+/g, ' ').trim().toLowerCase();
   const appLabel = node => [label(node.textContent), label(node.getAttribute('aria-label'))].some(value =>
@@ -23,14 +24,15 @@
   }
   function pinned(node) {
     if (!node || typeof getComputedStyle !== 'function') return false;
-    if (!['fixed', 'sticky'].includes(getComputedStyle(node).position)) return false;
+    const position = getComputedStyle(node).position;
     // A hidden promotion has no geometry. Its original pin remains valid until
     // position/structure changes; never briefly unhide it just to measure it.
-    if ([...hidden.values()].some(record => record.pin === node)) return true;
+    if ([...hidden.values()].some(record => record.pin === node && record.position === position)) return true;
     const rect = node.getBoundingClientRect();
     const height = innerHeight;
     return rect.height > 0 && rect.height <= Math.min(200, height * .3) &&
-      rect.width >= innerWidth * .5 && rect.bottom >= height - 180 && rect.bottom <= height + 120;
+      rect.width >= innerWidth * .5 && rect.bottom >= height - 180 && rect.bottom <= height + 120 &&
+      (['fixed', 'sticky'].includes(position) || rect.top >= height * .65);
   }
   function promotionOnly(node) {
     if (node.matches('body, html, main, [role~="main"]') || node.closest(protectedContext) || node.querySelector(protectedContext)) return false;
@@ -45,15 +47,15 @@
       if (!value) continue;
       const control = text.parentElement?.closest('a, button, [role~="button"]');
       if (control && node.contains(control) && (appLabel(control) || dismissLabel(control))) continue;
-      if (!['facebook', 'messenger'].includes(value)) return false;
+      if (!['facebook', 'messenger'].includes(value) && !appLabel(text.parentElement) && !dismissLabel(text.parentElement)) return false;
     }
     return true;
   }
   function container(node) {
     let ancestor = node.parentElement;
     let pin = ancestor && pinned(node) ? node : null;
-    let result = null;
-    for (let depth = 0; ancestor && depth < 4; depth++, ancestor = ancestor.parentElement) {
+    let result = pin && promotionOnly(node) ? {node, pin} : null;
+    for (let depth = 0; ancestor && depth < 12; depth++, ancestor = ancestor.parentElement) {
       if (!promotionOnly(ancestor)) break;
       if (pinned(ancestor)) pin = ancestor;
       if (pin) result = {node: ancestor, pin};
@@ -71,12 +73,17 @@
     pending = null;
     const desired = new Map();
     if (enabled) {
-      for (const node of document.querySelectorAll('a[href], button, [role~="button"]')) {
+      for (const node of document.querySelectorAll('a[href], button, [role~="button"], div, span')) {
+        // Mobile Facebook also renders the CTA as a plain leaf span/div with
+        // a delegated click handler. Avoid reading whole feed container text.
+        if (node.childElementCount && !node.matches('a, button, [role~="button"]')) continue;
         if (node.closest(protectedContext) || !appLabel(node)) continue;
         const wrapper = container(node);
+        const nav = node.closest(navigation);
+        if (nav && (!wrapper || !wrapper.node.contains?.(nav))) continue;
         if (!destination(node) && !wrapper) continue;
         const target = wrapper?.node || node;
-        desired.set(target, {pin: wrapper?.pin || null});
+        desired.set(target, {pin: wrapper?.pin || null, position: wrapper ? getComputedStyle(wrapper.pin).position : null});
       }
       for (const node of desired.keys()) {
         if ([...desired.keys()].some(other => other !== node && other.contains?.(node))) desired.delete(node);
