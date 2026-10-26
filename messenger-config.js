@@ -23,7 +23,7 @@ globalThis.FacefixMessenger = Object.freeze({
     if (this.isMessages(value)) return true;
     try {
       const url = new URL(value);
-      if (!/^\/(?:login|checkpoint)(?:\/|$)/.test(url.pathname)) return false;
+      if (!/^\/(?:login(?:\.php)?|checkpoint)(?:\/|$)/.test(url.pathname)) return false;
       const next = new URL(url.searchParams.get('next') || '/', url.origin);
       return this.isSupportedURL(next.href) && this.isMessages(next.href);
     } catch { return false; }

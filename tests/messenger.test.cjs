@@ -43,6 +43,13 @@ test('locked navigator properties and later website changes survive identity cle
   assert.equal(navigator.platform,'page edit');
 });
 
+test('Facebook login.php preserves desktop identity only for the messaging return flow', () => {
+  const config=configured().FacefixMessenger;
+  assert.equal(config.isIdentityPage('https://www.facebook.com/login.php?next=https%3A%2F%2Fwww.facebook.com%2Fmessages%2F'),true);
+  for(const url of ['https://www.facebook.com/login.php','https://www.facebook.com/login.php?next=/groups/example',
+    'https://www.facebook.com/login.php?next=https://attacker.test/messages/']) assert.equal(config.isIdentityPage(url),false);
+});
+
 test('the registered MAIN script is self-contained and exposes no shared configuration on the page', () => {
   const navigator={platform:'iPhone',userAgent:'native',appVersion:'native'};
   const context=vm.createContext({URL,document:new EventTarget(),navigator,location:new URL('https://www.facebook.com/messages/t/123')});
